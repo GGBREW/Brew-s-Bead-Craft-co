@@ -1,5 +1,5 @@
 <?php
-// config.php: database connection
+// config.php: database connections
 $host = 'localhost';
 $db   = 'bead_market';
 $user = 'your_db_user';
