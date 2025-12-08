@@ -4,1227 +4,1679 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <title>Brew's Beads & Craft Co.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Brew's Beads & Craft Co. | Premium Craft Supplies</title>
 
   <style>
-    /* Reset basic styles */
+    /* CSS Variables for easy theming */
+    :root {
+      --primary: #8a6d3b; /* Earthy brown for crafts */
+      --primary-dark: #6d4c1e;
+      --secondary: #3498db;
+      --accent: #e74c3c;
+      --light: #f8f5f0;
+      --dark: #2c3e50;
+      --gray: #95a5a6;
+      --success: #2ecc71;
+      --shadow: 0 5px 15px rgba(0,0,0,0.08);
+      --transition: all 0.3s ease;
+      --border-radius: 8px;
+    }
+
+    /* Reset and Base Styles */
     * {
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
     }
-    
+
     body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f8f9fa;
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
       color: #333;
+      background-color: #fff;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
 
-    /* Navbar styles */
-    .navbar {
-      background-color: #000000;
-      color: white;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    a {
+      text-decoration: none;
+      color: inherit;
     }
 
-    .logo {
-      margin-left: 10px;
-      height: 40px;
+    ul {
+      list-style: none;
     }
 
-    .logo-image {
-      height: 100%;
-      width: auto;
-      max-width: 150px;
-      object-fit: contain;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-
-    .logo-image:hover {
-      transform: scale(1.05);
-    }
-
-    .search-bar {
-      flex: 1;
-      margin: 0 20px;
-      display: flex;
-      max-width: 600px;
-    }
-
-    .search-bar input {
-      width: 100%;
-      padding: 10px 15px;
-      border: none;
-      font-size: 16px;
-      border-radius: 4px 0 0 4px;
-    }
-
-    .search-bar button {
-      padding: 10px 15px;
-      background-color: #febd69;
-      border: none;
-      cursor: pointer;
-      border-radius: 0 4px 4px 0;
-      transition: background-color 0.2s;
-    }
-
-    .search-bar button:hover {
-      background-color: #f3a847;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 25px;
-      align-items: center;
-    }
-
-    .nav-links div {
-      cursor: pointer;
-      font-size: 14px;
-      text-align: center;
-      padding: 5px 10px;
-      border-radius: 4px;
-      transition: background-color 0.2s;
-    }
-
-    .nav-links div:hover {
-      background-color: rgba(255,255,255,0.1);
-    }
-
-    /* Product grid */
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      padding: 2rem;
-      max-width: 1400px;
-      margin: 0 auto;
-      flex: 1;
-    }
-
-    /* Single product card */
-    .product {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 8px;
-      text-align: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      transition: transform 0.3s, box-shadow 0.3s;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-
-    .product:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-    }
-
-    .product img {
+    img {
       max-width: 100%;
-      height: 200px;
-      object-fit: contain;
-      margin-bottom: 1rem;
+      height: auto;
     }
 
-    .product h2 {
-      font-size: 18px;
-      margin: 10px 0 5px;
-      color: #2c3e50;
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
     }
 
-    .product p {
-      font-weight: bold;
-      margin: 5px 0;
-      color: #e74c3c;
-      font-size: 1.1rem;
-    }
-
-    .product button {
-      background-color: #3498db;
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: var(--primary);
       color: white;
       border: none;
-      padding: 10px 15px;
-      margin-top: auto;
+      border-radius: var(--border-radius);
+      font-weight: 600;
       cursor: pointer;
-      font-weight: bold;
-      border-radius: 4px;
-      transition: background-color 0.2s;
+      transition: var(--transition);
+      text-align: center;
     }
 
-    .product button:hover {
+    .btn:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 10px rgba(138, 109, 59, 0.2);
+    }
+
+    .btn-secondary {
+      background-color: var(--secondary);
+    }
+
+    .btn-secondary:hover {
       background-color: #2980b9;
     }
 
-    /* Enhanced Cart Popup */
-    .cart-popup {
-      position: fixed;
-      top: 70px;
-      right: 20px;
-      width: 380px;
-      background: white;
-      border: 1px solid #e1e5e9;
-      padding: 0;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-      display: none;
-      z-index: 999;
-      border-radius: 10px;
+    .btn-accent {
+      background-color: var(--accent);
+    }
+
+    .btn-accent:hover {
+      background-color: #c0392b;
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    /* Header & Navigation */
+    header {
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .top-bar {
+      background-color: var(--dark);
+      color: white;
+      padding: 8px 0;
+      font-size: 14px;
+    }
+
+    .top-bar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .top-bar-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .top-bar-links a:hover {
+      color: var(--primary);
+    }
+
+    .main-header {
+      padding: 15px 0;
+    }
+
+    .main-header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 24px;
+      color: var(--dark);
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    .search-container {
+      flex: 1;
+      max-width: 500px;
+      margin: 0 20px;
+      position: relative;
+    }
+
+    .search-container input {
+      width: 100%;
+      padding: 12px 20px;
+      border: 1px solid #ddd;
+      border-radius: 30px;
+      font-size: 16px;
+      transition: var(--transition);
+    }
+
+    .search-container input:focus {
+      border-color: var(--primary);
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(138, 109, 59, 0.2);
+    }
+
+    .search-container button {
+      position: absolute;
+      right: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .search-container button:hover {
+      background-color: var(--primary-dark);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .action-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      padding: 5px 10px;
+      border-radius: var(--border-radius);
+      transition: var(--transition);
+    }
+
+    .action-item:hover {
+      background-color: #f8f5f0;
+    }
+
+    .action-item i {
+      font-size: 22px;
+      margin-bottom: 3px;
+      color: var(--dark);
+    }
+
+    .action-item span {
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    #cart-count {
+      background-color: var(--accent);
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      position: absolute;
+      top: -5px;
+      right: 5px;
+    }
+
+    .nav-menu {
+      background-color: var(--light);
+      border-top: 1px solid #eee;
+    }
+
+    .nav-menu ul {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 15px 0;
+    }
+
+    .nav-menu a {
+      padding: 8px 20px;
+      font-weight: 500;
+      color: var(--dark);
+      border-radius: 30px;
+      transition: var(--transition);
+    }
+
+    .nav-menu a:hover, .nav-menu a.active {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+
+    /* Categories Section */
+    .categories {
+      padding: 60px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 32px;
+      color: var(--dark);
+      position: relative;
+    }
+
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background-color: var(--primary);
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .category-card {
+      background-color: white;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .category-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+    }
+
+    .category-card img {
+      height: 200px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .category-card h3 {
+      padding: 20px;
+      text-align: center;
+      color: var(--dark);
+    }
+
+    /* Featured Products */
+    .featured-products {
+      padding: 60px 0;
+      background-color: var(--light);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .product-card {
+      background-color: white;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+    }
+
+    .product-image {
+      height: 220px;
+      width: 100%;
+      position: relative;
       overflow: hidden;
     }
 
-    .cart-header {
-      background: #2c3e50;
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .product-card:hover .product-image img {
+      transform: scale(1.05);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background-color: var(--accent);
       color: white;
-      padding: 15px 20px;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .product-info {
+      padding: 20px;
+    }
+
+    .product-category {
+      color: var(--gray);
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    .product-title {
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--dark);
+      font-size: 18px;
+      height: 50px;
+      overflow: hidden;
+    }
+
+    .product-price {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .current-price {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .original-price {
+      font-size: 16px;
+      color: var(--gray);
+      text-decoration: line-through;
+    }
+
+    .product-rating {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .stars {
+      color: #f1c40f;
+      margin-right: 10px;
+    }
+
+    .rating-count {
+      color: var(--gray);
+      font-size: 14px;
+    }
+
+    /* Cart Modal */
+    .cart-modal {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 380px;
+      height: 100vh;
+      background-color: white;
+      box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+      z-index: 1100;
+      transition: right 0.4s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cart-modal.open {
+      right: 0;
+    }
+
+    .cart-header {
+      padding: 20px;
+      border-bottom: 1px solid #eee;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
     .cart-header h3 {
-      margin: 0;
-      font-size: 1.2rem;
+      font-size: 22px;
+      color: var(--dark);
     }
 
     .close-cart {
       background: none;
       border: none;
-      color: white;
-      font-size: 1.2rem;
+      font-size: 28px;
       cursor: pointer;
-    }
-
-    .cart-body {
-      padding: 15px 20px;
-      max-height: 350px;
-      overflow-y: auto;
+      color: var(--gray);
     }
 
     .cart-items {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
     }
 
     .cart-item {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 0;
-      border-bottom: 1px solid #f0f0f0;
+      gap: 15px;
+      padding: 15px 0;
+      border-bottom: 1px solid #eee;
     }
 
-    .cart-item:last-child {
-      border-bottom: none;
+    .cart-item-image {
+      width: 80px;
+      height: 80px;
+      border-radius: 8px;
+      overflow: hidden;
     }
 
-    .item-info {
-      display: flex;
-      flex-direction: column;
+    .cart-item-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .cart-item-details {
       flex: 1;
     }
 
-    .item-name {
+    .cart-item-title {
       font-weight: 600;
       margin-bottom: 5px;
     }
 
-    .item-price {
-      color: #e74c3c;
+    .cart-item-price {
+      color: var(--primary);
       font-weight: 600;
+      margin-bottom: 10px;
     }
 
-    .item-actions {
+    .cart-item-actions {
       display: flex;
       align-items: center;
-      gap: 10px;
+      justify-content: space-between;
     }
 
     .quantity-control {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
 
     .quantity-btn {
-      background: #f0f0f0;
-      border: none;
-      width: 24px;
-      height: 24px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
+      border: 1px solid #ddd;
+      background-color: white;
+      cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
-      font-size: 12px;
     }
 
     .quantity-btn:hover {
-      background: #e0e0e0;
-    }
-
-    .item-quantity {
-      font-weight: 600;
-      min-width: 20px;
-      text-align: center;
+      background-color: #f8f5f0;
     }
 
     .remove-item {
-      color: #e74c3c;
-      cursor: pointer;
       background: none;
       border: none;
-      font-size: 1.1rem;
+      color: var(--accent);
+      cursor: pointer;
+      font-size: 18px;
     }
 
     .cart-footer {
-      padding: 15px 20px;
-      background: #f8f9fa;
-      border-top: 1px solid #e1e5e9;
+      padding: 20px;
+      border-top: 1px solid #eee;
     }
 
     .cart-summary {
+      margin-bottom: 20px;
+    }
+
+    .summary-row {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 15px;
-      font-weight: 600;
+      margin-bottom: 10px;
     }
 
     .cart-total {
-      font-size: 1.2rem;
-      color: #2c3e50;
-    }
-
-    .checkout-btn {
-      width: 100%;
-      padding: 12px;
-      background-color: #2ecc71;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    .checkout-btn:hover {
-      background-color: #27ae60;
-    }
-
-    .empty-cart {
-      text-align: center;
-      color: #7f8c8d;
-      padding: 40px 20px;
-    }
-
-    .empty-cart i {
-      font-size: 3rem;
-      margin-bottom: 15px;
-      color: #bdc3c7;
-    }
-
-    /* Cart icon count */
-    #cart-count {
-      background: #e74c3c;
-      padding: 3px 8px;
-      border-radius: 50%;
-      font-size: 12px;
-      margin-left: 4px;
-    }
-
-    /* Carousel */
-    .carousel {
-      width: 100%;
-      height: 50vh;
-      max-height: 600px;
-      overflow: hidden;
-      position: relative;
-      margin: 10px 0;
-    }
-
-    .carousel-inner {
-      display: flex;
-      transition: transform 0.5s ease-in-out;
-      height: 100%;
-    }
-
-    .carousel-slide {
-      min-width: 100%;
-      height: 100%;
-      position: relative;
-    }
-
-    .carousel-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 29%;
-    }
-
-    .carousel-button {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0,0,0,0.5);
-      color: white;
-      border: none;
-      padding: 12px 17px;
-      cursor: pointer;
-      border-radius: 50%;
-      transition: background-color 0.2s;
-    }
-
-    .carousel-button:hover {
-      background: rgba(0,0,0,0.7);
-    }
-
-    .carousel-button.prev {
-      left: 15px;
-    }
-
-    .carousel-button.next {
-      right: 15px;
-    }
-
-    /* Category filter */
-    .category-filter {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin: 20px 0;
-      flex-wrap: wrap;
-      padding: 0 20px;
-    }
-
-    .category-btn {
-      padding: 8px 16px;
-      background-color: white;
-      border: 1px solid #ddd;
-      border-radius: 20px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .category-btn:hover, .category-btn.active {
-      background-color: #3498db;
-      color: white;
-      border-color: #3498db;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--dark);
     }
 
     /* Login Modal */
-    .modal {
-      display: none;
+    .login-modal {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0,0,0,0.5);
-      z-index: 1001;
+      background-color: rgba(0,0,0,0.7);
+      z-index: 1200;
+      display: flex;
       align-items: center;
       justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
     }
 
-    .modal-content {
+    .login-modal.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .login-content {
       background-color: white;
-      padding: 2rem;
-      border-radius: 8px;
       width: 90%;
-      max-width: 400px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      max-width: 450px;
+      border-radius: var(--border-radius);
+      padding: 40px;
+      position: relative;
+      transform: translateY(20px);
+      transition: transform 0.3s ease;
     }
 
-    .modal h2 {
-      margin-top: 0;
+    .login-modal.open .login-content {
+      transform: translateY(0);
+    }
+
+    .login-tabs {
+      display: flex;
+      margin-bottom: 30px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .login-tab {
+      flex: 1;
       text-align: center;
-      color: #2c3e50;
+      padding: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--gray);
+      transition: var(--transition);
+    }
+
+    .login-tab.active {
+      color: var(--primary);
+      border-bottom: 2px solid var(--primary);
     }
 
     .form-group {
-      margin-bottom: 1rem;
+      margin-bottom: 20px;
     }
 
     .form-group label {
       display: block;
-      margin-bottom: 5px;
+      margin-bottom: 8px;
       font-weight: 500;
     }
 
     .form-group input {
       width: 100%;
-      padding: 10px;
+      padding: 12px 15px;
       border: 1px solid #ddd;
-      border-radius: 4px;
+      border-radius: var(--border-radius);
       font-size: 16px;
+      transition: var(--transition);
     }
 
-    .modal-buttons {
-      display: flex;
-      gap: 10px;
-      margin-top: 1.5rem;
+    .form-group input:focus {
+      border-color: var(--primary);
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(138, 109, 59, 0.2);
     }
 
-    .modal-buttons button {
-      flex: 1;
-      padding: 10px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .login-btn {
-      background-color: #3498db;
+    /* Footer */
+    footer {
+      background-color: var(--dark);
       color: white;
-    }
-
-    .cancel-btn {
-      background-color: #e0e0e0;
-    }
-
-    .close-modal {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-
-    /* Enhanced Footer */
-    .footer {
-      background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-      color: white;
-      padding: 3rem 1rem 1.5rem;
-      margin-top: 3rem;
+      margin-top: auto;
     }
 
     .footer-content {
-      max-width: 1200px;
-      margin: 0 auto;
+      padding: 60px 0 30px;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2.5rem;
+      gap: 40px;
     }
 
-    .footer-section h3 {
-      font-size: 1.3rem;
-      margin-bottom: 1.2rem;
+    .footer-column h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 20px;
+      margin-bottom: 20px;
       position: relative;
       padding-bottom: 10px;
     }
 
-    .footer-section h3:after {
+    .footer-column h3:after {
       content: '';
       position: absolute;
-      left: 0;
       bottom: 0;
+      left: 0;
       width: 40px;
       height: 2px;
-      background: #3498db;
-    }
-
-    .footer-section p {
-      line-height: 1.6;
-      color: #ecf0f1;
-    }
-
-    .footer-links {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+      background-color: var(--primary);
     }
 
     .footer-links li {
-      margin-bottom: 0.8rem;
+      margin-bottom: 12px;
     }
 
     .footer-links a {
-      color: #bdc3c7;
-      text-decoration: none;
-      transition: color 0.2s, padding-left 0.2s;
-      display: block;
+      color: #bbb;
+      transition: var(--transition);
     }
 
     .footer-links a:hover {
-      color: #3498db;
+      color: white;
       padding-left: 5px;
     }
 
     .footer-contact p {
       display: flex;
       align-items: flex-start;
-      margin-bottom: 1rem;
+      margin-bottom: 15px;
+      color: #bbb;
     }
 
     .footer-contact i {
       margin-right: 10px;
-      color: #3498db;
+      color: var(--primary);
       min-width: 20px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      margin-top: 15px;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      padding: 12px 15px;
+      border: none;
+      border-radius: var(--border-radius) 0 0 var(--border-radius);
+      font-size: 14px;
+    }
+
+    .newsletter-btn {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 0 20px;
+      border-radius: 0 var(--border-radius) var(--border-radius) 0;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .newsletter-btn:hover {
+      background-color: var(--primary-dark);
     }
 
     .social-links {
       display: flex;
       gap: 15px;
-      margin-top: 1.5rem;
+      margin-top: 20px;
     }
 
     .social-links a {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 36px;
-      height: 36px;
-      background: rgba(255,255,255,0.1);
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255,255,255,0.1);
       border-radius: 50%;
-      color: white;
-      transition: all 0.3s;
+      transition: var(--transition);
     }
 
     .social-links a:hover {
-      background: #3498db;
+      background-color: var(--primary);
       transform: translateY(-3px);
     }
 
-    .newsletter-form {
-      display: flex;
-      margin-top: 1rem;
-    }
-
-    .newsletter-input {
-      flex: 1;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 4px 0 0 4px;
+    .footer-bottom {
+      padding: 20px 0;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+      color: #bbb;
       font-size: 14px;
     }
 
-    .newsletter-btn {
-      background: #3498db;
-      color: white;
-      border: none;
-      padding: 0 15px;
-      border-radius: 0 4px 4px 0;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .newsletter-btn:hover {
-      background: #2980b9;
-    }
-
-    .footer-bottom {
-      max-width: 1200px;
-      margin: 2rem auto 0;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      text-align: center;
-      color: #bdc3c7;
-      font-size: 0.9rem;
-    }
-
-    .payment-methods {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 1rem;
-    }
-
-    .payment-icon {
-      width: 40px;
-      height: 24px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 3px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      color: #bdc3c7;
-    }
-
-    /* Responsive styles */
-    @media (max-width: 768px) {
-      .navbar {
-        flex-wrap: wrap;
-        padding: 10px 5px;
-      }
-
-      .logo {
-        order: 1;
-        height: 35px;
-        margin-left: 5px;
-      }
-
-      .search-bar {
-        order: 3;
-        width: 100%;
-        margin: 10px 5px 0 5px;
-        flex: auto;
-      }
-
-      .nav-links {
-        order: 2;
-        gap: 10px;
-        font-size: 12px;
-      }
-
-      .carousel {
-        height: 30vh;
-      }
-
-      .product button {
-        padding: 8px 12px;
-        font-size: 14px;
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .main-header .container {
+        flex-direction: column;
+        gap: 15px;
       }
       
-      .cart-popup {
-        width: 95%;
-        right: 2.5%;
+      .search-container {
+        order: 3;
+        width: 100%;
+        max-width: 100%;
+        margin: 15px 0 0;
+      }
+      
+      .hero h1 {
+        font-size: 36px;
+      }
+      
+      .hero p {
+        font-size: 18px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu ul {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 10px;
+      }
+      
+      .cart-modal {
+        width: 100%;
+      }
+      
+      .categories-grid,
+      .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      }
+      
+      .hero {
+        padding: 60px 0;
+      }
+      
+      .hero h1 {
+        font-size: 32px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .top-bar {
+        display: none;
+      }
+      
+      .header-actions {
+        gap: 10px;
+      }
+      
+      .action-item span {
+        display: none;
+      }
+      
+      .categories-grid,
+      .products-grid {
+        grid-template-columns: 1fr;
       }
       
       .footer-content {
         grid-template-columns: 1fr;
-        gap: 2rem;
+      }
+      
+      .login-content {
+        padding: 30px 20px;
       }
     }
 
-    @media (max-width: 480px) {
-      .nav-links div {
-        font-size: 12px;
-        padding: 5px;
-      }
+    /* Notification */
+    .notification {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--success);
+      color: white;
+      padding: 15px 20px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      z-index: 1300;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
 
-      .search-bar input {
-        padding: 8px;
-        font-size: 14px;
-      }
+    .notification.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
 
-      .search-bar button {
-        padding: 8px 12px;
-      }
+    /* Loading Spinner */
+    .spinner {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      border-top-color: white;
+      animation: spin 1s ease-in-out infinite;
+    }
 
-      .carousel-button {
-        padding: 8px 12px;
-      }
-      
-      .product h2 {
-        font-size: 16px;
-      }
-      
-      .product p {
-        font-size: 14px;
-      }
-      
-      .products {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        padding: 1rem;
-      }
-      
-      .cart-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-      }
-      
-      .item-actions {
-        width: 100%;
-        justify-content: space-between;
-      }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
     }
   </style>
 </head>
 <body>
-
-  <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="logo">
-      <img src="https://files.catbox.moe/lagsxr.png" alt="Brew's BAC Logo" class="logo-image">
-    </div>
-
-    <div class="search-bar">
-      <input type="text" id="searchInput" placeholder="Search products...">
-      <button onclick="searchProducts()"><i class="fas fa-search"></i></button>
-    </div>
-
-    <div class="nav-links">
-      <div onclick="openLoginModal()">Account</div>
-      <div>Orders</div>
-      <div onclick="toggleCart()">🛒 Cart <span id="cart-count">0</span></div>
-    </div>
-  </header>
-
-  <!-- CAROUSEL -->
-  <div class="carousel">
-    <div class="carousel-inner" id="carousel-inner">
-      <div class="carousel-slide">
-        <img src="https://files.catbox.moe/m0yvmp.jpg" alt="Banner 1">
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <span>Free shipping on orders over $50</span>
+      <div class="top-bar-links">
+        <a href="#">Track Order</a>
+        <a href="#">Our Story</a>
+        <a href="#">Contact</a>
       </div>
-      <div class="carousel-slide">
-        <img src="https://files.catbox.moe/9lvafv.jpg" alt="Banner 2">
-      </div>
-      <div class="carousel-slide">
-        <img src="https://files.catbox.moe/naspjy.jpg" alt="Banner 3">
-      </div>
-    </div>
-    <button class="carousel-button prev" onclick="prevSlide()">❮</button>
-    <button class="carousel-button next" onclick="nextSlide()">❯</button>
-  </div>
-
-  <!-- CATEGORY FILTER -->
-  <div class="category-filter">
-    <button class="category-btn active" onclick="filterProducts('all')">All Products</button>
-    <button class="category-btn" onclick="filterProducts('electronics')">Electronics</button>
-    <button class="category-btn" onclick="filterProducts('accessories')">Accessories</button>
-    <button class="category-btn" onclick="filterProducts('home')">Home & Kitchen</button>
-  </div>
-
-  <!-- PRODUCTS -->
-  <main class="products" id="products">
-    <!-- Example Product 1 -->
-    <div class="product" data-category="electronics">
-      <img src="https://files.catbox.moe/acl2r1.jpg" alt="Headphones">
-      <h2>Wireless Headphones</h2>
-      <p>$59.99</p>
-      <button onclick="addToCart('Wireless Headphones', 59.99, 'https://files.catbox.moe/acl2r1.jpg')">Add to Cart</button>
-    </div>
-
-    <!-- Example Product 2 -->
-    <div class="product" data-category="electronics">
-      <img src="https://files.catbox.moe/7kjf3p.jpg" alt="Smartphone">
-      <h2>Smartphone</h2>
-      <p>$499.99</p>
-      <button onclick="addToCart('Smartphone', 499.99, 'https://files.catbox.moe/7kjf3p.jpg')">Add to Cart</button>
-    </div>
-
-    <!-- Example Product 3 -->
-    <div class="product" data-category="electronics">
-      <img src="https://files.catbox.moe/7bfiwm.jpg" alt="Laptop">
-      <h2>Laptop</h2>
-      <p>$899.99</p>
-      <button onclick="addToCart('Laptop', 899.99, 'https://files.catbox.moe/7bfiwm.jpg')">Add to Cart</button>
-    </div>
-
-    <!-- Example Product 4 -->
-    <div class="product" data-category="accessories">
-      <img src="https://files.catbox.moe/h3okp8.jpg" alt="Smartwatch">
-      <h2>Smartwatch</h2>
-      <p>$149.99</p>
-      <button onclick="addToCart('Smartwatch', 149.99, 'https://files.catbox.moe/h3okp8.jpg')">Add to Cart</button>
-    </div>
-
-    <!-- Example Product 5 -->
-    <div class="product" data-category="home">
-      <img src="https://files.catbox.moe/2q8x9k.jpg" alt="Coffee Maker">
-      <h2>Coffee Maker</h2>
-      <p>$79.99</p>
-      <button onclick="addToCart('Coffee Maker', 79.99, 'https://files.catbox.moe/2q8x9k.jpg')">Add to Cart</button>
-    </div>
-
-    <!-- Example Product 6 -->
-    <div class="product" data-category="accessories">
-      <img src="https://files.catbox.moe/5r7w2l.jpg" alt="Backpack">
-      <h2>Travel Backpack</h2>
-      <p>$49.99</p>
-      <button onclick="addToCart('Travel Backpack', 49.99, 'https://files.catbox.moe/5r7w2l.jpg')">Add to Cart</button>
-    </div>
-  </main>
-
-  <!-- ENHANCED CART POPUP -->
-  <div id="cart-popup" class="cart-popup">
-    <div class="cart-header">
-      <h3>Your Shopping Cart</h3>
-      <button class="close-cart" onclick="toggleCart()">&times;</button>
-    </div>
-    <div class="cart-body">
-      <ul class="cart-items" id="cart-items">
-        <!-- Cart items will be dynamically inserted here -->
-      </ul>
-    </div>
-    <div class="cart-footer">
-      <div class="cart-summary">
-        <span>Subtotal:</span>
-        <span id="cart-subtotal">$0.00</span>
-      </div>
-      <div class="cart-summary">
-        <span>Shipping:</span>
-        <span id="cart-shipping">$5.99</span>
-      </div>
-      <div class="cart-summary cart-total">
-        <span>Total:</span>
-        <span id="total-price">$0.00</span>
-      </div>
-      <button class="checkout-btn" onclick="checkout()">
-        <i class="fas fa-lock"></i> Proceed to Checkout
-      </button>
     </div>
   </div>
 
-  <!-- LOGIN MODAL -->
-  <div id="login-modal" class="modal">
-    <div class="modal-content">
-      <span class="close-modal" onclick="closeLoginModal()">&times;</span>
-      <h2>Login to Your Account</h2>
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" placeholder="Enter your email">
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" placeholder="Enter your password">
-      </div>
-      <div class="modal-buttons">
-        <button class="cancel-btn" onclick="closeLoginModal()">Cancel</button>
-        <button class="login-btn" onclick="login()">Login</button>
-      </div>
-      <p style="text-align: center; margin-top: 15px;">Don't have an account? <a href="#" style="color: #3498db;">Sign up</a></p>
-    </div>
-  </div>
-
-  <!-- ENHANCED FOOTER -->
-  <footer class="footer">
-    <div class="footer-content">
-      <div class="footer-section">
-        <h3>About Brew's Beads</h3>
-        <p>Brew's Beads & Craft Co. offers high-quality craft supplies and unique handmade items for all your creative projects. We're passionate about helping crafters bring their visions to life.</p>
-        <div class="social-links">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-pinterest"></i></a>
-          <a href="#"><i class="fab fa-tiktok"></i></a>
-        </div>
-      </div>
-      
-      <div class="footer-section">
-        <h3>Quick Links</h3>
-        <ul class="footer-links">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Shop All Products</a></li>
-          <li><a href="#">New Arrivals</a></li>
-          <li><a href="#">Best Sellers</a></li>
-          <li><a href="#">Sale Items</a></li>
-          <li><a href="#">Gift Cards</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-section">
-        <h3>Customer Service</h3>
-        <ul class="footer-links">
-          <li><a href="#">Contact Us</a></li>
-          <li><a href="#">Shipping Policy</a></li>
-          <li><a href="#">Returns & Exchanges</a></li>
-          <li><a href="#">FAQ</a></li>
-          <li><a href="#">Track Your Order</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-section">
-        <h3>Contact Info</h3>
-        <div class="footer-contact">
-          <p><i class="fas fa-map-marker-alt"></i> 123 Craft Street, Art City, AC 12345</p>
-          <p><i class="fas fa-phone"></i> (555) 123-4567</p>
-          <p><i class="fas fa-envelope"></i> info@brewsbeads.com</p>
-          <p><i class="fas fa-clock"></i> Mon-Fri: 9am-6pm EST</p>
+  <!-- Main Header -->
+  <header>
+    <div class="main-header">
+      <div class="container">
+        <a href="#" class="logo">
+          <img src="https://files.catbox.moe/lagsxr.png" alt="Brew's Beads & Craft Co.">
+          <span>Brew's</span> Beads & Craft
+        </a>
+        
+        <div class="search-container">
+          <input type="text" id="searchInput" placeholder="Search for beads, crafts, supplies...">
+          <button onclick="searchProducts()"><i class="fas fa-search"></i></button>
         </div>
         
-        <h4 style="margin-top: 20px;">Newsletter</h4>
-        <p>Subscribe for updates, promotions, and crafting tips!</p>
-        <div class="newsletter-form">
-          <input type="email" class="newsletter-input" placeholder="Your email address">
-          <button class="newsletter-btn"><i class="fas fa-paper-plane"></i></button>
+        <div class="header-actions">
+          <div class="action-item" onclick="openLoginModal()">
+            <i class="far fa-user"></i>
+            <span>Account</span>
+          </div>
+          <div class="action-item">
+            <i class="far fa-heart"></i>
+            <span>Wishlist</span>
+          </div>
+          <div class="action-item" onclick="toggleCart()" style="position: relative;">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Cart</span>
+            <span id="cart-count">0</span>
+          </div>
         </div>
       </div>
     </div>
     
-    <div class="footer-bottom">
-      <p>&copy; 2023 Brew's Beads & Craft Co. All rights reserved.</p>
-      <div class="payment-methods">
-        <div class="payment-icon">Visa</div>
-        <div class="payment-icon">MC</div>
-        <div class="payment-icon">AmEx</div>
-        <div class="payment-icon">PayPal</div>
-        <div class="payment-icon">Apple Pay</div>
+    <nav class="nav-menu">
+      <div class="container">
+        <ul>
+          <li><a href="#" class="active">Home</a></li>
+          <li><a href="#">Beads</a></li>
+          <li><a href="#">Jewelry Making</a></li>
+          <li><a href="#">Craft Supplies</a></li>
+          <li><a href="#">Tools</a></li>
+          <li><a href="#">Kits</a></li>
+          <li><a href="#">Sale</a></li>
+          <li><a href="#">New Arrivals</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>Craft Your Imagination</h1>
+      <p>Discover premium beads, craft supplies, and tools for all your creative projects. Quality materials for artists and hobbyists alike.</p>
+      <button class="btn">Shop Now</button>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="categories container">
+    <h2 class="section-title">Shop By Category</h2>
+    <div class="categories-grid" id="categories-grid">
+      <!-- Categories will be populated by JavaScript -->
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section class="featured-products">
+    <div class="container">
+      <h2 class="section-title">Featured Products</h2>
+      <div class="products-grid" id="products-grid">
+        <!-- Products will be populated by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Cart Modal -->
+  <div class="cart-modal" id="cart-modal">
+    <div class="cart-header">
+      <h3>Your Shopping Cart</h3>
+      <button class="close-cart" onclick="toggleCart()">&times;</button>
+    </div>
+    <div class="cart-items" id="cart-items">
+      <!-- Cart items will be dynamically inserted here -->
+    </div>
+    <div class="cart-footer">
+      <div class="cart-summary">
+        <div class="summary-row">
+          <span>Subtotal:</span>
+          <span id="cart-subtotal">$0.00</span>
+        </div>
+        <div class="summary-row">
+          <span>Shipping:</span>
+          <span id="cart-shipping">Calculated at checkout</span>
+        </div>
+        <div class="summary-row cart-total">
+          <span>Total:</span>
+          <span id="total-price">$0.00</span>
+        </div>
+      </div>
+      <button class="btn btn-accent" style="width: 100%;" onclick="checkout()">Proceed to Checkout</button>
+    </div>
+  </div>
+
+  <!-- Login/Register Modal -->
+  <div class="login-modal" id="login-modal">
+    <div class="login-content">
+      <div class="login-tabs">
+        <div class="login-tab active" onclick="switchTab('login')">Login</div>
+        <div class="login-tab" onclick="switchTab('register')">Register</div>
+      </div>
+      
+      <div id="login-form">
+        <div class="form-group">
+          <label for="login-email">Email</label>
+          <input type="email" id="login-email" placeholder="Enter your email">
+        </div>
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" placeholder="Enter your password">
+        </div>
+        <button class="btn" style="width: 100%;" onclick="login()">Login</button>
+        <p style="text-align: center; margin-top: 15px; color: var(--gray);">
+          <a href="#" style="color: var(--primary);">Forgot your password?</a>
+        </p>
+      </div>
+      
+      <div id="register-form" style="display: none;">
+        <div class="form-group">
+          <label for="register-name">Full Name</label>
+          <input type="text" id="register-name" placeholder="Enter your full name">
+        </div>
+        <div class="form-group">
+          <label for="register-email">Email</label>
+          <input type="email" id="register-email" placeholder="Enter your email">
+        </div>
+        <div class="form-group">
+          <label for="register-password">Password</label>
+          <input type="password" id="register-password" placeholder="Create a password">
+        </div>
+        <div class="form-group">
+          <label for="register-confirm">Confirm Password</label>
+          <input type="password" id="register-confirm" placeholder="Confirm your password">
+        </div>
+        <button class="btn" style="width: 100%;" onclick="register()">Create Account</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>Brew's Beads</h3>
+          <p>Your premier source for high-quality beads, craft supplies, and jewelry-making tools since 2010.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Customer Service</h3>
+          <ul class="footer-links">
+            <li><a href="#">Shipping Policy</a></li>
+            <li><a href="#">Return Policy</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Track Order</a></li>
+            <li><a href="#">Size Guide</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Contact Us</h3>
+          <div class="footer-contact">
+            <p><i class="fas fa-map-marker-alt"></i> 123 Craft Street, Art City, AC 12345</p>
+            <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+            <p><i class="fas fa-envelope"></i> info@brewsbeads.com</p>
+          </div>
+          
+          <h4 style="margin-top: 20px; margin-bottom: 10px; font-size: 16px;">Newsletter</h4>
+          <p style="color: #bbb; margin-bottom: 15px;">Subscribe for crafting tips and exclusive offers!</p>
+          <div class="newsletter-form">
+            <input type="email" class="newsletter-input" placeholder="Your email address">
+            <button class="newsletter-btn"><i class="fas fa-paper-plane"></i></button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2023 Brew's Beads & Craft Co. All rights reserved.</p>
       </div>
     </div>
   </footer>
 
-  <!-- JAVASCRIPT -->
-  <script>
-    // Cart array to store added products
-    let cart = [];
-    let currentUser = null;
+  <!-- Notification -->
+  <div class="notification" id="notification">
+    <i class="fas fa-check-circle"></i>
+    <span id="notification-text">Product added to cart!</span>
+  </div>
 
-    // Add product to cart
-    function addToCart(name, price, image) {
-      // Check if item already exists in cart
-      const existingItemIndex = cart.findIndex(item => item.name === name);
+  <script>
+    // Application State
+    const state = {
+      cart: [],
+      currentUser: null,
+      products: [],
+      categories: []
+    };
+
+    // DOM Elements
+    const cartModal = document.getElementById('cart-modal');
+    const loginModal = document.getElementById('login-modal');
+    const notification = document.getElementById('notification');
+    
+    // Initialize the application
+    document.addEventListener('DOMContentLoaded', function() {
+      initializeData();
+      renderCategories();
+      renderProducts();
+      updateCartCount();
+    });
+
+    // Initialize sample data
+    function initializeData() {
+      // Sample categories
+      state.categories = [
+        { id: 1, name: 'Glass Beads', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80' },
+        { id: 2, name: 'Jewelry Making', image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80' },
+        { id: 3, name: 'Craft Tools', image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80' },
+        { id: 4, name: 'Beading Kits', image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80' },
+        { id: 5, name: 'Strings & Wires', image: 'https://images.unsplash.com/photo-1542332211-6a8b53b69e7c?ixlib=rb-1.2.1&auto=format&fit=crop&w-600&q=80' },
+        { id: 6, name: 'Findings', image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80' }
+      ];
+
+      // Sample products
+      state.products = [
+        {
+          id: 1,
+          name: 'Assorted Glass Beads Collection',
+          category: 'Glass Beads',
+          price: 24.99,
+          originalPrice: 34.99,
+          image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
+          rating: 4.5,
+          reviews: 128,
+          badge: 'BESTSELLER'
+        },
+        {
+          id: 2,
+          name: 'Premium Jewelry Making Kit',
+          category: 'Jewelry Making',
+          price: 59.99,
+          originalPrice: 79.99,
+          image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
+          rating: 4.8,
+          reviews: 64,
+          badge: 'NEW'
+        },
+        {
+          id: 3,
+          name: 'Professional Beading Tools Set',
+          category: 'Craft Tools',
+          price: 34.99,
+          originalPrice: 44.99,
+          image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
+          rating: 4.3,
+          reviews: 89,
+          badge: 'SALE'
+        },
+        {
+          id: 4,
+          name: 'Beginner Beading Starter Kit',
+          category: 'Beading Kits',
+          price: 29.99,
+          image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
+          rating: 4.7,
+          reviews: 156
+        },
+        {
+          id: 5,
+          name: 'Silk Beading Thread (Various Colors)',
+          category: 'Strings & Wires',
+          price: 12.99,
+          image: 'https://images.unsplash.com/photo-1542332211-6a8b53b69e7c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
+          rating: 4.4,
+          reviews: 72
+        },
+        {
+          id: 6,
+          name: 'Gold Plated Jewelry Findings',
+          category: 'Findings',
+          price: 18.99,
+          originalPrice: 24.99,
+          image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
+          rating: 4.6,
+          reviews: 94,
+          badge: 'LIMITED'
+        },
+        {
+          id: 7,
+          name: 'Czech Glass Beads Variety Pack',
+          category: 'Glass Beads',
+          price: 32.99,
+          image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
+          rating: 4.9,
+          reviews: 201
+        },
+        {
+          id: 8,
+          name: 'Professional Wire Wrapping Kit',
+          category: 'Craft Tools',
+          price: 45.99,
+          originalPrice: 59.99,
+          image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
+          rating: 4.5,
+          reviews: 56,
+          badge: 'SALE'
+        }
+      ];
+    }
+
+    // Render categories
+    function renderCategories() {
+      const container = document.getElementById('categories-grid');
+      container.innerHTML = state.categories.map(category => `
+        <div class="category-card" onclick="filterByCategory('${category.name}')">
+          <img src="${category.image}" alt="${category.name}">
+          <h3>${category.name}</h3>
+        </div>
+      `).join('');
+    }
+
+    // Render products
+    function renderProducts() {
+      const container = document.getElementById('products-grid');
+      container.innerHTML = state.products.map(product => `
+        <div class="product-card">
+          <div class="product-image">
+            <img src="${product.image}" alt="${product.name}">
+            ${product.badge ? `<div class="product-badge">${product.badge}</div>` : ''}
+          </div>
+          <div class="product-info">
+            <div class="product-category">${product.category}</div>
+            <h3 class="product-title">${product.name}</h3>
+            <div class="product-price">
+              <span class="current-price">$${product.price.toFixed(2)}</span>
+              ${product.originalPrice ? `<span class="original-price">$${product.originalPrice.toFixed(2)}</span>` : ''}
+            </div>
+            <div class="product-rating">
+              <div class="stars">
+                ${getStarRating(product.rating)}
+              </div>
+              <span class="rating-count">(${product.reviews})</span>
+            </div>
+            <button class="btn btn-outline" style="width: 100%;" onclick="addToCart(${product.id})">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Get star rating HTML
+    function getStarRating(rating) {
+      let stars = '';
+      const fullStars = Math.floor(rating);
+      const hasHalfStar = rating % 1 >= 0.5;
       
-      if (existingItemIndex !== -1) {
-        // If item exists, increase quantity
-        cart[existingItemIndex].quantity += 1;
+      for (let i = 0; i < fullStars; i++) {
+        stars += '<i class="fas fa-star"></i>';
+      }
+      
+      if (hasHalfStar) {
+        stars += '<i class="fas fa-star-half-alt"></i>';
+      }
+      
+      const emptyStars = 5 - Math.ceil(rating);
+      for (let i = 0; i < emptyStars; i++) {
+        stars += '<i class="far fa-star"></i>';
+      }
+      
+      return stars;
+    }
+
+    // Add to cart
+    function addToCart(productId) {
+      const product = state.products.find(p => p.id === productId);
+      if (!product) return;
+
+      const existingItem = state.cart.find(item => item.id === productId);
+      
+      if (existingItem) {
+        existingItem.quantity += 1;
       } else {
-        // If item doesn't exist, add new item
-        cart.push({ 
-          name, 
-          price, 
-          image,
-          quantity: 1 
+        state.cart.push({
+          id: product.id,
+          name: product.name,
+          price: product.price,
+          image: product.image,
+          quantity: 1
         });
       }
       
       updateCartCount();
-      updateCartPopup();
-      
-      // Show notification
-      showNotification(`${name} added to cart!`);
+      updateCartModal();
+      showNotification(`${product.name} added to cart!`);
     }
 
-    // Update cart count in header
+    // Update cart count
     function updateCartCount() {
-      const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+      const totalItems = state.cart.reduce((total, item) => total + item.quantity, 0);
       document.getElementById('cart-count').textContent = totalItems;
     }
 
-    // Show cart items in popup
-    function updateCartPopup() {
-      const cartItems = document.getElementById('cart-items');
-      const subtotalElement = document.getElementById('cart-subtotal');
-      const totalElement = document.getElementById('total-price');
-
-      cartItems.innerHTML = '';
-      let subtotal = 0;
-
-      if (cart.length === 0) {
-        cartItems.innerHTML = `
-          <div class="empty-cart">
-            <i class="fas fa-shopping-cart"></i>
-            <p>Your cart is empty</p>
+    // Update cart modal
+    function updateCartModal() {
+      const container = document.getElementById('cart-items');
+      const subtotal = state.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      
+      if (state.cart.length === 0) {
+        container.innerHTML = `
+          <div style="text-align: center; padding: 40px 20px; color: var(--gray);">
+            <i class="fas fa-shopping-cart" style="font-size: 48px; margin-bottom: 15px;"></i>
+            <h4>Your cart is empty</h4>
             <p>Add some products to get started!</p>
           </div>
         `;
-        subtotalElement.textContent = `$0.00`;
-        totalElement.textContent = `$0.00`;
+      } else {
+        container.innerHTML = state.cart.map(item => `
+          <div class="cart-item">
+            <div class="cart-item-image">
+              <img src="${item.image}" alt="${item.name}">
+            </div>
+            <div class="cart-item-details">
+              <div class="cart-item-title">${item.name}</div>
+              <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+              <div class="cart-item-actions">
+                <div class="quantity-control">
+                  <button class="quantity-btn" onclick="updateCartQuantity(${item.id}, -1)">-</button>
+                  <span style="font-weight: 600;">${item.quantity}</span>
+                  <button class="quantity-btn" onclick="updateCartQuantity(${item.id}, 1)">+</button>
+                </div>
+                <button class="remove-item" onclick="removeFromCart(${item.id})">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+      
+      document.getElementById('cart-subtotal').textContent = `$${subtotal.toFixed(2)}`;
+      document.getElementById('total-price').textContent = `$${subtotal.toFixed(2)}`;
+    }
+
+    // Update cart item quantity
+    function updateCartQuantity(productId, change) {
+      const itemIndex = state.cart.findIndex(item => item.id === productId);
+      if (itemIndex === -1) return;
+
+      state.cart[itemIndex].quantity += change;
+      
+      if (state.cart[itemIndex].quantity <= 0) {
+        state.cart.splice(itemIndex, 1);
+      }
+      
+      updateCartCount();
+      updateCartModal();
+    }
+
+    // Remove from cart
+    function removeFromCart(productId) {
+      const itemIndex = state.cart.findIndex(item => item.id === productId);
+      if (itemIndex !== -1) {
+        state.cart.splice(itemIndex, 1);
+        updateCartCount();
+        updateCartModal();
+        showNotification('Item removed from cart');
+      }
+    }
+
+    // Toggle cart modal
+    function toggleCart() {
+      updateCartModal();
+      cartModal.classList.toggle('open');
+    }
+
+    // Open login modal
+    function openLoginModal() {
+      loginModal.classList.add('open');
+    }
+
+    // Close login modal
+    function closeLoginModal() {
+      loginModal.classList.remove('open');
+    }
+
+    // Switch between login/register tabs
+    function switchTab(tab) {
+      const loginForm = document.getElementById('login-form');
+      const registerForm = document.getElementById('register-form');
+      const tabs = document.querySelectorAll('.login-tab');
+      
+      tabs.forEach(t => t.classList.remove('active'));
+      
+      if (tab === 'login') {
+        document.querySelector('.login-tab:nth-child(1)').classList.add('active');
+        loginForm.style.display = 'block';
+        registerForm.style.display = 'none';
+      } else {
+        document.querySelector('.login-tab:nth-child(2)').classList.add('active');
+        loginForm.style.display = 'none';
+        registerForm.style.display = 'block';
+      }
+    }
+
+    // Login function
+    function login() {
+      const email = document.getElementById('login-email').value;
+      const password = document.getElementById('login-password').value;
+      
+      if (!email || !password) {
+        showNotification('Please fill in all fields', 'error');
         return;
       }
-
-      cart.forEach((item, index) => {
-        const itemTotal = item.price * item.quantity;
-        subtotal += itemTotal;
-        
-        const li = document.createElement('li');
-        li.className = 'cart-item';
-        li.innerHTML = `
-          <div class="item-info">
-            <div class="item-name">${item.name}</div>
-            <div class="item-price">$${item.price.toFixed(2)}</div>
-          </div>
-          <div class="item-actions">
-            <div class="quantity-control">
-              <button class="quantity-btn" onclick="updateQuantity(${index}, -1)">-</button>
-              <span class="item-quantity">${item.quantity}</span>
-              <button class="quantity-btn" onclick="updateQuantity(${index}, 1)">+</button>
-            </div>
-            <button class="remove-item" onclick="removeFromCart(${index})">
-              <i class="fas fa-trash"></i>
-            </button>
-          </div>
-        `;
-        cartItems.appendChild(li);
-      });
-
-      const shipping = subtotal > 50 ? 0 : 5.99;
-      const total = subtotal + shipping;
       
-      document.getElementById('cart-shipping').textContent = shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`;
-      subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
-      totalElement.textContent = `$${total.toFixed(2)}`;
-    }
-
-    // Update item quantity in cart
-    function updateQuantity(index, change) {
-      cart[index].quantity += change;
+      // Simulate API call
+      showNotification('Logging in...', 'info');
       
-      // Remove item if quantity becomes 0
-      if (cart[index].quantity <= 0) {
-        cart.splice(index, 1);
-      }
-      
-      updateCartCount();
-      updateCartPopup();
-    }
-
-    // Remove item from cart
-    function removeFromCart(index) {
-      cart.splice(index, 1);
-      updateCartCount();
-      updateCartPopup();
-    }
-
-    // Show or hide cart popup
-    function toggleCart() {
-      const popup = document.getElementById('cart-popup');
-      popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
-    }
-
-    // Simple search functionality
-    function searchProducts() {
-      const query = document.getElementById('searchInput').value.toLowerCase();
-      const products = document.querySelectorAll('.product');
-
-      products.forEach(product => {
-        const title = product.querySelector('h2').textContent.toLowerCase();
-        if (title.includes(query)) {
-          product.style.display = 'block';
-        } else {
-          product.style.display = 'none';
-        }
-      });
-    }
-
-    // Filter products by category
-    function filterProducts(category) {
-      const products = document.querySelectorAll('.product');
-      const buttons = document.querySelectorAll('.category-btn');
-      
-      // Update active button
-      buttons.forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
-      
-      products.forEach(product => {
-        if (category === 'all' || product.dataset.category === category) {
-          product.style.display = 'block';
-        } else {
-          product.style.display = 'none';
-        }
-      });
-    }
-
-    // Carousel functionality
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.carousel-slide');
-    const totalSlides = slides.length;
-
-    function showSlide(n) {
-      currentSlide = (n + totalSlides) % totalSlides;
-      document.getElementById('carousel-inner').style.transform = 
-        `translateX(-${currentSlide * 100}%)`;
-    }
-
-    function nextSlide() {
-      showSlide(currentSlide + 1);
-      resetAutoSlide();
-    }
-
-    function prevSlide() {
-      showSlide(currentSlide - 1);
-      resetAutoSlide();
-    }
-
-    // Auto-advance slides every 5 seconds
-    let autoSlideInterval = setInterval(nextSlide, 5000);
-
-    function resetAutoSlide() {
-      clearInterval(autoSlideInterval);
-      autoSlideInterval = setInterval(nextSlide, 5000);
-    }
-
-    // Login modal functions
-    function openLoginModal() {
-      document.getElementById('login-modal').style.display = 'flex';
-    }
-
-    function closeLoginModal() {
-      document.getElementById('login-modal').style.display = 'none';
-    }
-
-    function login() {
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-      
-      // Simple validation
-      if (email && password) {
-        currentUser = email;
+      setTimeout(() => {
+        state.currentUser = email;
         closeLoginModal();
-        showNotification(`Welcome back, ${email.split('@')[0]}!`);
-        
-        // Update account button
-        document.querySelector('.nav-links div:first-child').textContent = 'My Account';
-      } else {
-        alert('Please enter both email and password');
+        showNotification(`Welcome back!`, 'success');
+        document.querySelector('.action-item:nth-child(1) span').textContent = 'My Account';
+      }, 1000);
+    }
+
+    // Register function
+    function register() {
+      const name = document.getElementById('register-name').value;
+      const email = document.getElementById('register-email').value;
+      const password = document.getElementById('register-password').value;
+      const confirm = document.getElementById('register-confirm').value;
+      
+      if (!name || !email || !password || !confirm) {
+        showNotification('Please fill in all fields', 'error');
+        return;
       }
+      
+      if (password !== confirm) {
+        showNotification('Passwords do not match', 'error');
+        return;
+      }
+      
+      // Simulate API call
+      showNotification('Creating your account...', 'info');
+      
+      setTimeout(() => {
+        state.currentUser = email;
+        closeLoginModal();
+        showNotification(`Welcome to Brew's Beads!`, 'success');
+        document.querySelector('.action-item:nth-child(1) span').textContent = 'My Account';
+      }, 1000);
     }
 
     // Checkout function
     function checkout() {
-      if (cart.length === 0) {
-        alert('Your cart is empty!');
+      if (state.cart.length === 0) {
+        showNotification('Your cart is empty!', 'error');
         return;
       }
       
-      if (!currentUser) {
-        alert('Please login to proceed with checkout');
+      if (!state.currentUser) {
+        showNotification('Please login to checkout', 'info');
         openLoginModal();
         return;
       }
       
-      // In a real application, this would redirect to a checkout page
-      const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0) + (total > 50 ? 0 : 5.99);
-      alert(`Thank you for your order! Total: $${total.toFixed(2)}`);
-      cart = [];
+      const total = state.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      showNotification(`Order placed! Total: $${total.toFixed(2)}`, 'success');
+      
+      // Clear cart
+      state.cart = [];
       updateCartCount();
-      updateCartPopup();
+      updateCartModal();
       toggleCart();
     }
 
     // Show notification
-    function showNotification(message) {
-      // Create notification element
-      const notification = document.createElement('div');
-      notification.textContent = message;
-      notification.style.cssText = `
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background-color: #2ecc71;
-        color: white;
-        padding: 15px 20px;
-        border-radius: 4px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        z-index: 1002;
-        transition: opacity 0.3s;
-      `;
+    function showNotification(message, type = 'success') {
+      const text = document.getElementById('notification-text');
+      const icon = notification.querySelector('i');
       
-      document.body.appendChild(notification);
+      text.textContent = message;
       
-      // Remove after 3 seconds
+      // Set icon based on type
+      if (type === 'error') {
+        icon.className = 'fas fa-exclamation-circle';
+        notification.style.backgroundColor = '#e74c3c';
+      } else if (type === 'info') {
+        icon.className = 'fas fa-info-circle';
+        notification.style.backgroundColor = '#3498db';
+      } else {
+        icon.className = 'fas fa-check-circle';
+        notification.style.backgroundColor = '#2ecc71';
+      }
+      
+      notification.classList.add('show');
+      
       setTimeout(() => {
-        notification.style.opacity = '0';
-        setTimeout(() => {
-          document.body.removeChild(notification);
-        }, 300);
+        notification.classList.remove('show');
       }, 3000);
     }
 
-    // Close cart when clicking outside
-    document.addEventListener('click', function(event) {
-      const cartPopup = document.getElementById('cart-popup');
-      const cartButton = document.querySelector('.nav-links div:last-child');
+    // Search products
+    function searchProducts() {
+      const query = document.getElementById('searchInput').value.toLowerCase();
       
-      if (!cartPopup.contains(event.target) && !cartButton.contains(event.target)) {
-        cartPopup.style.display = 'none';
+      if (!query.trim()) {
+        renderProducts();
+        return;
+      }
+      
+      const filteredProducts = state.products.filter(product => 
+        product.name.toLowerCase().includes(query) ||
+        product.category.toLowerCase().includes(query)
+      );
+      
+      const container = document.getElementById('products-grid');
+      if (filteredProducts.length === 0) {
+        container.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+            <i class="fas fa-search" style="font-size: 48px; color: var(--gray); margin-bottom: 20px;"></i>
+            <h3>No products found</h3>
+            <p>Try adjusting your search terms</p>
+          </div>
+        `;
+      } else {
+        container.innerHTML = filteredProducts.map(product => `
+          <div class="product-card">
+            <div class="product-image">
+              <img src="${product.image}" alt="${product.name}">
+              ${product.badge ? `<div class="product-badge">${product.badge}</div>` : ''}
+            </div>
+            <div class="product-info">
+              <div class="product-category">${product.category}</div>
+              <h3 class="product-title">${product.name}</h3>
+              <div class="product-price">
+                <span class="current-price">$${product.price.toFixed(2)}</span>
+                ${product.originalPrice ? `<span class="original-price">$${product.originalPrice.toFixed(2)}</span>` : ''}
+              </div>
+              <div class="product-rating">
+                <div class="stars">
+                  ${getStarRating(product.rating)}
+                </div>
+                <span class="rating-count">(${product.reviews})</span>
+              </div>
+              <button class="btn btn-outline" style="width: 100%;" onclick="addToCart(${product.id})">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+
+    // Filter by category
+    function filterByCategory(categoryName) {
+      const filteredProducts = state.products.filter(product => 
+        product.category === categoryName
+      );
+      
+      const container = document.getElementById('products-grid');
+      if (filteredProducts.length === 0) {
+        container.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+            <i class="fas fa-box-open" style="font-size: 48px; color: var(--gray); margin-bottom: 20px;"></i>
+            <h3>No products in this category</h3>
+            <p>Check back soon for new items!</p>
+          </div>
+        `;
+      } else {
+        container.innerHTML = filteredProducts.map(product => `
+          <div class="product-card">
+            <div class="product-image">
+              <img src="${product.image}" alt="${product.name}">
+              ${product.badge ? `<div class="product-badge">${product.badge}</div>` : ''}
+            </div>
+            <div class="product-info">
+              <div class="product-category">${product.category}</div>
+              <h3 class="product-title">${product.name}</h3>
+              <div class="product-price">
+                <span class="current-price">$${product.price.toFixed(2)}</span>
+                ${product.originalPrice ? `<span class="original-price">$${product.originalPrice.toFixed(2)}</span>` : ''}
+              </div>
+              <div class="product-rating">
+                <div class="stars">
+                  ${getStarRating(product.rating)}
+                </div>
+                <span class="rating-count">(${product.reviews})</span>
+              </div>
+              <button class="btn btn-outline" style="width: 100%;" onclick="addToCart(${product.id})">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        `).join('');
+      }
+      
+      // Update active nav link
+      document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.classList.remove('active');
+      });
+      
+      showNotification(`Viewing ${categoryName}`, 'info');
+    }
+
+    // Close modals when clicking outside
+    document.addEventListener('click', (e) => {
+      if (e.target === loginModal) {
+        closeLoginModal();
+      }
+    });
+
+    // Close cart when clicking outside (on mobile)
+    document.addEventListener('click', (e) => {
+      if (cartModal.classList.contains('open') && 
+          !cartModal.contains(e.target) &&
+          !e.target.closest('.action-item:nth-child(3)')) {
+        toggleCart();
       }
     });
   </script>
