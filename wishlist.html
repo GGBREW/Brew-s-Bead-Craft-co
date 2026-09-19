@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shop · Georgie Brew Creation</title>
+<title>Wishlist · Georgie Brew Creation</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -187,143 +187,165 @@ ul { list-style: none; }
     display: flex; align-items: center; justify-content: center;
 }
 
-/* ========== SHOP HEADER ========== */
-.shop-header { padding: 25px 0 12px; }
-.shop-header h1 {
+/* ========== PAGE HEADER ========== */
+.page-header-block {
+    padding: 30px 0 18px;
+}
+.page-header-block h1 {
     font-family: "Cormorant Garamond", serif;
-    font-size: 32px;
+    font-size: 34px;
     font-weight: 700;
     color: #111;
     margin-bottom: 4px;
 }
-.shop-header p { font-size: 12px; color: #888; }
-
-/* ========== CATEGORY BAR ========== */
-.category-bar {
-    height: 66px;
-    background: #f8f8f8;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #eee;
-    margin-bottom: 22px;
-}
-.category-scroll {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    overflow-x: auto;
-    scrollbar-width: none;
-}
-.category-scroll::-webkit-scrollbar { display: none; }
-.category-pill {
-    flex: 0 0 auto;
-    height: 37px;
-    padding: 0 18px;
-    border: 1px solid #e3e3e3;
-    background: #fff;
-    border-radius: 22px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: #444;
+.page-header-block p {
     font-size: 12px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: var(--transition);
-    white-space: nowrap;
-}
-.category-pill i { font-size: 13px; color: #222; }
-.category-pill:hover,
-.category-pill.active {
-    background: var(--gold-light);
-    border-color: var(--gold-light);
-    color: #111;
+    color: #888;
 }
 
-/* ========== PRODUCTS GRID ========== */
-.products-section { padding: 0 0 40px; flex: 1 0 auto; }
-.products-grid {
+/* ========== WISHLIST SECTION ========== */
+.wishlist-section {
+    padding: 0 0 40px;
+    flex: 1 0 auto;
+}
+
+.wishlist-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 19px;
 }
-.product-card {
+
+/* ========== WISHLIST CARD ========== */
+.wish-card {
     background: #fff;
     border: 1px solid #e5e5e5;
-    border-radius: 8px;
+    border-radius: 10px;
     overflow: hidden;
     transition: var(--transition);
-    cursor: pointer;
+    position: relative;
 }
-.product-card:hover {
+.wish-card:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(0,0,0,.10);
 }
-.product-image {
-    height: 193px;
+.wish-image {
+    height: 180px;
     position: relative;
     overflow: hidden;
     background: #eee;
 }
-.product-image img {
+.wish-image img {
     width: 100%; height: 100%;
     object-fit: cover;
     transition: transform .35s ease;
 }
-.product-card:hover .product-image img { transform: scale(1.04); }
-.product-badge {
-    position: absolute; left: 10px; top: 9px;
-    padding: 5px 10px;
-    border-radius: 12px;
-    background: var(--gold-light);
-    color: #111; font-size: 9px; font-weight: 700;
+.wish-card:hover .wish-image img { transform: scale(1.05); }
+
+.wish-remove {
+    position: absolute;
+    top: 10px; right: 10px;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.95);
+    border: 0;
+    color: #c00;
+    cursor: pointer;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    box-shadow: 0 2px 6px rgba(0,0,0,.12);
 }
-.product-badge.new { background: #ef3030; color: white; }
-.product-badge.trending { background: #9a5ad0; color: white; }
-.product-badge.sale { background: #ef3030; color: white; }
-.product-information { padding: 7px 8px 8px; }
-.product-name {
-    font-size: 13px; font-weight: 600;
-    color: #222; line-height: 1.25; margin-bottom: 2px;
+.wish-remove:hover {
+    background: #ef3030;
+    color: white;
+    transform: scale(1.08);
 }
-.product-description {
-    font-size: 10px; color: #777;
-    margin-bottom: 4px;
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+
+.wish-info {
+    padding: 12px;
 }
-.product-price {
-    font-size: 17px; font-weight: 700;
-    color: #111; margin-bottom: 3px;
+.wish-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #222;
+    line-height: 1.3;
+    margin-bottom: 6px;
+    height: 36px;
+    overflow: hidden;
 }
-.product-rating {
-    height: 17px;
-    display: flex; align-items: center;
-    gap: 4px; margin-bottom: 4px;
+.wish-price {
+    font-size: 17px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 10px;
 }
-.stars { color: #f2b915; font-size: 11px; letter-spacing: -1px; }
-.review-count { color: #777; font-size: 9px; }
-.add-cart {
-    width: 100%; height: 30px;
-    border: 0; border-radius: 17px;
-    background: #050709; color: white;
-    font-size: 10px; font-weight: 500;
+.wish-add-btn {
+    width: 100%;
+    height: 34px;
+    border: 0;
+    border-radius: 18px;
+    background: var(--black);
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
     cursor: pointer;
     transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
 }
-.add-cart:hover { background: var(--gold-light); color: #111; }
+.wish-add-btn:hover {
+    background: var(--gold-light);
+    color: #111;
+}
 
 /* ========== EMPTY STATE ========== */
-.empty-state {
+.empty-wishlist {
     grid-column: 1 / -1;
     text-align: center;
-    padding: 60px 20px;
+    padding: 70px 20px;
     color: #999;
+    background: #fafafa;
+    border-radius: 10px;
+    border: 1px dashed #ddd;
 }
-.empty-state i {
-    font-size: 48px;
+.empty-wishlist i {
+    font-size: 60px;
     color: #ddd;
-    margin-bottom: 15px;
+    margin-bottom: 18px;
     display: block;
+}
+.empty-wishlist h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 6px;
+    font-weight: 700;
+}
+.empty-wishlist p {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 20px;
+}
+.empty-wishlist a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--gold-light);
+    color: #111;
+    padding: 12px 28px;
+    border-radius: 24px;
+    font-size: 13px;
+    font-weight: 700;
+    transition: var(--transition);
+}
+.empty-wishlist a:hover {
+    background: var(--black);
+    color: white;
+    transform: translateY(-2px);
 }
 
 /* ========== FOOTER ========== */
@@ -368,184 +390,6 @@ ul { list-style: none; }
 }
 .notification.show { transform: translateX(0); }
 .notification i { color: var(--gold-light); }
-
-/* ========== MODAL (PRODUCT POPUP) ========== */
-.modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,.65);
-    backdrop-filter: blur(3px);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    z-index: 5000;
-    animation: fadeIn .2s ease;
-}
-.modal-overlay.open { display: flex; }
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-.modal-box {
-    background: #fff;
-    border-radius: 14px;
-    width: 100%;
-    max-width: 480px;
-    max-height: 90vh;
-    overflow-y: auto;
-    position: relative;
-    box-shadow: 0 20px 60px rgba(0,0,0,.4);
-    animation: slideUp .25s ease;
-}
-@keyframes slideUp {
-    from { transform: translateY(20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-
-.modal-close {
-    position: absolute;
-    top: 12px; right: 12px;
-    width: 34px; height: 34px;
-    border-radius: 50%;
-    background: rgba(255,255,255,.95);
-    border: 0;
-    color: #333;
-    font-size: 16px;
-    cursor: pointer;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: var(--transition);
-    box-shadow: 0 2px 8px rgba(0,0,0,.15);
-}
-.modal-close:hover {
-    background: var(--black);
-    color: white;
-}
-
-.modal-image {
-    height: 260px;
-    overflow: hidden;
-    background: #eee;
-    border-radius: 14px 14px 0 0;
-}
-.modal-image img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-}
-
-.modal-body {
-    padding: 20px 22px 24px;
-}
-.modal-category {
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--gold-dark);
-    font-weight: 600;
-    margin-bottom: 6px;
-}
-.modal-title {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 24px;
-    font-weight: 700;
-    color: #111;
-    line-height: 1.2;
-    margin-bottom: 6px;
-}
-.modal-description {
-    font-size: 12px;
-    color: #666;
-    margin-bottom: 12px;
-    line-height: 1.5;
-}
-.modal-rating {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin-bottom: 12px;
-}
-.modal-rating .stars {
-    color: #f2b915;
-    font-size: 13px;
-    letter-spacing: -1px;
-}
-.modal-rating .count {
-    font-size: 11px;
-    color: #888;
-}
-
-.modal-price-row {
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
-    padding: 12px 0;
-    border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee;
-    margin-bottom: 16px;
-}
-.modal-price {
-    font-size: 26px;
-    font-weight: 700;
-    color: #111;
-}
-.modal-original {
-    font-size: 14px;
-    color: #999;
-    text-decoration: line-through;
-}
-
-.modal-actions {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 10px;
-}
-.modal-add-cart {
-    height: 46px;
-    border: 0;
-    border-radius: 24px;
-    background: var(--black);
-    color: white;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: var(--transition);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
-.modal-add-cart:hover {
-    background: var(--gold-light);
-    color: #111;
-}
-.modal-wish {
-    width: 46px;
-    height: 46px;
-    border: 2px solid #e0e0e0;
-    border-radius: 50%;
-    background: #fff;
-    color: #666;
-    font-size: 17px;
-    cursor: pointer;
-    transition: var(--transition);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.modal-wish:hover {
-    border-color: #ef3030;
-    color: #ef3030;
-}
-.modal-wish.active {
-    background: #ef3030;
-    border-color: #ef3030;
-    color: white;
-}
 
 /* ========== MOBILE HEADER ========== */
 .mobile-header {
@@ -639,7 +483,7 @@ ul { list-style: none; }
 
 /* ========== RESPONSIVE ========== */
 @media (max-width: 1000px) {
-    .products-grid { grid-template-columns: repeat(3, 1fr); }
+    .wishlist-grid { grid-template-columns: repeat(3, 1fr); }
     .main-header { height: auto; padding: 15px 0; }
     .main-header-inner { grid-template-columns: 1fr; }
     .search-area { order: 2; justify-content: center; }
@@ -650,26 +494,20 @@ ul { list-style: none; }
 @media (max-width: 768px) {
     .desktop-header { display: none; }
     .mobile-header { display: block; }
-    .shop-header { padding: 18px 0 8px; }
-    .shop-header h1 { font-size: 26px; }
-    .category-bar { height: 60px; margin-bottom: 16px; }
-    .products-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    .product-image { height: 160px; }
-    .product-name { font-size: 11px; }
-    .product-price { font-size: 15px; }
+    .page-header-block { padding: 20px 0 12px; }
+    .page-header-block h1 { font-size: 26px; }
+    .wishlist-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .wish-image { height: 150px; }
+    .wish-name { font-size: 12px; height: 32px; }
+    .wish-price { font-size: 15px; }
     .footer-inner { flex-direction: column; gap: 10px; text-align: center; }
-
-    .modal-image { height: 220px; }
-    .modal-title { font-size: 20px; }
-    .modal-price { font-size: 22px; }
 }
 
 @media (max-width: 430px) {
     .container { width: calc(100% - 24px); }
-    .products-grid { grid-template-columns: repeat(2, 1fr); }
-    .product-image { height: 140px; }
-    .product-information { padding: 6px; }
-    .product-description { font-size: 9px; }
+    .wishlist-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .wish-image { height: 130px; }
+    .wish-info { padding: 9px; }
 }
 </style>
 </head>
@@ -746,25 +584,18 @@ ul { list-style: none; }
     </div>
 </header>
 
-<!-- ========== SHOP HEADER ========== -->
+<!-- ========== PAGE HEADER ========== -->
 <section>
-    <div class="container shop-header">
-        <h1 id="shop-title">All Products</h1>
-        <p id="shop-subtitle">Discover handcrafted pieces made with love.</p>
+    <div class="container page-header-block">
+        <h1>My Wishlist</h1>
+        <p id="wishlist-subtitle">Your favourite pieces, saved for later.</p>
     </div>
 </section>
 
-<!-- ========== CATEGORY / FILTER BAR ========== -->
-<section class="category-bar">
+<!-- ========== WISHLIST CONTENT ========== -->
+<section class="wishlist-section">
     <div class="container">
-        <div class="category-scroll" id="category-scroll"></div>
-    </div>
-</section>
-
-<!-- ========== PRODUCTS ========== -->
-<section class="products-section">
-    <div class="container">
-        <div class="products-grid" id="products-grid"></div>
+        <div class="wishlist-grid" id="wishlist-items"></div>
     </div>
 </section>
 
@@ -784,14 +615,14 @@ ul { list-style: none; }
     <div class="mobile-tab" onclick="window.location.href='index.html'">
         <i class="fas fa-home"></i><span>Home</span>
     </div>
-    <div class="mobile-tab active" onclick="window.location.href='shop.html'">
+    <div class="mobile-tab" onclick="window.location.href='shop.html'">
         <i class="fas fa-store"></i><span>Shop</span>
     </div>
     <div class="mobile-tab" onclick="window.location.href='cart.html'">
         <i class="fas fa-shopping-cart"></i><span>Cart</span>
         <span class="tab-badge" id="cart-tab-badge">0</span>
     </div>
-    <div class="mobile-tab" onclick="window.location.href='wishlist.html'">
+    <div class="mobile-tab active" onclick="window.location.href='wishlist.html'">
         <i class="fas fa-heart"></i><span>Wishlist</span>
         <span class="tab-badge" id="wishlist-tab-badge">0</span>
     </div>
@@ -805,120 +636,28 @@ ul { list-style: none; }
     <span id="notification-text"></span>
 </div>
 
-<!-- ========== PRODUCT MODAL ========== -->
-<div class="modal-overlay" id="product-modal">
-    <div class="modal-box">
-        <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
-        <div class="modal-image">
-            <img id="modal-img" src="" alt="">
-        </div>
-        <div class="modal-body">
-            <div class="modal-category" id="modal-category"></div>
-            <div class="modal-title" id="modal-title"></div>
-            <div class="modal-description" id="modal-description"></div>
-            <div class="modal-rating">
-                <span class="stars" id="modal-stars"></span>
-                <span class="count" id="modal-reviews"></span>
-            </div>
-            <div class="modal-price-row">
-                <span class="modal-price" id="modal-price"></span>
-                <span class="modal-original" id="modal-original"></span>
-            </div>
-            <div class="modal-actions">
-                <button class="modal-add-cart" id="modal-add-cart-btn">
-                    <i class="fas fa-cart-shopping"></i> Add to Cart
-                </button>
-                <button class="modal-wish" id="modal-wish-btn" title="Add to wishlist">
-                    <i class="far fa-heart"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-
 <script>
-/* ========== PRODUCTS ========== */
-const PRODUCTS = [
-    { id:1, name:"Elegant Bead Jewelry Set", description:"Necklace • Earrings • Bracelet",
-      price:28.50, category:"Necklace",
-      image:"https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=700&q=85",
-      rating:5, reviews:12, badge:"" },
-    { id:2, name:"African Bead Bag", description:"Stylish • Durable • Unique",
-      price:45.00, category:"Bag",
-      image:"https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=700&q=85",
-      rating:5, reviews:18, badge:"BEST SELLER" },
-    { id:3, name:"Bead Slippers", description:"Comfort • Style • Culture",
-      price:22.00, category:"Shoe",
-      image:"https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=700&q=85",
-      rating:5, reviews:9, badge:"NEW" },
-    { id:4, name:"Bead Dress", description:"African Style • Handcrafted",
-      price:85.00, category:"Pears",
-      image:"https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=700&q=85",
-      rating:5, reviews:7, badge:"" },
-    { id:5, name:"Crystal School Bag", description:"Strong • Stylish • Spacious",
-      price:38.00, category:"Bag",
-      image:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=700&q=85",
-      rating:5, reviews:14, badge:"TRENDING" },
-    { id:6, name:"Pearl Bracelet", description:"Elegant • Handcrafted",
-      price:19.99, category:"Bracelet",
-      image:"https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=700&q=85",
-      rating:5, reviews:22, badge:"" },
-    { id:7, name:"Beaded Necklace", description:"Traditional • Colourful",
-      price:24.50, category:"Necklace",
-      image:"https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=700&q=85",
-      rating:5, reviews:11, badge:"" },
-    { id:8, name:"Crystal Beaded Bag", description:"Sparkling • Evening Wear",
-      price:65.00, category:"Crystal Bags",
-      image:"https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=700&q=85",
-      rating:5, reviews:8, badge:"NEW" },
-    { id:9, name:"Beaded Coin Purse", description:"Compact • Handwoven",
-      price:15.50, category:"Bag",
-      image:"https://images.unsplash.com/photo-1591561954557-26941169b49e?auto=format&fit=crop&w=700&q=85",
-      rating:5, reviews:6, badge:"" },
-    { id:10, name:"Beaded Sandals", description:"Summer • Comfort",
-      price:32.00, category:"Shoe",
-      image:"https://images.unsplash.com/photo-1603487742131-4160ec999306?auto=format&fit=crop&w=700&q=85",
-      rating:5, reviews:10, badge:"NEW" }
-];
-
-const CATEGORIES = ["All","Pears","Bag","Shoe","Necklace","Bracelet","Beaded Bags","Crystal Bags"];
-
-let currentCategory = "All";
-let currentSearch = "";
-let activeProductId = null;
-
 /* ========== HELPERS ========== */
 function getCart(){ return JSON.parse(localStorage.getItem("cart") || "[]"); }
 function setCart(c){ localStorage.setItem("cart", JSON.stringify(c)); }
 function getWishlist(){ return JSON.parse(localStorage.getItem("wishlist") || "[]"); }
 function setWishlist(w){ localStorage.setItem("wishlist", JSON.stringify(w)); }
 
-function addToCart(id){
-    const p = PRODUCTS.find(x => x.id === id);
-    if(!p) return;
-    const cart = getCart();
-    const existing = cart.find(i => i.id === id);
-    if(existing){ existing.quantity++; }
-    else { cart.push({ id:p.id, name:p.name, price:p.price, image:p.image, quantity:1 }); }
-    setCart(cart);
-    updateAllBadges();
-    showNotification(p.name + " added to cart.");
-}
+/* ========== MASTER PRODUCTS (in case wishlist item is missing fields) ========== */
+const PRODUCTS = [
+    { id:1, name:"Elegant Bead Jewelry Set", price:28.50, image:"https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=700&q=85" },
+    { id:2, name:"African Bead Bag", price:45.00, image:"https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=700&q=85" },
+    { id:3, name:"Bead Slippers", price:22.00, image:"https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=700&q=85" },
+    { id:4, name:"Bead Dress", price:85.00, image:"https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=700&q=85" },
+    { id:5, name:"Crystal School Bag", price:38.00, image:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=700&q=85" },
+    { id:6, name:"Pearl Bracelet", price:19.99, image:"https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=700&q=85" },
+    { id:7, name:"Beaded Necklace", price:24.50, image:"https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=700&q=85" },
+    { id:8, name:"Crystal Beaded Bag", price:65.00, image:"https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=700&q=85" },
+    { id:9, name:"Beaded Coin Purse", price:15.50, image:"https://images.unsplash.com/photo-1591561954557-26941169b49e?auto=format&fit=crop&w=700&q=85" },
+    { id:10, name:"Beaded Sandals", price:32.00, image:"https://images.unsplash.com/photo-1603487742131-4160ec999306?auto=format&fit=crop&w=700&q=85" }
+];
 
-function toggleWishlist(id){
-    const p = PRODUCTS.find(x => x.id === id);
-    if(!p) return;
-    const w = getWishlist();
-    const idx = w.indexOf(id);
-    let added = false;
-    if(idx >= 0){ w.splice(idx, 1); }
-    else { w.push(id); added = true; }
-    setWishlist(w);
-    updateAllBadges();
-    updateWishButton(id);
-    showNotification(added ? p.name + " added to wishlist." : "Removed from wishlist.", added ? "success" : "info");
-}
-
+/* ========== BADGES ========== */
 function updateAllBadges(){
     const cart = getCart();
     const wishlist = getWishlist();
@@ -943,176 +682,90 @@ function updateAllBadges(){
     }
 }
 
-/* ========== MODAL ========== */
-function openProduct(id){
-    const p = PRODUCTS.find(x => x.id === id);
-    if(!p) return;
-    activeProductId = id;
-
-    document.getElementById("modal-img").src = p.image;
-    document.getElementById("modal-img").alt = p.name;
-    document.getElementById("modal-category").textContent = p.category;
-    document.getElementById("modal-title").textContent = p.name;
-    document.getElementById("modal-description").textContent = p.description;
-    document.getElementById("modal-stars").innerHTML = getStars(p.rating);
-    document.getElementById("modal-reviews").textContent = "(" + p.reviews + " reviews)";
-    document.getElementById("modal-price").textContent = "$" + p.price.toFixed(2);
-
-    const originalEl = document.getElementById("modal-original");
-    if(p.originalPrice){
-        originalEl.style.display = "inline";
-        originalEl.textContent = "$" + p.originalPrice.toFixed(2);
-    } else {
-        originalEl.style.display = "none";
-    }
-
-    // Wire up buttons
-    document.getElementById("modal-add-cart-btn").onclick = () => {
-        addToCart(p.id);
-    };
-    document.getElementById("modal-wish-btn").onclick = () => {
-        toggleWishlist(p.id);
-    };
-
-    updateWishButton(p.id);
-
-    document.getElementById("product-modal").classList.add("open");
-    document.body.style.overflow = "hidden";
+/* ========== NORMALIZE WISHLIST ITEMS ========== */
+/* Supports BOTH: array of IDs [1,2,3] OR array of objects [{id,name,...}] */
+function getNormalizedWishlist(){
+    const raw = getWishlist();
+    return raw.map(item => {
+        // If it's already a full object, use it
+        if(typeof item === "object" && item !== null && item.id){
+            return item;
+        }
+        // Otherwise it's an ID — look up the full product
+        const id = parseInt(item);
+        return PRODUCTS.find(p => p.id === id);
+    }).filter(Boolean); // remove nulls
 }
 
-function closeModal(){
-    document.getElementById("product-modal").classList.remove("open");
-    document.body.style.overflow = "";
-    activeProductId = null;
-}
+/* ========== RENDER WISHLIST ========== */
+function renderWishlist(){
+    const items = getNormalizedWishlist();
+    const container = document.getElementById("wishlist-items");
+    const subtitle = document.getElementById("wishlist-subtitle");
 
-function updateWishButton(id){
-    const btn = document.getElementById("modal-wish-btn");
-    if(!btn) return;
-    const inWish = getWishlist().includes(id);
-    if(inWish){
-        btn.classList.add("active");
-        btn.innerHTML = '<i class="fas fa-heart"></i>';
-    } else {
-        btn.classList.remove("active");
-        btn.innerHTML = '<i class="far fa-heart"></i>';
-    }
-}
-
-/* Close on overlay click */
-document.getElementById("product-modal").addEventListener("click", (e) => {
-    if(e.target.id === "product-modal") closeModal();
-});
-
-/* Close on Escape */
-document.addEventListener("keydown", (e) => {
-    if(e.key === "Escape" && activeProductId !== null) closeModal();
-});
-
-/* ========== RENDER ========== */
-function renderCategories(){
-    const container = document.getElementById("category-scroll");
-    if(!container) return;
-    container.innerHTML = CATEGORIES.map(c => `
-        <button class="category-pill ${c === currentCategory ? 'active' : ''}"
-                onclick="selectCategory('${c}')">
-            ${getCategoryIcon(c)} ${c}
-        </button>
-    `).join("");
-}
-
-function getCategoryIcon(c){
-    const icons = {
-        "All": '<i class="fas fa-th"></i>',
-        "Pears": '<i class="fas fa-gem"></i>',
-        "Bag": '<i class="fas fa-bag-shopping"></i>',
-        "Shoe": '<i class="fas fa-shoe-prints"></i>',
-        "Necklace": '<i class="fas fa-circle-notch"></i>',
-        "Bracelet": '<i class="fas fa-circle"></i>',
-        "Beaded Bags": '<i class="fas fa-shopping-bag"></i>',
-        "Crystal Bags": '<i class="fas fa-gem"></i>'
-    };
-    return icons[c] || "";
-}
-
-function getStars(r){
-    let h = "";
-    for(let i=1;i<=5;i++) h += i<=r ? '<i class="fas fa-star"></i>' : '<i class="far fa-star"></i>';
-    return h;
-}
-
-function renderProducts(){
-    let list = PRODUCTS.slice();
-    if(currentCategory !== "All") list = list.filter(p => p.category === currentCategory);
-    if(currentSearch) {
-        const q = currentSearch.toLowerCase();
-        list = list.filter(p =>
-            p.name.toLowerCase().includes(q) ||
-            p.description.toLowerCase().includes(q) ||
-            p.category.toLowerCase().includes(q)
-        );
-    }
-
-    document.getElementById("shop-title").textContent =
-        currentSearch ? `Search: "${currentSearch}"` :
-        (currentCategory === "All" ? "All Products" : currentCategory);
-    document.getElementById("shop-subtitle").textContent =
-        list.length + " product" + (list.length === 1 ? "" : "s") + " found";
-
-    const grid = document.getElementById("products-grid");
-    if(!list.length){
-        grid.innerHTML = `
-            <div class="empty-state">
-                <i class="fas fa-search"></i>
-                <h3>No products found</h3>
-                <p>Try adjusting your search or filter.</p>
+    if(!items.length){
+        subtitle.textContent = "Your wishlist is empty.";
+        container.innerHTML = `
+            <div class="empty-wishlist">
+                <i class="far fa-heart"></i>
+                <h3>Your wishlist is empty</h3>
+                <p>Save your favourite pieces to see them here.</p>
+                <a href="shop.html"><i class="fas fa-store"></i> Browse Products</a>
             </div>`;
         return;
     }
 
-    grid.innerHTML = list.map(p => {
-        let badgeClass = "";
-        if(p.badge === "NEW") badgeClass = "new";
-        if(p.badge === "TRENDING") badgeClass = "trending";
-        if(p.badge === "SALE") badgeClass = "sale";
+    subtitle.textContent = items.length + " item" + (items.length === 1 ? "" : "s") + " saved.";
 
-        return `
-            <div class="product-card" onclick="openProduct(${p.id})">
-                <div class="product-image">
-                    <img src="${p.image}" alt="${p.name}" loading="lazy">
-                    ${p.badge ? `<div class="product-badge ${badgeClass}">${p.badge}</div>` : ""}
-                </div>
-                <div class="product-information">
-                    <div class="product-name">${p.name}</div>
-                    <div class="product-description">${p.description}</div>
-                    <div class="product-price">$${p.price.toFixed(2)}</div>
-                    <div class="product-rating">
-                        <span class="stars">${getStars(p.rating)}</span>
-                        <span class="review-count">(${p.reviews})</span>
-                    </div>
-                    <button class="add-cart" onclick="event.stopPropagation(); addToCart(${p.id});">
-                        <i class="fas fa-cart-shopping"></i> Add to Cart
-                    </button>
-                </div>
-            </div>`;
-    }).join("");
+    container.innerHTML = items.map(p => `
+        <div class="wish-card">
+            <div class="wish-image">
+                <img src="${p.image}" alt="${p.name}" loading="lazy">
+                <button class="wish-remove" onclick="removeWish(${p.id})" title="Remove from wishlist">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="wish-info">
+                <div class="wish-name">${p.name}</div>
+                <div class="wish-price">$${p.price.toFixed(2)}</div>
+                <button class="wish-add-btn" onclick="addToCart(${p.id})">
+                    <i class="fas fa-cart-shopping"></i> Add to Cart
+                </button>
+            </div>
+        </div>
+    `).join("");
 }
 
-function selectCategory(c){
-    currentCategory = c;
-    currentSearch = "";
-    renderCategories();
-    renderProducts();
+/* ========== ACTIONS ========== */
+function addToCart(id){
+    const p = PRODUCTS.find(x => x.id === id);
+    if(!p) return;
+    const cart = getCart();
+    const existing = cart.find(i => i.id === id);
+    if(existing){ existing.quantity++; }
+    else { cart.push({ id:p.id, name:p.name, price:p.price, image:p.image, quantity:1 }); }
+    setCart(cart);
+    updateAllBadges();
+    showNotification(p.name + " added to cart.");
+}
+
+function removeWish(id){
+    // Handle both ID array and object array
+    const raw = getWishlist();
+    const filtered = raw.filter(item => {
+        const itemId = typeof item === "object" ? item.id : item;
+        return parseInt(itemId) !== parseInt(id);
+    });
+    setWishlist(filtered);
+    renderWishlist();
+    updateAllBadges();
+    showNotification("Removed from wishlist.", "info");
 }
 
 /* ========== SEARCH ========== */
 function searchProducts(){
     const q = document.getElementById("searchInput").value.trim();
-    if(!q) return;
-    currentSearch = q;
-    currentCategory = "All";
-    renderCategories();
-    renderProducts();
+    if(q) window.location.href = "shop.html?search=" + encodeURIComponent(q);
 }
 
 function toggleMobileSearch(){
@@ -1122,11 +775,7 @@ function toggleMobileSearch(){
 function mobileSearch(e){
     if(e.key !== "Enter") return;
     const q = e.target.value.trim();
-    if(!q) return;
-    currentSearch = q;
-    currentCategory = "All";
-    renderCategories();
-    renderProducts();
+    if(q) window.location.href = "shop.html?search=" + encodeURIComponent(q);
 }
 
 /* ========== NOTIFICATION ========== */
@@ -1153,19 +802,10 @@ function showNotification(msg, type = "success"){
 
 /* ========== INIT ========== */
 document.addEventListener("DOMContentLoaded", () => {
-    const params = new URLSearchParams(window.location.search);
-    if(params.get("category")) currentCategory = params.get("category");
-    if(params.get("search")) currentSearch = params.get("search");
-
-    renderCategories();
-    renderProducts();
+    renderWishlist();
     updateAllBadges();
-
-    // Auto-open product modal if ?product=ID
-    const pid = params.get("product");
-    if(pid) setTimeout(() => openProduct(parseInt(pid)), 200);
 });
 </script>
 
 </body>
-                                                    </html>
+</html>
