@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Brew's Beads & Craft Co. | My Account</title>
+  <style>
+    :root {
+      --primary: #8a6d3b;
+      --primary-dark: #6d4c1e;
+      --accent: #e74c3c;
+      --dark: #2c3e50;
+      --gray: #95a5a6;
+      --success: #2ecc71;
+      --shadow: 0 5px 15px rgba(0,0,0,0.08);
+      --transition: all 0.3s ease;
+      --border-radius: 12px;
+      --mobile-tab-height: 60px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #fff;
+      min-height: 100vh;
+      padding-bottom: var(--mobile-tab-height);
+    }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    img { max-width: 100%; height: auto; }
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+    .btn {
+      display: inline-block; padding: 12px 24px;
+      background-color: var(--primary); color: white;
+      border: none; border-radius: var(--border-radius);
+      font-weight: 600; cursor: pointer;
+      transition: var(--transition); text-align: center;
+    }
+    .btn:hover { background-color: var(--primary-dark); transform: translateY(-2px); }
+    .btn-outline { background-color: transparent; border: 2px solid var(--primary); color: var(--primary); }
+    .btn-outline:hover { background-color: var(--primary); color: white; }
+    .mobile-tabs {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      height: var(--mobile-tab-height); background-color: white;
+      display: flex; justify-content: space-around; align-items: center;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.1); z-index: 1000;
+    }
+    .mobile-tab {
+      flex: 1; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      height: 100%; color: var(--gray);
+      transition: var(--transition); position: relative;
+    }
+    .mobile-tab.active { color: var(--primary); }
+    .mobile-tab.active::before {
+      content: ''; position: absolute; top: 0; left: 50%;
+      transform: translateX(-50%); width: 40%; height: 3px;
+      background-color: var(--primary); border-radius: 0 0 3px 3px;
+    }
+    .mobile-tab i { font-size: 20px; margin-bottom: 4px; }
+    .mobile-tab span { font-size: 11px; font-weight: 500; }
+    .tab-badge {
+      position: absolute; top: 8px; right: 20%;
+      background-color: var(--accent); color: white;
+      font-size: 10px; width: 16px; height: 16px;
+      border-radius: 50%; display: flex;
+      align-items: center; justify-content: center;
+    }
+    .desktop-header { display: none; }
+    .mobile-header {
+      background-color: white; padding: 15px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      position: sticky; top: 0; z-index: 999;
+    }
+    .mobile-header-top {
+      display: flex; justify-content: space-between;
+      align-items: center; margin-bottom: 10px;
+    }
+    .mobile-logo {
+      display: flex; align-items: center;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700; font-size: 20px; color: var(--dark);
+    }
+    .mobile-logo span { color: var(--primary); }
+    .mobile-header-actions { display: flex; gap: 15px; align-items: center; }
+    .mobile-search-btn, .mobile-cart-btn {
+      background: none; border: none; font-size: 20px;
+      color: var(--dark); cursor: pointer; position: relative;
+    }
+    #mobile-cart-count {
+      position: absolute; top: -5px; right: -5px;
+      background-color: var(--accent); color: white;
+      border-radius: 50%; width: 18px; height: 18px;
+      display: flex; align-items: center; justify-content: center; font-size: 10px;
+    }
+    .account-header {
+      padding: 20px 15px; background-color: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08); margin-bottom: 15px;
+    }
+    .account-header h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 24px; color: var(--dark);
+    }
+    .account-info {
+      background-color: white; border-radius: var(--border-radius);
+      padding: 20px; margin: 0 15px 15px; box-shadow: var(--shadow);
+    }
+    .account-info h3 { margin-bottom: 15px; color: var(--dark); font-size: 18px; }
+    .account-details p { margin-bottom: 10px; display: flex; align-items: center; }
+    .account-details i { color: var(--primary); margin-right: 10px; width: 20px; }
+    .account-actions { display: flex; flex-direction: column; gap: 10px; }
+    .login-form {
+      background-color: white; border-radius: var(--border-radius);
+      padding: 20px; margin: 0 15px; box-shadow: var(--shadow);
+    }
+    .login-form h3 { margin-bottom: 20px; color: var(--dark); font-size: 18px; }
+    .form-group { margin-bottom: 15px; }
+    .form-group label { display: block; margin-bottom: 5px; font-weight: 500; font-size: 14px; }
+    .form-group input {
+      width: 100%; padding: 12px 15px;
+      border: 1px solid #ddd; border-radius: 8px; font-size: 16px;
+    }
+    .notification {
+      position: fixed; top: 20px; right: 15px; left: 15px;
+      background-color: var(--success); color: white;
+      padding: 15px; border-radius: var(--border-radius);
+      box-shadow: var(--shadow); z-index: 1200;
+      display: flex; align-items: center; gap: 10px;
+      transform: translateY(-100px); opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .notification.show { transform: translateY(0); opacity: 1; }
+    @media (min-width: 768px) {
+      body { padding-bottom: 0; }
+      .mobile-tabs, .mobile-header { display: none; }
+      .desktop-header { display: block; background-color: white; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+      .top-bar { background-color: var(--dark); color: white; padding: 8px 0; font-size: 14px; }
+      .top-bar .container { display: flex; justify-content: space-between; }
+      .top-bar-links { display: flex; gap: 20px; }
+      .top-bar-links a:hover { color: var(--primary); }
+      .main-header { padding: 15px 0; }
+      .main-header .container { display: flex; align-items: center; justify-content: space-between; }
+      .logo {
+        display: flex; align-items: center; gap: 10px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700; font-size: 24px; color: var(--dark); cursor: pointer;
+      }
+      .logo span { color: var(--primary); }
+      .search-container { flex: 1; max-width: 500px; margin: 0 20px; position: relative; }
+      .search-container input {
+        width: 100%; padding: 12px 20px;
+        border: 1px solid #ddd; border-radius: 30px; font-size: 16px;
+      }
+      .search-container button {
+        position: absolute; right: 5px; top: 50%;
+        transform: translateY(-50%); background-color: var(--primary);
+        color: white; border: none; width: 40px; height: 40px;
+        border-radius: 50%; cursor: pointer;
+      }
+      .header-actions { display: flex; align-items: center; gap: 20px; }
+      .action-item {
+        display: flex; flex-direction: column; align-items: center;
+        cursor: pointer; padding: 5px 10px;
+        border-radius: var(--border-radius); position: relative;
+      }
+      .action-item i { font-size: 22px; margin-bottom: 3px; color: var(--dark); }
+      .action-item span { font-size: 12px; font-weight: 500; }
+      .action-badge {
+        position: absolute; top: 0; right: 0;
+        background-color: var(--accent); color: white;
+        font-size: 10px; width: 18px; height: 18px;
+        border-radius: 50%; display: flex;
+        align-items: center; justify-content: center;
+      }
+      .nav-menu { background-color: var(--light); border-top: 1px solid #eee; }
+      .nav-menu ul { display: flex; justify-content: center; gap: 10px; padding: 15px 0; }
+      .nav-menu a {
+        padding: 8px 20px; font-weight: 500;
+        color: var(--dark); border-radius: 30px; cursor: pointer;
+      }
+      .nav-menu a:hover, .nav-menu a.active { background-color: var(--primary); color: white; }
+      .account-info, .login-form { max-width: 500px; margin: 20px auto; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Desktop Header -->
+  <header class="desktop-header">
+    <div class="top-bar">
+      <div class="container">
+        <span>Free shipping on orders over $50</span>
+        <div class="top-bar-links">
+          <a href="#">Track Order</a>
+          <a href="#">Our Story</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="main-header">
+      <div class="container">
+        <a href="index.html" class="logo"><span>Brew's</span> Beads & Craft</a>
+        <div class="search-container">
+          <input type="text" id="searchInput" placeholder="Search for beads, crafts, supplies...">
+          <button onclick="searchProducts()"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="header-actions">
+          <div class="action-item" onclick="window.location.href='account.html'">
+            <i class="far fa-user"></i><span>Account</span>
+          </div>
+          <div class="action-item" onclick="window.location.href='wishlist.html'">
+            <i class="far fa-heart"></i><span>Wishlist</span>
+            <span id="desktop-wishlist-count" class="action-badge" style="display: none;">0</span>
+          </div>
+          <div class="action-item" onclick="window.location.href='cart.html'">
+            <i class="fas fa-shopping-cart"></i><span>Cart</span>
+            <span id="desktop-cart-count" class="action-badge">0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav class="nav-menu">
+      <div class="container">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="#">Beads</a></li>
+          <li><a href="#">Jewelry Making</a></li>
+          <li><a href="#">Craft Supplies</a></li>
+          <li><a href="#">Sale</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Header -->
+  <header class="mobile-header">
+    <div class="mobile-header-top">
+      <a href="index.html" class="mobile-logo"><span>Brew's</span> Beads & Craft</a>
+      <div class="mobile-header-actions">
+        <button class="mobile-search-btn" onclick="toggleMobileSearch()"><i class="fas fa-search"></i></button>
+        <button class="mobile-cart-btn" onclick="window.location.href='cart.html'">
+          <i class="fas fa-shopping-cart"></i><span id="mobile-cart-count">0</span>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-search-container" id="mobile-search-container">
+      <input type="text" class="mobile-search-input" id="mobile-search-input" placeholder="Search products..." onkeyup="searchProductsMobile(event)">
+    </div>
+  </header>
+
+  <!-- Account Content -->
+  <div class="account-header">
+    <h2>My Account</h2>
+  </div>
+  <div id="account-content"></div>
+
+  <!-- Mobile Tabs -->
+  <nav class="mobile-tabs">
+    <div class="mobile-tab" onclick="window.location.href='index.html'">
+      <i class="fas fa-home"></i><span>Home</span>
+    </div>
+    <div class="mobile-tab" onclick="window.location.href='shop.html'">
+      <i class="fas fa-store"></i><span>Shop</span>
+    </div>
+    <div class="mobile-tab" onclick="window.location.href='cart.html'">
+      <i class="fas fa-shopping-cart"></i><span>Cart</span>
+      <span class="tab-badge" id="cart-badge">0</span>
+    </div>
+    <div class="mobile-tab" onclick="window.location.href='wishlist.html'">
+      <i class="fas fa-heart"></i><span>Wishlist</span>
+      <span class="tab-badge" id="wishlist-badge">0</span>
+    </div>
+    <div class="mobile-tab active" onclick="window.location.href='account.html'">
+      <i class="fas fa-user"></i><span>Account</span>
+    </div>
+  </nav>
+
+  <div class="notification" id="notification">
+    <i class="fas fa-check-circle" id="notification-icon"></i>
+    <span id="notification-text">Welcome!</span>
+  </div>
+
+  <script>
+    const state = {
+      cart: JSON.parse(localStorage.getItem('cart') || '[]'),
+      wishlist: JSON.parse(localStorage.getItem('wishlist') || '[]'),
+      currentUser: localStorage.getItem('currentUser') || null
+    };
+
+    document.addEventListener('DOMContentLoaded', function() {
+      renderAccountContent();
+      updateCartUI();
+      updateWishlistUI();
+    });
+
+    function renderAccountContent() {
+      const container = document.getElementById('account-content');
+      
+      if (state.currentUser) {
+        container.innerHTML = `
+          <div class="account-info">
+            <h3>My Account</h3>
+            <div class="account-details">
+              <p><i class="fas fa-user"></i> ${state.currentUser}</p>
+              <p><i class="fas fa-envelope"></i> ${state.currentUser}</p>
+              <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+              <p><i class="fas fa-map-marker-alt"></i> 123 Craft Street, Art City</p>
+            </div>
+            <div class="account-actions">
+              <button class="btn btn-outline" onclick="logout()">Logout</button>
+              <button class="btn" onclick="viewOrders()">View Orders</button>
+            </div>
+          </div>
+        `;
+      } else {
+        container.innerHTML = `
+          <div class="login-form">
+            <h3>Login to Your Account</h3>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" placeholder="Enter your password">
+            </div>
+            <button class="btn" style="width: 100%; margin-bottom: 15px;" onclick="login()">Login</button>
+            <p style="text-align: center; color: var(--gray);">
+              Don't have an account? <a href="#" style="color: var(--primary);" onclick="showRegister()">Sign up</a>
+            </p>
+          </div>
+        `;
+      }
+    }
+
+    function login() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      
+      if (!email || !password) {
+        showNotification('Please fill in all fields', 'error');
+        return;
+      }
+      
+      showNotification('Logging in...', 'info');
+      
+      setTimeout(() => {
+        state.currentUser = email;
+        localStorage.setItem('currentUser', email);
+        renderAccountContent();
+        showNotification(`Welcome back, ${email}!`, 'success');
+      }, 1000);
+    }
+
+    function logout() {
+      state.currentUser = null;
+      localStorage.removeItem('currentUser');
+      renderAccountContent();
+      showNotification('Logged out successfully', 'info');
+    }
+
+    function viewOrders() {
+      showNotification('Order history feature coming soon!', 'info');
+    }
+
+    function showRegister() {
+      showNotification('Registration feature coming soon!', 'info');
+    }
+
+    function updateCartUI() {
+      const totalItems = state.cart.reduce((total, item) => total + item.quantity, 0);
+      document.getElementById('mobile-cart-count').textContent = totalItems;
+      document.getElementById('cart-badge').textContent = totalItems;
+      document.getElementById('desktop-cart-count').textContent = totalItems;
+    }
+
+    function updateWishlistUI() {
+      const totalItems = state.wishlist.length;
+      document.getElementById('wishlist-badge').textContent = totalItems;
+      const desktopWishlistCount = document.getElementById('desktop-wishlist-count');
+      if (totalItems > 0) {
+        desktopWishlistCount.style.display = 'flex';
+        desktopWishlistCount.textContent = totalItems;
+      } else {
+        desktopWishlistCount.style.display = 'none';
+      }
+    }
+
+    function toggleMobileSearch() {
+      const searchContainer = document.getElementById('mobile-search-container');
+      searchContainer.classList.toggle('active');
+      if (searchContainer.classList.contains('active')) {
+        document.getElementById('mobile-search-input').focus();
+      }
+    }
+
+    function searchProductsMobile(event) {
+      if (event.key === 'Enter') {
+        window.location.href = `shop.html?search=${encodeURIComponent(event.target.value)}`;
+      }
+    }
+
+    function searchProducts() {
+      const query = document.getElementById('searchInput')?.value || '';
+      if (query.trim()) {
+        window.location.href = `shop.html?search=${encodeURIComponent(query)}`;
+      }
+    }
+
+    function showNotification(message, type = 'success') {
+      const text = document.getElementById('notification-text');
+      const icon = document.getElementById('notification-icon');
+      const notification = document.getElementById('notification');
+      text.textContent = message;
+      if (type === 'error') {
+        icon.className = 'fas fa-exclamation-circle';
+        notification.style.backgroundColor = '#e74c3c';
+      } else if (type === 'info') {
+        icon.className = 'fas fa-info-circle';
+        notification.style.backgroundColor = '#3498db';
+      } else {
+        icon.className = 'fas fa-check-circle';
+        notification.style.backgroundColor = '#2ecc71';
+      }
+      notification.classList.add('show');
+      setTimeout(() => notification.classList.remove('show'), 3000);
+    }
+  </script>
+</body>
+</html>
