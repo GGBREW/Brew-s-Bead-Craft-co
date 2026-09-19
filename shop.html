@@ -24,16 +24,10 @@ body {
     background: #ffffff;
     color: #171717;
     line-height: 1.5;
-
-    /* Sticky footer layout */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-
-    /* Space for fixed bottom tabs */
     padding-bottom: 72px;
-
-    /* Prevent horizontal overflow */
     overflow-x: hidden;
     max-width: 100%;
     width: 100%;
@@ -105,6 +99,7 @@ ul { list-style: none; }
     height: 136px;
     background: var(--black);
     color: white;
+    border-bottom: 2px solid var(--gold-dark);
 }
 .main-header-inner {
     height: 100%;
@@ -192,34 +187,8 @@ ul { list-style: none; }
     display: flex; align-items: center; justify-content: center;
 }
 
-/* ========== MAIN NAV ========== */
-.main-navigation {
-    height: 52px;
-    background: var(--black);
-    border-top: 1px solid rgba(255,255,255,.04);
-    border-bottom: 2px solid var(--gold-dark);
-}
-.main-navigation ul {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 14px;
-}
-.main-navigation a {
-    display: flex; align-items: center; justify-content: center;
-    height: 38px; padding: 0 25px;
-    border-radius: 22px;
-    color: #eeeeee; font-size: 13px; font-weight: 500;
-    transition: var(--transition);
-}
-.main-navigation a:hover,
-.main-navigation a.active { background: var(--gold-light); color: #111; }
-
 /* ========== SHOP PAGE HEADER ========== */
-.shop-header {
-    padding: 25px 0 12px;
-}
+.shop-header { padding: 25px 0 12px; }
 .shop-header h1 {
     font-family: "Cormorant Garamond", serif;
     font-size: 32px;
@@ -232,7 +201,7 @@ ul { list-style: none; }
     color: #888;
 }
 
-/* ========== FILTER BAR ========== */
+/* ========== CATEGORY / FILTER BAR ========== */
 .category-bar {
     height: 66px;
     background: #f8f8f8;
@@ -275,10 +244,7 @@ ul { list-style: none; }
 }
 
 /* ========== PRODUCTS GRID ========== */
-.products-section {
-    padding: 0 0 40px;
-    flex: 1 0 auto;
-}
+.products-section { padding: 0 0 40px; flex: 1 0 auto; }
 .products-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -356,7 +322,7 @@ ul { list-style: none; }
 }
 .add-cart:hover { background: var(--gold-light); color: #111; }
 
-/* ========== FOOTER (sticky to bottom) ========== */
+/* ========== FOOTER ========== */
 .footer {
     background: #030506;
     color: #aaa;
@@ -534,7 +500,7 @@ ul { list-style: none; }
 
 <body>
 
-<!-- ========== DESKTOP HEADER ========== -->
+<!-- ========== DESKTOP HEADER (nav removed) ========== -->
 <header class="desktop-header">
     <div class="top-bar">
         <div class="container top-bar-inner">
@@ -583,19 +549,6 @@ ul { list-style: none; }
             </div>
         </div>
     </div>
-
-    <nav class="main-navigation">
-        <div class="container">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="shop.html" class="active">Pears</a></li>
-                <li><a href="shop.html?category=Bag">Bag</a></li>
-                <li><a href="shop.html?category=Shoe">Shoe</a></li>
-                <li><a href="shop.html?category=Necklace">Necklace</a></li>
-                <li><a href="shop.html?category=Bracelet">Bracelet</a></li>
-            </ul>
-        </div>
-    </nav>
 </header>
 
 <!-- ========== MOBILE HEADER ========== -->
@@ -765,7 +718,7 @@ function updateAllBadges(){
     }
 }
 
-/* ========== RENDER FUNCTIONS ========== */
+/* ========== RENDER ========== */
 function renderCategories(){
     const container = document.getElementById("category-scroll");
     if(!container) return;
@@ -809,7 +762,6 @@ function renderProducts(){
         );
     }
 
-    // Update title
     document.getElementById("shop-title").textContent =
         currentSearch ? `Search: "${currentSearch}"` :
         (currentCategory === "All" ? "All Products" : currentCategory);
@@ -842,9 +794,7 @@ function renderProducts(){
                 <div class="product-information">
                     <div class="product-name">${p.name}</div>
                     <div class="product-description">${p.description}</div>
-                    <div class="product-price">
-                        $${p.price.toFixed(2)}
-                    </div>
+                    <div class="product-price">$${p.price.toFixed(2)}</div>
                     <div class="product-rating">
                         <span class="stars">${getStars(p.rating)}</span>
                         <span class="review-count">(${p.reviews})</span>
@@ -864,9 +814,7 @@ function selectCategory(c){
     renderProducts();
 }
 
-function openProduct(id){
-    window.location.href = "shop.html?product=" + id;
-}
+function openProduct(id){ window.location.href = "shop.html?product=" + id; }
 
 /* ========== SEARCH ========== */
 function searchProducts(){
@@ -914,4 +862,4 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
 </body>
-  </html>
+</html>
