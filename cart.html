@@ -1,483 +1,893 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <title>Brew's Beads & Craft Co. | Cart</title>
-  <style>
-    :root {
-      --primary: #8a6d3b;
-      --primary-dark: #6d4c1e;
-      --accent: #e74c3c;
-      --dark: #2c3e50;
-      --gray: #95a5a6;
-      --success: #2ecc71;
-      --shadow: 0 5px 15px rgba(0,0,0,0.08);
-      --transition: all 0.3s ease;
-      --border-radius: 12px;
-      --mobile-tab-height: 60px;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Poppins', sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background-color: #fff;
-      min-height: 100vh;
-      padding-bottom: var(--mobile-tab-height);
-    }
-    a { text-decoration: none; color: inherit; }
-    ul { list-style: none; }
-    img { max-width: 100%; height: auto; }
-    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
-    .btn {
-      display: inline-block; padding: 12px 24px;
-      background-color: var(--primary); color: white;
-      border: none; border-radius: var(--border-radius);
-      font-weight: 600; cursor: pointer;
-      transition: var(--transition); text-align: center;
-    }
-    .btn:hover { background-color: var(--primary-dark); transform: translateY(-2px); }
-    .btn-accent { background-color: var(--accent); }
-    .btn-accent:hover { background-color: #c0392b; }
-    .btn-outline { background-color: transparent; border: 2px solid var(--primary); color: var(--primary); }
-    .btn-outline:hover { background-color: var(--primary); color: white; }
-    .mobile-tabs {
-      position: fixed; bottom: 0; left: 0; right: 0;
-      height: var(--mobile-tab-height); background-color: white;
-      display: flex; justify-content: space-around; align-items: center;
-      box-shadow: 0 -2px 10px rgba(0,0,0,0.1); z-index: 1000;
-    }
-    .mobile-tab {
-      flex: 1; display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      height: 100%; color: var(--gray);
-      transition: var(--transition); position: relative;
-    }
-    .mobile-tab.active { color: var(--primary); }
-    .mobile-tab.active::before {
-      content: ''; position: absolute; top: 0; left: 50%;
-      transform: translateX(-50%); width: 40%; height: 3px;
-      background-color: var(--primary); border-radius: 0 0 3px 3px;
-    }
-    .mobile-tab i { font-size: 20px; margin-bottom: 4px; }
-    .mobile-tab span { font-size: 11px; font-weight: 500; }
-    .tab-badge {
-      position: absolute; top: 8px; right: 20%;
-      background-color: var(--accent); color: white;
-      font-size: 10px; width: 16px; height: 16px;
-      border-radius: 50%; display: flex;
-      align-items: center; justify-content: center;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cart · Georgie Brew Creation</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ========== RESET ========== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    max-width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: #ffffff;
+    color: #171717;
+    line-height: 1.5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 72px;
+    overflow-x: hidden;
+    max-width: 100%;
+    width: 100%;
+}
+
+a { text-decoration: none; color: inherit; }
+button, input { font-family: inherit; }
+img { width: 100%; display: block; }
+ul { list-style: none; }
+
+:root {
+    --black: #05080a;
+    --black-2: #0b0e10;
+    --black-3: #121619;
+    --gold: #d9a72e;
+    --gold-light: #f4c84a;
+    --gold-dark: #9d741d;
+    --cream: #f7efd9;
+    --white: #ffffff;
+    --gray: #777777;
+    --light-gray: #f3f3f3;
+    --container: 1210px;
+    --transition: .25s ease;
+}
+
+.container {
+    width: calc(100% - 40px);
+    max-width: var(--container);
+    margin: 0 auto;
+}
+
+/* ========== TOP BAR ========== */
+.top-bar {
+    height: 39px;
+    background: var(--black);
+    border-bottom: 1px solid rgba(217,167,46,.30);
+    color: white;
+}
+.top-bar-inner {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.shipping {
+    color: var(--gold-light);
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+.shipping i { font-size: 16px; }
+.top-navigation {
+    display: flex;
+    align-items: center;
+    font-size: 11px;
+    color: #d0d0d0;
+}
+.top-navigation a {
+    padding: 0 12px;
+    border-right: 1px solid #444;
+}
+.top-navigation a:last-child { border-right: 0; padding-right: 0; }
+.top-navigation a:hover { color: var(--gold-light); }
+
+/* ========== MAIN HEADER ========== */
+.main-header {
+    height: 136px;
+    background: var(--black);
+    color: white;
+    border-bottom: 2px solid var(--gold-dark);
+}
+.main-header-inner {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 20px;
+}
+.search-area { display: flex; justify-content: flex-start; }
+.search-box { width: 300px; height: 42px; position: relative; }
+.search-box input {
+    width: 100%; height: 100%;
+    border: 1px solid #5a5d60;
+    background: #111518;
+    border-radius: 25px;
+    color: white;
+    padding: 0 45px 0 18px;
+    font-size: 12px;
+    outline: none;
+}
+.search-box input::placeholder { color: #b8b8b8; }
+.search-box input:focus { border-color: var(--gold); }
+.search-box button {
+    position: absolute; top: 4px; right: 4px;
+    width: 34px; height: 34px;
+    border: 0; border-radius: 50%;
+    background: transparent;
+    color: white; cursor: pointer; font-size: 15px;
+}
+.search-box button:hover { color: var(--gold-light); }
+
+.brand { text-align: center; white-space: nowrap; }
+.brand-top { display: flex; justify-content: center; align-items: center; gap: 10px; }
+.gb-logo {
+    position: relative;
+    width: 84px; height: 84px;
+    display: flex; justify-content: center; align-items: center;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 47px; font-weight: 600;
+    color: var(--cream);
+}
+.gb-logo::before {
+    content: "";
+    position: absolute;
+    width: 68px; height: 68px;
+    border: 2px solid #e5e5e5;
+    border-right-color: var(--gold);
+    border-radius: 50%;
+}
+.brand-name {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 32px; font-weight: 700;
+    color: var(--cream); letter-spacing: -.5px;
+}
+.brand-tagline {
+    margin-top: 1px;
+    font-size: 9px; letter-spacing: 4px;
+    color: #bdbdbd; text-transform: uppercase;
+}
+
+.header-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 28px;
+}
+.header-action {
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+    color: #fff;
+    min-width: 55px;
+}
+.header-action i { display: block; font-size: 24px; margin-bottom: 4px; font-weight: 400; }
+.header-action span.label { font-size: 11px; }
+.header-action:hover { color: var(--gold-light); }
+.header-badge {
+    position: absolute;
+    top: -5px; right: 3px;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: var(--gold-light);
+    color: #111;
+    font-size: 10px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+}
+
+/* ========== PAGE HEADER ========== */
+.page-header-block {
+    padding: 30px 0 18px;
+}
+.page-header-block h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 4px;
+}
+.page-header-block p {
+    font-size: 12px;
+    color: #888;
+}
+
+/* ========== CART CONTENT ========== */
+.cart-section {
+    padding: 0 0 40px;
+    flex: 1 0 auto;
+}
+
+.cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+.cart-item {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    padding: 14px;
+    display: flex;
+    gap: 14px;
+    transition: var(--transition);
+    position: relative;
+}
+.cart-item:hover {
+    box-shadow: 0 4px 14px rgba(0,0,0,.06);
+}
+.cart-item-image {
+    width: 90px;
+    height: 90px;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: #eee;
+}
+.cart-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.cart-item-details {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.cart-item-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #222;
+    line-height: 1.3;
+    margin-bottom: 3px;
+    padding-right: 30px;
+}
+.cart-item-category {
+    font-size: 10px;
+    color: #888;
+    margin-bottom: 6px;
+}
+.cart-item-price {
+    font-size: 15px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 8px;
+}
+.cart-item-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+.quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 20px;
+    padding: 3px 6px;
+    background: #fafafa;
+}
+.quantity-btn {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 0;
+    background: #fff;
+    color: #222;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+    transition: var(--transition);
+    box-shadow: 0 1px 3px rgba(0,0,0,.06);
+}
+.quantity-btn:hover {
+    background: var(--gold-light);
+    color: #111;
+}
+.quantity-control span {
+    font-weight: 600;
+    font-size: 13px;
+    min-width: 18px;
+    text-align: center;
+}
+.remove-item {
+    background: none;
+    border: none;
+    color: #c00;
+    cursor: pointer;
+    font-size: 15px;
+    padding: 6px;
+    border-radius: 50%;
+    transition: var(--transition);
+}
+.remove-item:hover {
+    background: #ffeaea;
+}
+
+/* ========== CART SUMMARY ========== */
+.cart-summary-box {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 100%;
+}
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 10px;
+}
+.summary-row.total {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111;
+    border-top: 1px solid #eee;
+    padding-top: 14px;
+    margin-top: 14px;
+    margin-bottom: 16px;
+}
+.checkout-btn {
+    width: 100%;
+    height: 48px;
+    border: 0;
+    border-radius: 24px;
+    background: var(--black);
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.checkout-btn:hover {
+    background: var(--gold-light);
+    color: #111;
+    transform: translateY(-2px);
+}
+.checkout-btn:active { transform: translateY(0); }
+
+/* ========== EMPTY STATE ========== */
+.empty-cart {
+    text-align: center;
+    padding: 70px 20px;
+    color: #999;
+    background: #fafafa;
+    border-radius: 10px;
+    border: 1px dashed #ddd;
+}
+.empty-cart i {
+    font-size: 60px;
+    color: #ddd;
+    margin-bottom: 18px;
+    display: block;
+}
+.empty-cart h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 6px;
+    font-weight: 700;
+}
+.empty-cart p {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 20px;
+}
+.empty-cart a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--gold-light);
+    color: #111;
+    padding: 12px 28px;
+    border-radius: 24px;
+    font-size: 13px;
+    font-weight: 700;
+    transition: var(--transition);
+}
+.empty-cart a:hover {
+    background: var(--black);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* ========== FOOTER ========== */
+.footer {
+    background: #030506;
+    color: #aaa;
+    padding: 25px 0;
+    margin-top: auto;
+    flex-shrink: 0;
+}
+.footer-inner {
+    display: flex; align-items: center;
+    justify-content: space-between;
+}
+.footer-brand {
+    font-family: "Cormorant Garamond", serif;
+    color: var(--gold-light);
+    font-size: 22px; font-weight: 700;
+}
+.footer-slogan {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic; font-size: 13px; color: #999;
+}
+.copyright { font-size: 9px; color: #666; }
+
+/* ========== NOTIFICATION ========== */
+.notification {
+    position: fixed;
+    right: 20px; bottom: 90px;
+    background: #080a0c; color: white;
+    border-left: 4px solid var(--gold-light);
+    padding: 12px 18px;
+    border-radius: 5px;
+    font-size: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,.25);
+    transform: translateX(140%);
+    transition: .3s ease;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.notification.show { transform: translateX(0); }
+.notification i { color: var(--gold-light); }
+
+/* ========== MOBILE HEADER ========== */
+.mobile-header {
+    display: none;
+    background: var(--black);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid var(--gold-dark);
+    padding: 8px 0 4px;
+    width: 100%;
+    overflow: hidden;
+}
+.mobile-header-top {
+    height: 55px;
+    display: flex; align-items: center;
+    justify-content: space-between;
+}
+.mobile-brand {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 22px; font-weight: 700;
+    color: var(--cream);
+}
+.mobile-actions { display: flex; gap: 18px; }
+.mobile-actions button {
+    background: transparent; border: none;
+    color: white; font-size: 20px;
+    position: relative;
+}
+.mobile-search { display: none; padding-bottom: 10px; }
+.mobile-search.show { display: block; }
+.mobile-search input {
+    width: 100%; height: 38px;
+    border-radius: 22px;
+    border: 1px solid #555;
+    background: #111; color: white;
+    padding: 0 15px; outline: none;
+}
+
+/* ========== BOTTOM TABS ========== */
+.mobile-tabs {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    height: 72px;
+    background: #0b0e10;
+    border-top: 2px solid var(--gold-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1200;
+    box-shadow: 0 -4px 12px rgba(0,0,0,.4);
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.mobile-tab {
+    flex: 1;
+    max-width: 160px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    height: 100%;
+    color: #9a9a9a;
+    font-size: 11px; font-weight: 500;
+    transition: var(--transition);
+    position: relative;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+.mobile-tab i { font-size: 22px; margin-bottom: 4px; }
+.mobile-tab.active { color: var(--gold-light); }
+.mobile-tab.active::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 40%; height: 3px;
+    background: var(--gold-light);
+    border-radius: 0 0 3px 3px;
+}
+.tab-badge {
+    position: absolute;
+    top: 6px; right: calc(50% - 30px);
+    background: var(--gold-light);
+    color: #111;
+    font-size: 10px; font-weight: 700;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,.3);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1000px) {
+    .main-header { height: auto; padding: 15px 0; }
+    .main-header-inner { grid-template-columns: 1fr; }
+    .search-area { order: 2; justify-content: center; }
+    .header-actions { order: 3; justify-content: center; }
+    .brand { order: 1; }
+}
+
+@media (max-width: 768px) {
     .desktop-header { display: none; }
-    .mobile-header {
-      background-color: white; padding: 15px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-      position: sticky; top: 0; z-index: 999;
-    }
-    .mobile-header-top {
-      display: flex; justify-content: space-between;
-      align-items: center; margin-bottom: 10px;
-    }
-    .mobile-logo {
-      display: flex; align-items: center;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700; font-size: 20px; color: var(--dark);
-    }
-    .mobile-logo span { color: var(--primary); }
-    .mobile-header-actions { display: flex; gap: 15px; align-items: center; }
-    .mobile-search-btn, .mobile-cart-btn {
-      background: none; border: none; font-size: 20px;
-      color: var(--dark); cursor: pointer; position: relative;
-    }
-    #mobile-cart-count {
-      position: absolute; top: -5px; right: -5px;
-      background-color: var(--accent); color: white;
-      border-radius: 50%; width: 18px; height: 18px;
-      display: flex; align-items: center; justify-content: center; font-size: 10px;
-    }
-    .cart-header {
-      padding: 20px 15px; background-color: white;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08); margin-bottom: 15px;
-    }
-    .cart-header h2 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 24px; color: var(--dark);
-    }
-    .cart-items { padding: 0 15px; }
-    .cart-item {
-      display: flex; background-color: white;
-      border-radius: var(--border-radius); padding: 15px;
-      margin-bottom: 15px; box-shadow: var(--shadow);
-    }
-    .cart-item-image {
-      width: 80px; height: 80px; border-radius: 8px;
-      overflow: hidden; flex-shrink: 0;
-    }
-    .cart-item-image img { width: 100%; height: 100%; object-fit: cover; }
-    .cart-item-details { flex: 1; padding-left: 15px; display: flex; flex-direction: column; }
-    .cart-item-title { font-weight: 600; margin-bottom: 5px; font-size: 14px; }
-    .cart-item-price { color: var(--primary); font-weight: 600; margin-bottom: 10px; }
-    .cart-item-actions { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
-    .quantity-control { display: flex; align-items: center; gap: 10px; }
-    .quantity-btn {
-      width: 24px; height: 24px; border-radius: 50%;
-      border: 1px solid #ddd; background-color: white;
-      cursor: pointer; display: flex;
-      align-items: center; justify-content: center; font-size: 14px;
-    }
-    .remove-item { background: none; border: none; color: var(--accent); cursor: pointer; font-size: 16px; }
-    .cart-footer {
-      position: fixed; bottom: var(--mobile-tab-height);
-      left: 0; right: 0; background-color: white;
-      padding: 15px; box-shadow: 0 -2px 10px rgba(0,0,0,0.08); z-index: 998;
-    }
-    .cart-summary { margin-bottom: 15px; }
-    .summary-row { display: flex; justify-content: space-between; margin-bottom: 8px; }
-    .cart-total { font-size: 18px; font-weight: 700; color: var(--dark); }
-    .empty-cart { text-align: center; padding: 60px 20px; color: var(--gray); }
-    .empty-cart i { font-size: 60px; margin-bottom: 15px; color: #ddd; }
-    .notification {
-      position: fixed; top: 20px; right: 15px; left: 15px;
-      background-color: var(--success); color: white;
-      padding: 15px; border-radius: var(--border-radius);
-      box-shadow: var(--shadow); z-index: 1200;
-      display: flex; align-items: center; gap: 10px;
-      transform: translateY(-100px); opacity: 0;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-    .notification.show { transform: translateY(0); opacity: 1; }
-    @media (min-width: 768px) {
-      body { padding-bottom: 0; }
-      .mobile-tabs, .mobile-header { display: none; }
-      .desktop-header { display: block; background-color: white; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
-      .top-bar { background-color: var(--dark); color: white; padding: 8px 0; font-size: 14px; }
-      .top-bar .container { display: flex; justify-content: space-between; }
-      .top-bar-links { display: flex; gap: 20px; }
-      .top-bar-links a:hover { color: var(--primary); }
-      .main-header { padding: 15px 0; }
-      .main-header .container { display: flex; align-items: center; justify-content: space-between; }
-      .logo {
-        display: flex; align-items: center; gap: 10px;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 700; font-size: 24px; color: var(--dark); cursor: pointer;
-      }
-      .logo span { color: var(--primary); }
-      .search-container { flex: 1; max-width: 500px; margin: 0 20px; position: relative; }
-      .search-container input {
-        width: 100%; padding: 12px 20px;
-        border: 1px solid #ddd; border-radius: 30px; font-size: 16px;
-      }
-      .search-container button {
-        position: absolute; right: 5px; top: 50%;
-        transform: translateY(-50%); background-color: var(--primary);
-        color: white; border: none; width: 40px; height: 40px;
-        border-radius: 50%; cursor: pointer;
-      }
-      .header-actions { display: flex; align-items: center; gap: 20px; }
-      .action-item {
-        display: flex; flex-direction: column; align-items: center;
-        cursor: pointer; padding: 5px 10px;
-        border-radius: var(--border-radius); position: relative;
-      }
-      .action-item i { font-size: 22px; margin-bottom: 3px; color: var(--dark); }
-      .action-item span { font-size: 12px; font-weight: 500; }
-      .action-badge {
-        position: absolute; top: 0; right: 0;
-        background-color: var(--accent); color: white;
-        font-size: 10px; width: 18px; height: 18px;
-        border-radius: 50%; display: flex;
-        align-items: center; justify-content: center;
-      }
-      .nav-menu { background-color: var(--light); border-top: 1px solid #eee; }
-      .nav-menu ul { display: flex; justify-content: center; gap: 10px; padding: 15px 0; }
-      .nav-menu a {
-        padding: 8px 20px; font-weight: 500;
-        color: var(--dark); border-radius: 30px; cursor: pointer;
-      }
-      .nav-menu a:hover, .nav-menu a.active { background-color: var(--primary); color: white; }
-      .cart-footer {
-        position: static; box-shadow: none;
-        padding: 20px; max-width: 500px; margin: 20px auto;
-      }
-    }
-  </style>
+    .mobile-header { display: block; }
+    .page-header-block { padding: 20px 0 12px; }
+    .page-header-block h1 { font-size: 26px; }
+    .cart-item-image { width: 76px; height: 76px; }
+    .cart-item-title { font-size: 12px; }
+    .cart-item-price { font-size: 13px; }
+    .cart-summary-box { padding: 16px; }
+    .footer-inner { flex-direction: column; gap: 10px; text-align: center; }
+}
+
+@media (max-width: 430px) {
+    .container { width: calc(100% - 24px); }
+    .cart-item { padding: 10px; gap: 10px; }
+    .cart-item-image { width: 68px; height: 68px; }
+}
+</style>
 </head>
+
 <body>
-  <!-- Desktop Header -->
-  <header class="desktop-header">
+
+<!-- ========== DESKTOP HEADER ========== -->
+<header class="desktop-header">
     <div class="top-bar">
-      <div class="container">
-        <span>Free shipping on orders over $50</span>
-        <div class="top-bar-links">
-          <a href="#">Track Order</a>
-          <a href="#">Our Story</a>
-          <a href="#">Contact</a>
+        <div class="container top-bar-inner">
+            <div class="shipping">
+                <i class="fas fa-truck"></i> Free shipping on orders over $50
+            </div>
+            <div class="top-navigation">
+                <a href="#">Track Order</a>
+                <a href="#">Our Story</a>
+                <a href="#">Contact</a>
+            </div>
         </div>
-      </div>
     </div>
+
     <div class="main-header">
-      <div class="container">
-        <a href="index.html" class="logo"><span>Brew's</span> Beads & Craft</a>
-        <div class="search-container">
-          <input type="text" id="searchInput" placeholder="Search for beads, crafts, supplies...">
-          <button onclick="searchProducts()"><i class="fas fa-search"></i></button>
+        <div class="container main-header-inner">
+            <div class="search-area">
+                <div class="search-box">
+                    <input id="searchInput" type="text" placeholder="Search for beads, crafts, supplies...">
+                    <button onclick="searchProducts()"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+
+            <a href="index.html" class="brand">
+                <div class="brand-top">
+                    <div class="gb-logo">GB</div>
+                    <div>
+                        <div class="brand-name">Georgie Brew Creation</div>
+                        <div class="brand-tagline">Beadwork • Accessories • Fashion</div>
+                    </div>
+                </div>
+            </a>
+
+            <div class="header-actions">
+                <div class="header-action" onclick="window.location.href='account.html'">
+                    <i class="far fa-user"></i><span class="label">Account</span>
+                </div>
+                <div class="header-action" onclick="window.location.href='wishlist.html'">
+                    <i class="far fa-heart"></i><span class="label">Wishlist</span>
+                    <span id="wishlist-count" class="header-badge" style="display:none;">0</span>
+                </div>
+                <div class="header-action" onclick="window.location.href='cart.html'">
+                    <i class="fas fa-shopping-cart"></i><span class="label">Cart</span>
+                    <span id="cart-count" class="header-badge">0</span>
+                </div>
+            </div>
         </div>
-        <div class="header-actions">
-          <div class="action-item" onclick="window.location.href='account.html'">
-            <i class="far fa-user"></i><span>Account</span>
-          </div>
-          <div class="action-item" onclick="window.location.href='wishlist.html'">
-            <i class="far fa-heart"></i><span>Wishlist</span>
-            <span id="desktop-wishlist-count" class="action-badge" style="display: none;">0</span>
-          </div>
-          <div class="action-item" onclick="window.location.href='cart.html'">
-            <i class="fas fa-shopping-cart"></i><span>Cart</span>
-            <span id="desktop-cart-count" class="action-badge">0</span>
-          </div>
+    </div>
+</header>
+
+<!-- ========== MOBILE HEADER ========== -->
+<header class="mobile-header">
+    <div class="container">
+        <div class="mobile-header-top">
+            <a href="index.html" class="mobile-brand">Georgie Brew Creation</a>
+            <div class="mobile-actions">
+                <button onclick="toggleMobileSearch()"><i class="fas fa-search"></i></button>
+                <button onclick="window.location.href='cart.html'">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="mobile-cart-count" class="header-badge" style="display:none;">0</span>
+                </button>
+            </div>
         </div>
-      </div>
+        <div class="mobile-search" id="mobile-search">
+            <input id="mobile-search-input" type="text" placeholder="Search products..." onkeydown="mobileSearch(event)">
+        </div>
     </div>
-    <nav class="nav-menu">
-      <div class="container">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="shop.html">Shop</a></li>
-          <li><a href="#">Beads</a></li>
-          <li><a href="#">Jewelry Making</a></li>
-          <li><a href="#">Craft Supplies</a></li>
-          <li><a href="#">Sale</a></li>
-        </ul>
-      </div>
-    </nav>
-  </header>
+</header>
 
-  <!-- Mobile Header -->
-  <header class="mobile-header">
-    <div class="mobile-header-top">
-      <a href="index.html" class="mobile-logo"><span>Brew's</span> Beads & Craft</a>
-      <div class="mobile-header-actions">
-        <button class="mobile-search-btn" onclick="toggleMobileSearch()"><i class="fas fa-search"></i></button>
-        <button class="mobile-cart-btn" onclick="window.location.href='cart.html'">
-          <i class="fas fa-shopping-cart"></i><span id="mobile-cart-count">0</span>
-        </button>
-      </div>
+<!-- ========== PAGE HEADER ========== -->
+<section>
+    <div class="container page-header-block">
+        <h1>Shopping Cart</h1>
+        <p id="cart-subtitle">Review your items and proceed to checkout.</p>
     </div>
-    <div class="mobile-search-container" id="mobile-search-container">
-      <input type="text" class="mobile-search-input" id="mobile-search-input" placeholder="Search products..." onkeyup="searchProductsMobile(event)">
+</section>
+
+<!-- ========== CART CONTENT ========== -->
+<section class="cart-section">
+    <div class="container">
+        <div class="cart-items" id="cart-items"></div>
+        <div id="cart-summary"></div>
     </div>
-  </header>
+</section>
 
-  <!-- Cart Content -->
-  <div class="cart-header">
-    <h2>Your Cart</h2>
-  </div>
-  <div class="cart-items" id="cart-items"></div>
-  <div class="cart-footer" id="cart-footer"></div>
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+    <div class="container footer-inner">
+        <div>
+            <div class="footer-brand">Georgie Brew Creation</div>
+            <div class="footer-slogan">More Than Beads... It's a Lifestyle.</div>
+        </div>
+        <div class="copyright">© 2026 Georgie Brew Creation. All Rights Reserved.</div>
+    </div>
+</footer>
 
-  <!-- Mobile Tabs -->
-  <nav class="mobile-tabs">
+<!-- ========== BOTTOM TABS ========== -->
+<nav class="mobile-tabs">
     <div class="mobile-tab" onclick="window.location.href='index.html'">
-      <i class="fas fa-home"></i><span>Home</span>
+        <i class="fas fa-home"></i><span>Home</span>
     </div>
     <div class="mobile-tab" onclick="window.location.href='shop.html'">
-      <i class="fas fa-store"></i><span>Shop</span>
+        <i class="fas fa-store"></i><span>Shop</span>
     </div>
     <div class="mobile-tab active" onclick="window.location.href='cart.html'">
-      <i class="fas fa-shopping-cart"></i><span>Cart</span>
-      <span class="tab-badge" id="cart-badge">0</span>
+        <i class="fas fa-shopping-cart"></i><span>Cart</span>
+        <span class="tab-badge" id="cart-tab-badge">0</span>
     </div>
     <div class="mobile-tab" onclick="window.location.href='wishlist.html'">
-      <i class="fas fa-heart"></i><span>Wishlist</span>
-      <span class="tab-badge" id="wishlist-badge">0</span>
+        <i class="fas fa-heart"></i><span>Wishlist</span>
+        <span class="tab-badge" id="wishlist-tab-badge">0</span>
     </div>
     <div class="mobile-tab" onclick="window.location.href='account.html'">
-      <i class="fas fa-user"></i><span>Account</span>
+        <i class="fas fa-user"></i><span>Account</span>
     </div>
-  </nav>
+</nav>
 
-  <div class="notification" id="notification">
+<div id="notification" class="notification">
     <i class="fas fa-check-circle" id="notification-icon"></i>
-    <span id="notification-text">Product added to cart!</span>
-  </div>
+    <span id="notification-text"></span>
+</div>
 
-  <script>
-    const state = {
-      cart: JSON.parse(localStorage.getItem('cart') || '[]'),
-      wishlist: JSON.parse(localStorage.getItem('wishlist') || '[]'),
-      currentUser: localStorage.getItem('currentUser') || null
-    };
+<script>
+/* ========== HELPERS ========== */
+function getCart(){ return JSON.parse(localStorage.getItem("cart") || "[]"); }
+function setCart(c){ localStorage.setItem("cart", JSON.stringify(c)); }
+function getWishlist(){ return JSON.parse(localStorage.getItem("wishlist") || "[]"); }
 
-    function saveState() {
-      localStorage.setItem('cart', JSON.stringify(state.cart));
-      localStorage.setItem('wishlist', JSON.stringify(state.wishlist));
+function updateAllBadges(){
+    const cart = getCart();
+    const wishlist = getWishlist();
+    const cartTotal = cart.reduce((s,i) => s + i.quantity, 0);
+    const wishTotal = wishlist.length;
+
+    ["cart-count","mobile-cart-count","cart-tab-badge"].forEach(id => {
+        const el = document.getElementById(id);
+        if(el){
+            el.textContent = cartTotal;
+            if(id === "mobile-cart-count" || id === "cart-count"){
+                el.style.display = cartTotal > 0 ? "flex" : "none";
+            }
+        }
+    });
+    const wb = document.getElementById("wishlist-tab-badge");
+    if(wb) wb.textContent = wishTotal;
+    const wc = document.getElementById("wishlist-count");
+    if(wc){
+        wc.textContent = wishTotal;
+        wc.style.display = wishTotal > 0 ? "flex" : "none";
+    }
+}
+
+/* ========== RENDER CART ========== */
+function renderCart(){
+    const cart = getCart();
+    const itemsContainer = document.getElementById("cart-items");
+    const summaryContainer = document.getElementById("cart-summary");
+    const subtitle = document.getElementById("cart-subtitle");
+
+    const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    const itemCount = cart.reduce((s,i) => s + i.quantity, 0);
+
+    // Empty state
+    if(cart.length === 0){
+        subtitle.textContent = "Your cart is empty.";
+        itemsContainer.innerHTML = `
+            <div class="empty-cart">
+                <i class="fas fa-shopping-cart"></i>
+                <h3>Your cart is empty</h3>
+                <p>Add some beautiful pieces to get started!</p>
+                <a href="shop.html"><i class="fas fa-store"></i> Start Shopping</a>
+            </div>`;
+        summaryContainer.innerHTML = "";
+        return;
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
-      renderCart();
-      updateCartUI();
-      updateWishlistUI();
-    });
+    subtitle.textContent = itemCount + " item" + (itemCount === 1 ? "" : "s") + " in your cart.";
 
-    function renderCart() {
-      const container = document.getElementById('cart-items');
-      const footer = document.getElementById('cart-footer');
-      const subtotal = state.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-      
-      if (state.cart.length === 0) {
-        container.innerHTML = `
-          <div class="empty-cart">
-            <i class="fas fa-shopping-cart"></i>
-            <h3>Your cart is empty</h3>
-            <p>Add some products to get started!</p>
-            <button class="btn" style="margin-top: 20px;" onclick="window.location.href='shop.html'">Start Shopping</button>
-          </div>
-        `;
-        footer.innerHTML = '';
-      } else {
-        container.innerHTML = state.cart.map(item => `
-          <div class="cart-item">
+    // Cart items
+    itemsContainer.innerHTML = cart.map(item => `
+        <div class="cart-item">
             <div class="cart-item-image">
-              <img src="${item.image}" alt="${item.name}">
+                <img src="${item.image}" alt="${item.name}">
             </div>
             <div class="cart-item-details">
-              <div class="cart-item-title">${item.name}</div>
-              <div class="cart-item-price">$${item.price.toFixed(2)}</div>
-              <div class="cart-item-actions">
-                <div class="quantity-control">
-                  <button class="quantity-btn" onclick="updateCartQuantity(${item.id}, -1)">-</button>
-                  <span style="font-weight: 600;">${item.quantity}</span>
-                  <button class="quantity-btn" onclick="updateCartQuantity(${item.id}, 1)">+</button>
+                <div>
+                    <div class="cart-item-title">${item.name}</div>
+                    <div class="cart-item-category">Handcrafted • Georgie Brew</div>
+                    <div class="cart-item-price">$${item.price.toFixed(2)}</div>
                 </div>
-                <button class="remove-item" onclick="removeFromCart(${item.id})">
-                  <i class="fas fa-trash"></i>
-                </button>
-              </div>
+                <div class="cart-item-actions">
+                    <div class="quantity-control">
+                        <button class="quantity-btn" onclick="updateQty(${item.id}, -1)">−</button>
+                        <span>${item.quantity}</span>
+                        <button class="quantity-btn" onclick="updateQty(${item.id}, 1)">+</button>
+                    </div>
+                    <button class="remove-item" onclick="removeFromCart(${item.id})" title="Remove">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
             </div>
-          </div>
-        `).join('');
-        
-        footer.innerHTML = `
-          <div class="cart-summary">
+        </div>
+    `).join("");
+
+    // Summary
+    const shipping = subtotal > 50 ? 0 : 5.00;
+    summaryContainer.innerHTML = `
+        <div class="cart-summary-box">
             <div class="summary-row">
-              <span>Subtotal:</span>
-              <span>$${subtotal.toFixed(2)}</span>
+                <span>Subtotal</span>
+                <span>$${subtotal.toFixed(2)}</span>
             </div>
             <div class="summary-row">
-              <span>Shipping:</span>
-              <span>Calculated at checkout</span>
+                <span>Shipping</span>
+                <span>${shipping === 0 ? "FREE" : "$" + shipping.toFixed(2)}</span>
             </div>
-            <div class="summary-row cart-total">
-              <span>Total:</span>
-              <span>$${subtotal.toFixed(2)}</span>
+            <div class="summary-row total">
+                <span>Total</span>
+                <span>$${(subtotal + shipping).toFixed(2)}</span>
             </div>
-          </div>
-          <button class="btn btn-accent" style="width: 100%;" onclick="checkout()">Proceed to Checkout</button>
-        `;
-      }
-    }
+            <button class="checkout-btn" onclick="checkout()">
+                Proceed to Checkout <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>`;
+}
 
-    function updateCartQuantity(productId, change) {
-      const itemIndex = state.cart.findIndex(item => item.id === productId);
-      if (itemIndex === -1) return;
-      state.cart[itemIndex].quantity += change;
-      if (state.cart[itemIndex].quantity <= 0) {
-        state.cart.splice(itemIndex, 1);
-      }
-      saveState();
-      updateCartUI();
-      renderCart();
+/* ========== CART ACTIONS ========== */
+function updateQty(productId, change){
+    const cart = getCart();
+    const item = cart.find(i => i.id === productId);
+    if(!item) return;
+    item.quantity += change;
+    if(item.quantity <= 0){
+        const idx = cart.indexOf(item);
+        cart.splice(idx, 1);
+        showNotification("Item removed from cart.");
     }
+    setCart(cart);
+    updateAllBadges();
+    renderCart();
+}
 
-    function removeFromCart(productId) {
-      const itemIndex = state.cart.findIndex(item => item.id === productId);
-      if (itemIndex !== -1) {
-        state.cart.splice(itemIndex, 1);
-        saveState();
-        updateCartUI();
-        renderCart();
-        showNotification('Item removed from cart');
-      }
-    }
+function removeFromCart(productId){
+    const cart = getCart().filter(i => i.id !== productId);
+    setCart(cart);
+    updateAllBadges();
+    renderCart();
+    showNotification("Item removed from cart.");
+}
 
-    function checkout() {
-      if (state.cart.length === 0) {
-        showNotification('Your cart is empty!', 'error');
+function checkout(){
+    const cart = getCart();
+    if(cart.length === 0){
+        showNotification("Your cart is empty!", "error");
         return;
-      }
-      if (!state.currentUser) {
-        showNotification('Please login to checkout', 'info');
-        setTimeout(() => window.location.href = 'account.html', 1000);
-        return;
-      }
-      const total = state.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-      showNotification(`Order placed! Total: $${total.toFixed(2)}`, 'success');
-      state.cart = [];
-      saveState();
-      updateCartUI();
-      renderCart();
     }
+    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    showNotification(`Order placed! Total: $${total.toFixed(2)}`, "success");
+    setCart([]);
+    updateAllBadges();
+    renderCart();
+}
 
-    function updateCartUI() {
-      const totalItems = state.cart.reduce((total, item) => total + item.quantity, 0);
-      document.getElementById('mobile-cart-count').textContent = totalItems;
-      document.getElementById('cart-badge').textContent = totalItems;
-      document.getElementById('desktop-cart-count').textContent = totalItems;
-    }
+/* ========== SEARCH ========== */
+function searchProducts(){
+    const q = document.getElementById("searchInput").value.trim();
+    if(q) window.location.href = "shop.html?search=" + encodeURIComponent(q);
+}
 
-    function updateWishlistUI() {
-      const totalItems = state.wishlist.length;
-      document.getElementById('wishlist-badge').textContent = totalItems;
-      const desktopWishlistCount = document.getElementById('desktop-wishlist-count');
-      if (totalItems > 0) {
-        desktopWishlistCount.style.display = 'flex';
-        desktopWishlistCount.textContent = totalItems;
-      } else {
-        desktopWishlistCount.style.display = 'none';
-      }
-    }
+function toggleMobileSearch(){
+    document.getElementById("mobile-search").classList.toggle("show");
+}
 
-    function toggleMobileSearch() {
-      const searchContainer = document.getElementById('mobile-search-container');
-      searchContainer.classList.toggle('active');
-      if (searchContainer.classList.contains('active')) {
-        document.getElementById('mobile-search-input').focus();
-      }
-    }
+function mobileSearch(e){
+    if(e.key !== "Enter") return;
+    const q = e.target.value.trim();
+    if(q) window.location.href = "shop.html?search=" + encodeURIComponent(q);
+}
 
-    function searchProductsMobile(event) {
-      if (event.key === 'Enter') {
-        window.location.href = `shop.html?search=${encodeURIComponent(event.target.value)}`;
-      }
-    }
+/* ========== NOTIFICATION ========== */
+function showNotification(msg, type = "success"){
+    const n = document.getElementById("notification");
+    const text = document.getElementById("notification-text");
+    const icon = document.getElementById("notification-icon");
+    if(!n) return;
 
-    function searchProducts() {
-      const query = document.getElementById('searchInput')?.value || '';
-      if (query.trim()) {
-        window.location.href = `shop.html?search=${encodeURIComponent(query)}`;
-      }
+    text.textContent = msg;
+    if(type === "error"){
+        icon.className = "fas fa-exclamation-circle";
+        n.style.borderLeftColor = "#ef3030";
+    } else if(type === "info"){
+        icon.className = "fas fa-info-circle";
+        n.style.borderLeftColor = "#3498db";
+    } else {
+        icon.className = "fas fa-check-circle";
+        n.style.borderLeftColor = "var(--gold-light)";
     }
+    n.classList.add("show");
+    setTimeout(() => n.classList.remove("show"), 2500);
+}
 
-    function showNotification(message, type = 'success') {
-      const text = document.getElementById('notification-text');
-      const icon = document.getElementById('notification-icon');
-      const notification = document.getElementById('notification');
-      text.textContent = message;
-      if (type === 'error') {
-        icon.className = 'fas fa-exclamation-circle';
-        notification.style.backgroundColor = '#e74c3c';
-      } else if (type === 'info') {
-        icon.className = 'fas fa-info-circle';
-        notification.style.backgroundColor = '#3498db';
-      } else {
-        icon.className = 'fas fa-check-circle';
-        notification.style.backgroundColor = '#2ecc71';
-      }
-      notification.classList.add('show');
-      setTimeout(() => notification.classList.remove('show'), 3000);
-    }
-  </script>
+/* ========== INIT ========== */
+document.addEventListener("DOMContentLoaded", () => {
+    renderCart();
+    updateAllBadges();
+});
+</script>
+
 </body>
 </html>
