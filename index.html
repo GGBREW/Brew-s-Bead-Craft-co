@@ -454,16 +454,16 @@ ul { list-style: none; }
     padding: 0 15px; outline: none;
 }
 
-/* ========== MOBILE TABS ========== */
+/* ========== BOTTOM TABS (now visible on all screens) ========== */
 .mobile-tabs {
     position: fixed;
     bottom: 0; left: 0; right: 0;
-    height: 68px;
+    height: 72px;
     background: #0b0e10;
     border-top: 2px solid var(--gold-dark);
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     z-index: 1200;
     box-shadow: 0 -4px 12px rgba(0,0,0,.4);
     overflow: hidden;
@@ -471,6 +471,7 @@ ul { list-style: none; }
 }
 .mobile-tab {
     flex: 1;
+    max-width: 160px;
     display: flex; flex-direction: column;
     align-items: center; justify-content: center;
     height: 100%;
@@ -494,7 +495,7 @@ ul { list-style: none; }
 }
 .tab-badge {
     position: absolute;
-    top: 6px; right: 18%;
+    top: 6px; right: calc(50% - 30px);
     background: var(--gold-light);
     color: #111;
     font-size: 10px; font-weight: 700;
@@ -502,11 +503,6 @@ ul { list-style: none; }
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     box-shadow: 0 2px 6px rgba(0,0,0,.3);
-}
-
-@media (min-width: 769px) {
-    .mobile-tabs, .mobile-header { display: none; }
-    body { padding-bottom: 0; }
 }
 
 /* ========== RESPONSIVE ========== */
@@ -703,7 +699,7 @@ ul { list-style: none; }
     </div>
 </footer>
 
-<!-- ========== MOBILE TABS ========== -->
+<!-- ========== BOTTOM TABS ========== -->
 <nav class="mobile-tabs">
     <div class="mobile-tab active" onclick="window.location.href='index.html'">
         <i class="fas fa-home"></i><span>Home</span>
@@ -727,7 +723,7 @@ ul { list-style: none; }
 <div id="notification" class="notification"></div>
 
 <script>
-/* ========== SHARED DATA (put in separate shared.js if you prefer) ========== */
+/* ========== SHARED DATA ========== */
 const PRODUCTS = [
     { id:1, name:"Elegant Bead Jewelry Set", description:"Necklace • Earrings • Bracelet",
       price:28.50, category:"Necklace",
@@ -748,22 +744,10 @@ const PRODUCTS = [
     { id:5, name:"Crystal School Bag", description:"Strong • Stylish • Spacious",
       price:38.00, category:"Bag",
       image:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=700&q=85",
-      rating:5, reviews:14, badge:"TRENDING" },
-    { id:6, name:"Pearl Bracelet", description:"Elegant • Handcrafted",
-      price:19.99, category:"Bracelet",
-      image:"https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=700&q=85",
-      rating:5, reviews:22, badge:"" },
-    { id:7, name:"Beaded Necklace", description:"Traditional • Colourful",
-      price:24.50, category:"Necklace",
-      image:"https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=700&q=85",
-      rating:5, reviews:11, badge:"" },
-    { id:8, name:"Crystal Beaded Bag", description:"Sparkling • Evening Wear",
-      price:65.00, category:"Crystal Bags",
-      image:"https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=700&q=85",
-      rating:5, reviews:8, badge:"NEW" }
+      rating:5, reviews:14, badge:"TRENDING" }
 ];
 
-/* ========== CART HELPERS (shared across pages) ========== */
+/* ========== CART HELPERS ========== */
 function getCart(){ return JSON.parse(localStorage.getItem("cart") || "[]"); }
 function setCart(c){ localStorage.setItem("cart", JSON.stringify(c)); }
 function getWishlist(){ return JSON.parse(localStorage.getItem("wishlist") || "[]"); }
