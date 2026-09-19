@@ -5,12 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <title>Brew's Beads & Craft Co. | Premium Craft Supplies</title>
-
+  <title>Brew's Beads & Craft Co. | Home</title>
   <style>
-    /* CSS Variables for easy theming */
     :root {
-      --primary: #8a6d3b; /* Earthy brown for crafts */
+      --primary: #8a6d3b;
       --primary-dark: #6d4c1e;
       --secondary: #3498db;
       --accent: #e74c3c;
@@ -23,14 +21,7 @@
       --border-radius: 12px;
       --mobile-tab-height: 60px;
     }
-
-    /* Reset and Base Styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Poppins', sans-serif;
       line-height: 1.6;
@@ -39,30 +30,12 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      padding-bottom: var(--mobile-tab-height); /* Space for mobile tabs */
+      padding-bottom: var(--mobile-tab-height);
     }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    ul {
-      list-style: none;
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 15px;
-    }
-
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    img { max-width: 100%; height: auto; }
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
     .btn {
       display: inline-block;
       padding: 12px 24px;
@@ -75,1011 +48,210 @@
       transition: var(--transition);
       text-align: center;
     }
-
-    .btn:hover {
-      background-color: var(--primary-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 5px 10px rgba(138, 109, 59, 0.2);
-    }
-
-    .btn-secondary {
-      background-color: var(--secondary);
-    }
-
-    .btn-secondary:hover {
-      background-color: #2980b9;
-    }
-
-    .btn-accent {
-      background-color: var(--accent);
-    }
-
-    .btn-accent:hover {
-      background-color: #c0392b;
-    }
-
-    .btn-outline {
-      background-color: transparent;
-      border: 2px solid var(--primary);
-      color: var(--primary);
-    }
-
-    .btn-outline:hover {
-      background-color: var(--primary);
-      color: white;
-    }
-
-    /* Mobile Tabs Navigation */
+    .btn:hover { background-color: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 5px 10px rgba(138, 109, 59, 0.2); }
+    .btn-outline { background-color: transparent; border: 2px solid var(--primary); color: var(--primary); }
+    .btn-outline:hover { background-color: var(--primary); color: white; }
     .mobile-tabs {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      position: fixed; bottom: 0; left: 0; right: 0;
       height: var(--mobile-tab-height);
       background-color: white;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
+      display: flex; justify-content: space-around; align-items: center;
       box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
       z-index: 1000;
     }
-
     .mobile-tab {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-      color: var(--gray);
-      transition: var(--transition);
-      position: relative;
+      flex: 1; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      height: 100%; color: var(--gray);
+      transition: var(--transition); position: relative;
     }
-
-    .mobile-tab.active {
-      color: var(--primary);
-    }
-
+    .mobile-tab.active { color: var(--primary); }
     .mobile-tab.active::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 40%;
-      height: 3px;
-      background-color: var(--primary);
-      border-radius: 0 0 3px 3px;
+      content: ''; position: absolute; top: 0; left: 50%;
+      transform: translateX(-50%); width: 40%; height: 3px;
+      background-color: var(--primary); border-radius: 0 0 3px 3px;
     }
-
-    .mobile-tab i {
-      font-size: 20px;
-      margin-bottom: 4px;
-    }
-
-    .mobile-tab span {
-      font-size: 11px;
-      font-weight: 500;
-    }
-
+    .mobile-tab i { font-size: 20px; margin-bottom: 4px; }
+    .mobile-tab span { font-size: 11px; font-weight: 500; }
     .tab-badge {
-      position: absolute;
-      top: 8px;
-      right: 20%;
-      background-color: var(--accent);
-      color: white;
-      font-size: 10px;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      position: absolute; top: 8px; right: 20%;
+      background-color: var(--accent); color: white;
+      font-size: 10px; width: 16px; height: 16px;
+      border-radius: 50%; display: flex;
+      align-items: center; justify-content: center;
     }
-
-    /* Tab Content Sections */
-    .tab-content {
-      display: none;
-      animation: fadeIn 0.3s ease;
-    }
-
-    .tab-content.active {
-      display: block;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Header (Desktop Only) */
-    .desktop-header {
-      display: none;
-    }
-
-    /* Mobile Header */
+    .desktop-header { display: none; }
     .mobile-header {
-      background-color: white;
-      padding: 15px;
+      background-color: white; padding: 15px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-      position: sticky;
-      top: 0;
-      z-index: 999;
+      position: sticky; top: 0; z-index: 999;
     }
-
     .mobile-header-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
+      display: flex; justify-content: space-between;
+      align-items: center; margin-bottom: 10px;
     }
-
     .mobile-logo {
-      display: flex;
-      align-items: center;
+      display: flex; align-items: center;
       font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      font-size: 20px;
-      color: var(--dark);
+      font-weight: 700; font-size: 20px; color: var(--dark);
     }
-
-    .mobile-logo img {
-      height: 35px;
-      margin-right: 8px;
+    .mobile-logo span { color: var(--primary); }
+    .mobile-header-actions { display: flex; gap: 15px; align-items: center; }
+    .mobile-search-btn, .mobile-cart-btn {
+      background: none; border: none; font-size: 20px;
+      color: var(--dark); cursor: pointer; position: relative;
     }
-
-    .mobile-logo span {
-      color: var(--primary);
-    }
-
-    .mobile-header-actions {
-      display: flex;
-      gap: 15px;
-      align-items: center;
-    }
-
-    .mobile-search-btn {
-      background: none;
-      border: none;
-      font-size: 20px;
-      color: var(--dark);
-      cursor: pointer;
-    }
-
-    .mobile-cart-btn {
-      position: relative;
-      background: none;
-      border: none;
-      font-size: 20px;
-      color: var(--dark);
-      cursor: pointer;
-    }
-
     #mobile-cart-count {
-      position: absolute;
-      top: -5px;
-      right: -5px;
-      background-color: var(--accent);
-      color: white;
-      border-radius: 50%;
-      width: 18px;
-      height: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      position: absolute; top: -5px; right: -5px;
+      background-color: var(--accent); color: white;
+      border-radius: 50%; width: 18px; height: 18px;
+      display: flex; align-items: center; justify-content: center;
       font-size: 10px;
     }
-
-    .mobile-search-container {
-      display: none;
-      margin-top: 10px;
-    }
-
-    .mobile-search-container.active {
-      display: block;
-    }
-
+    .mobile-search-container { display: none; margin-top: 10px; }
+    .mobile-search-container.active { display: block; }
     .mobile-search-input {
-      width: 100%;
-      padding: 12px 15px;
-      border: 1px solid #ddd;
-      border-radius: 30px;
-      font-size: 16px;
+      width: 100%; padding: 12px 15px;
+      border: 1px solid #ddd; border-radius: 30px; font-size: 16px;
     }
-
-    /* Home Tab */
     .hero-slider {
-      position: relative;
-      height: 250px;
-      overflow: hidden;
+      position: relative; height: 250px; overflow: hidden;
       border-radius: 0 0 var(--border-radius) var(--border-radius);
     }
-
     .hero-slide {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      transition: opacity 0.5s ease;
-      background-size: cover;
-      background-position: center;
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      opacity: 0; transition: opacity 0.5s ease;
+      background-size: cover; background-position: center;
     }
-
-    .hero-slide.active {
-      opacity: 1;
-    }
-
+    .hero-slide.active { opacity: 1; }
     .hero-slide-content {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      position: absolute; bottom: 0; left: 0; right: 0;
       padding: 20px;
       background: linear-gradient(transparent, rgba(0,0,0,0.7));
       color: white;
     }
-
-    .hero-slide-content h2 {
-      font-size: 20px;
-      margin-bottom: 5px;
-    }
-
-    .hero-slide-content p {
-      font-size: 14px;
-      opacity: 0.9;
-    }
-
+    .hero-slide-content h2 { font-size: 20px; margin-bottom: 5px; }
+    .hero-slide-content p { font-size: 14px; opacity: 0.9; }
     .slider-dots {
-      position: absolute;
-      bottom: 15px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 8px;
+      position: absolute; bottom: 15px; left: 50%;
+      transform: translateX(-50%); display: flex; gap: 8px;
     }
-
     .slider-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background-color: rgba(255,255,255,0.5);
-      cursor: pointer;
+      width: 8px; height: 8px; border-radius: 50%;
+      background-color: rgba(255,255,255,0.5); cursor: pointer;
     }
-
-    .slider-dot.active {
-      background-color: white;
-    }
-
+    .slider-dot.active { background-color: white; }
     .categories-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-      padding: 20px 15px;
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 15px; padding: 20px 15px;
     }
-
     .category-card {
-      background-color: white;
-      border-radius: var(--border-radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      transition: var(--transition);
+      background-color: white; border-radius: var(--border-radius);
+      overflow: hidden; box-shadow: var(--shadow);
+      transition: var(--transition); cursor: pointer;
     }
-
-    .category-card:active {
-      transform: scale(0.98);
-    }
-
-    .category-card img {
-      height: 120px;
-      width: 100%;
-      object-fit: cover;
-    }
-
-    .category-card h3 {
-      padding: 15px 10px;
-      text-align: center;
-      font-size: 14px;
-      color: var(--dark);
-    }
-
-    /* Shop Tab */
-    .shop-header {
-      padding: 20px 15px 10px;
-    }
-
-    .shop-header h2 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 24px;
-      color: var(--dark);
-      margin-bottom: 15px;
-    }
-
-    .filter-tabs {
-      display: flex;
-      overflow-x: auto;
-      gap: 10px;
-      padding-bottom: 10px;
-    }
-
-    .filter-tab {
-      padding: 8px 16px;
-      background-color: white;
-      border: 1px solid #ddd;
-      border-radius: 20px;
-      white-space: nowrap;
-      font-size: 14px;
-      transition: var(--transition);
-    }
-
-    .filter-tab.active {
-      background-color: var(--primary);
-      color: white;
-      border-color: var(--primary);
-    }
-
+    .category-card:active { transform: scale(0.98); }
+    .category-card img { height: 120px; width: 100%; object-fit: cover; }
+    .category-card h3 { padding: 15px 10px; text-align: center; font-size: 14px; color: var(--dark); }
     .products-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-      padding: 0 15px 20px;
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 15px; padding: 0 15px 20px;
     }
-
     .product-card {
-      background-color: white;
-      border-radius: var(--border-radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      transition: var(--transition);
+      background-color: white; border-radius: var(--border-radius);
+      overflow: hidden; box-shadow: var(--shadow);
+      transition: var(--transition); cursor: pointer;
     }
-
-    .product-card:active {
-      transform: scale(0.98);
-    }
-
-    .product-image {
-      height: 150px;
-      width: 100%;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .product-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
+    .product-card:active { transform: scale(0.98); }
+    .product-image { height: 150px; width: 100%; position: relative; overflow: hidden; }
+    .product-image img { width: 100%; height: 100%; object-fit: cover; }
     .product-badge {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background-color: var(--accent);
-      color: white;
-      padding: 3px 8px;
-      border-radius: 4px;
-      font-size: 10px;
-      font-weight: 600;
+      position: absolute; top: 10px; left: 10px;
+      background-color: var(--accent); color: white;
+      padding: 3px 8px; border-radius: 4px;
+      font-size: 10px; font-weight: 600;
     }
-
-    .product-info {
-      padding: 12px;
-    }
-
-    .product-category {
-      color: var(--gray);
-      font-size: 11px;
-      margin-bottom: 4px;
-    }
-
+    .product-info { padding: 12px; }
+    .product-category { color: var(--gray); font-size: 11px; margin-bottom: 4px; }
     .product-title {
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: var(--dark);
-      font-size: 14px;
-      height: 40px;
-      overflow: hidden;
+      font-weight: 600; margin-bottom: 8px;
+      color: var(--dark); font-size: 14px;
+      height: 40px; overflow: hidden;
     }
-
-    .product-price {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 10px;
-    }
-
-    .current-price {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--primary);
-    }
-
-    .original-price {
-      font-size: 12px;
-      color: var(--gray);
-      text-decoration: line-through;
-    }
-
-    .product-rating {
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-
-    .stars {
-      color: #f1c40f;
-      font-size: 12px;
-      margin-right: 5px;
-    }
-
-    .rating-count {
-      color: var(--gray);
-      font-size: 11px;
-    }
-
-    /* Cart Tab */
-    .cart-header {
-      padding: 20px 15px;
-      background-color: white;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-      margin-bottom: 15px;
-    }
-
-    .cart-header h2 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 24px;
-      color: var(--dark);
-    }
-
-    .cart-items {
-      padding: 0 15px;
-    }
-
-    .cart-item {
-      display: flex;
-      background-color: white;
-      border-radius: var(--border-radius);
-      padding: 15px;
-      margin-bottom: 15px;
-      box-shadow: var(--shadow);
-    }
-
-    .cart-item-image {
-      width: 80px;
-      height: 80px;
-      border-radius: 8px;
-      overflow: hidden;
-      flex-shrink: 0;
-    }
-
-    .cart-item-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .cart-item-details {
-      flex: 1;
-      padding-left: 15px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .cart-item-title {
-      font-weight: 600;
-      margin-bottom: 5px;
-      font-size: 14px;
-    }
-
-    .cart-item-price {
-      color: var(--primary);
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-
-    .cart-item-actions {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: auto;
-    }
-
-    .quantity-control {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .quantity-btn {
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      border: 1px solid #ddd;
-      background-color: white;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-    }
-
-    .remove-item {
-      background: none;
-      border: none;
-      color: var(--accent);
-      cursor: pointer;
-      font-size: 16px;
-    }
-
-    .cart-footer {
-      position: fixed;
-      bottom: var(--mobile-tab-height);
-      left: 0;
-      right: 0;
-      background-color: white;
-      padding: 15px;
-      box-shadow: 0 -2px 10px rgba(0,0,0,0.08);
-      z-index: 998;
-    }
-
-    .cart-summary {
-      margin-bottom: 15px;
-    }
-
-    .summary-row {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 8px;
-    }
-
-    .cart-total {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--dark);
-    }
-
-    .empty-cart {
-      text-align: center;
-      padding: 60px 20px;
-      color: var(--gray);
-    }
-
-    .empty-cart i {
-      font-size: 60px;
-      margin-bottom: 15px;
-      color: #ddd;
-    }
-
-    /* Account Tab */
-    .account-header {
-      padding: 20px 15px;
-      background-color: white;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-      margin-bottom: 15px;
-    }
-
-    .account-header h2 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 24px;
-      color: var(--dark);
-    }
-
-    .account-info {
-      background-color: white;
-      border-radius: var(--border-radius);
-      padding: 20px;
-      margin: 0 15px 15px;
-      box-shadow: var(--shadow);
-    }
-
-    .account-info h3 {
-      margin-bottom: 15px;
-      color: var(--dark);
-      font-size: 18px;
-    }
-
-    .account-details p {
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-    }
-
-    .account-details i {
-      color: var(--primary);
-      margin-right: 10px;
-      width: 20px;
-    }
-
-    .account-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .login-form {
-      background-color: white;
-      border-radius: var(--border-radius);
-      padding: 20px;
-      margin: 0 15px;
-      box-shadow: var(--shadow);
-    }
-
-    .login-form h3 {
-      margin-bottom: 20px;
-      color: var(--dark);
-      font-size: 18px;
-    }
-
-    .form-group {
-      margin-bottom: 15px;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 5px;
-      font-weight: 500;
-      font-size: 14px;
-    }
-
-    .form-group input {
-      width: 100%;
-      padding: 12px 15px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      font-size: 16px;
-    }
-
-    /* Wishlist Tab */
-    .wishlist-header {
-      padding: 20px 15px;
-      background-color: white;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-      margin-bottom: 15px;
-    }
-
-    .wishlist-header h2 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 24px;
-      color: var(--dark);
-    }
-
-    .wishlist-items {
-      padding: 0 15px;
-    }
-
-    /* Modals */
-    .modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: rgba(0,0,0,0.7);
-      z-index: 1100;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
-      padding: 15px;
-    }
-
-    .modal.open {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .modal-content {
-      background-color: white;
-      width: 100%;
-      max-width: 450px;
-      border-radius: var(--border-radius);
-      padding: 25px;
-      position: relative;
-      transform: translateY(20px);
-      transition: transform 0.3s ease;
-    }
-
-    .modal.open .modal-content {
-      transform: translateY(0);
-    }
-
-    .modal-header {
-      margin-bottom: 20px;
-    }
-
-    .modal-header h3 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 22px;
-      color: var(--dark);
-    }
-
-    .close-modal {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      background: none;
-      border: none;
-      font-size: 24px;
-      color: var(--gray);
-      cursor: pointer;
-    }
-
-    /* Notification */
+    .product-price { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+    .current-price { font-size: 16px; font-weight: 700; color: var(--primary); }
+    .original-price { font-size: 12px; color: var(--gray); text-decoration: line-through; }
+    .product-rating { display: flex; align-items: center; margin-bottom: 10px; }
+    .stars { color: #f1c40f; font-size: 12px; margin-right: 5px; }
+    .rating-count { color: var(--gray); font-size: 11px; }
     .notification {
-      position: fixed;
-      top: 20px;
-      right: 15px;
-      left: 15px;
-      background-color: var(--success);
-      color: white;
-      padding: 15px;
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow);
-      z-index: 1200;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      transform: translateY(-100px);
-      opacity: 0;
+      position: fixed; top: 20px; right: 15px; left: 15px;
+      background-color: var(--success); color: white;
+      padding: 15px; border-radius: var(--border-radius);
+      box-shadow: var(--shadow); z-index: 1200;
+      display: flex; align-items: center; gap: 10px;
+      transform: translateY(-100px); opacity: 0;
       transition: transform 0.3s ease, opacity 0.3s ease;
     }
-
-    .notification.show {
-      transform: translateY(0);
-      opacity: 1;
-    }
-
-    /* Desktop Styles */
+    .notification.show { transform: translateY(0); opacity: 1; }
     @media (min-width: 768px) {
-      body {
-        padding-bottom: 0;
-      }
-
-      .mobile-tabs {
-        display: none;
-      }
-
-      .mobile-header {
-        display: none;
-      }
-
-      .desktop-header {
-        display: block;
-        background-color: white;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-      }
-
-      .top-bar {
-        background-color: var(--dark);
-        color: white;
-        padding: 8px 0;
-        font-size: 14px;
-      }
-
-      .top-bar .container {
-        display: flex;
-        justify-content: space-between;
-      }
-
-      .top-bar-links {
-        display: flex;
-        gap: 20px;
-      }
-
-      .top-bar-links a:hover {
-        color: var(--primary);
-      }
-
-      .main-header {
-        padding: 15px 0;
-      }
-
-      .main-header .container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-
+      body { padding-bottom: 0; }
+      .mobile-tabs, .mobile-header { display: none; }
+      .desktop-header { display: block; background-color: white; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+      .top-bar { background-color: var(--dark); color: white; padding: 8px 0; font-size: 14px; }
+      .top-bar .container { display: flex; justify-content: space-between; }
+      .top-bar-links { display: flex; gap: 20px; }
+      .top-bar-links a:hover { color: var(--primary); }
+      .main-header { padding: 15px 0; }
+      .main-header .container { display: flex; align-items: center; justify-content: space-between; }
       .logo {
-        display: flex;
-        align-items: center;
-        gap: 10px;
+        display: flex; align-items: center; gap: 10px;
         font-family: 'Montserrat', sans-serif;
-        font-weight: 700;
-        font-size: 24px;
-        color: var(--dark);
+        font-weight: 700; font-size: 24px; color: var(--dark); cursor: pointer;
       }
-
-      .logo img {
-        height: 50px;
-      }
-
-      .logo span {
-        color: var(--primary);
-      }
-
-      .search-container {
-        flex: 1;
-        max-width: 500px;
-        margin: 0 20px;
-        position: relative;
-      }
-
+      .logo span { color: var(--primary); }
+      .search-container { flex: 1; max-width: 500px; margin: 0 20px; position: relative; }
       .search-container input {
-        width: 100%;
-        padding: 12px 20px;
-        border: 1px solid #ddd;
-        border-radius: 30px;
-        font-size: 16px;
+        width: 100%; padding: 12px 20px;
+        border: 1px solid #ddd; border-radius: 30px; font-size: 16px;
       }
-
       .search-container button {
-        position: absolute;
-        right: 5px;
-        top: 50%;
-        transform: translateY(-50%);
-        background-color: var(--primary);
-        color: white;
-        border: none;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        cursor: pointer;
+        position: absolute; right: 5px; top: 50%;
+        transform: translateY(-50%); background-color: var(--primary);
+        color: white; border: none; width: 40px; height: 40px;
+        border-radius: 50%; cursor: pointer;
       }
-
-      .header-actions {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-      }
-
+      .header-actions { display: flex; align-items: center; gap: 20px; }
       .action-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        cursor: pointer;
-        padding: 5px 10px;
-        border-radius: var(--border-radius);
+        display: flex; flex-direction: column; align-items: center;
+        cursor: pointer; padding: 5px 10px;
+        border-radius: var(--border-radius); position: relative;
       }
-
-      .action-item i {
-        font-size: 22px;
-        margin-bottom: 3px;
-        color: var(--dark);
+      .action-item i { font-size: 22px; margin-bottom: 3px; color: var(--dark); }
+      .action-item span { font-size: 12px; font-weight: 500; }
+      .action-badge {
+        position: absolute; top: 0; right: 0;
+        background-color: var(--accent); color: white;
+        font-size: 10px; width: 18px; height: 18px;
+        border-radius: 50%; display: flex;
+        align-items: center; justify-content: center;
       }
-
-      .action-item span {
-        font-size: 12px;
-        font-weight: 500;
-      }
-
-      .nav-menu {
-        background-color: var(--light);
-        border-top: 1px solid #eee;
-      }
-
-      .nav-menu ul {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        padding: 15px 0;
-      }
-
+      .nav-menu { background-color: var(--light); border-top: 1px solid #eee; }
+      .nav-menu ul { display: flex; justify-content: center; gap: 10px; padding: 15px 0; }
       .nav-menu a {
-        padding: 8px 20px;
-        font-weight: 500;
-        color: var(--dark);
-        border-radius: 30px;
+        padding: 8px 20px; font-weight: 500;
+        color: var(--dark); border-radius: 30px; cursor: pointer;
       }
-
-      .nav-menu a:hover, .nav-menu a.active {
-        background-color: var(--primary);
-        color: white;
-      }
-
-      .tab-content {
-        display: block !important;
-        animation: none;
-      }
-
-      .hero-slider {
-        height: 400px;
-        border-radius: var(--border-radius);
-        margin: 20px auto;
-        max-width: 1200px;
-      }
-
-      .hero-slide-content h2 {
-        font-size: 32px;
-      }
-
-      .hero-slide-content p {
-        font-size: 18px;
-      }
-
-      .categories-grid {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 25px;
-        padding: 40px 15px;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      .category-card img {
-        height: 180px;
-      }
-
-      .category-card h3 {
-        font-size: 18px;
-        padding: 20px;
-      }
-
-      .shop-header {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 40px 15px 20px;
-      }
-
-      .shop-header h2 {
-        font-size: 32px;
-      }
-
-      .products-grid {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 25px;
-        padding: 0 15px 40px;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      .product-image {
-        height: 200px;
-      }
-
-      .product-title {
-        font-size: 16px;
-        height: auto;
-      }
-
-      .cart-footer {
-        position: static;
-        box-shadow: none;
-        padding: 20px;
-        max-width: 500px;
-        margin: 20px auto;
-      }
-
-      .account-info, .login-form {
-        max-width: 500px;
-        margin: 20px auto;
-      }
-
-      .wishlist-items {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 25px;
-      }
-    }
-
-    @media (min-width: 992px) {
-      .categories-grid {
-        grid-template-columns: repeat(6, 1fr);
-      }
-
-      .products-grid {
-        grid-template-columns: repeat(5, 1fr);
-      }
-    }
-
-    @media (max-width: 767px) {
-      .tab-content {
-        min-height: calc(100vh - 120px);
-      }
+      .nav-menu a:hover, .nav-menu a.active { background-color: var(--primary); color: white; }
+      .hero-slider { height: 400px; border-radius: var(--border-radius); margin: 20px auto; max-width: 1200px; }
+      .hero-slide-content h2 { font-size: 32px; }
+      .hero-slide-content p { font-size: 18px; }
+      .categories-grid { grid-template-columns: repeat(6, 1fr); gap: 25px; padding: 40px 15px; max-width: 1200px; margin: 0 auto; }
+      .category-card img { height: 180px; }
+      .category-card h3 { font-size: 18px; padding: 20px; }
+      .products-grid { grid-template-columns: repeat(5, 1fr); gap: 25px; padding: 0 15px 40px; max-width: 1200px; margin: 0 auto; }
+      .product-image { height: 200px; }
+      .product-title { font-size: 16px; height: auto; }
     }
   </style>
 </head>
@@ -1096,41 +268,33 @@
         </div>
       </div>
     </div>
-    
     <div class="main-header">
       <div class="container">
-        <a href="#home" class="logo" onclick="switchTab('home')">
-          <span>Brew's</span> Beads & Craft
-        </a>
-        
+        <a href="index.html" class="logo"><span>Brew's</span> Beads & Craft</a>
         <div class="search-container">
           <input type="text" id="searchInput" placeholder="Search for beads, crafts, supplies...">
           <button onclick="searchProducts()"><i class="fas fa-search"></i></button>
         </div>
-        
         <div class="header-actions">
-          <div class="action-item" onclick="switchTab('account')">
-            <i class="far fa-user"></i>
-            <span>Account</span>
+          <div class="action-item" onclick="window.location.href='account.html'">
+            <i class="far fa-user"></i><span>Account</span>
           </div>
-          <div class="action-item" onclick="switchTab('wishlist')">
-            <i class="far fa-heart"></i>
-            <span>Wishlist</span>
+          <div class="action-item" onclick="window.location.href='wishlist.html'">
+            <i class="far fa-heart"></i><span>Wishlist</span>
+            <span id="desktop-wishlist-count" class="action-badge" style="display: none;">0</span>
           </div>
-          <div class="action-item" onclick="switchTab('cart')" style="position: relative;">
-            <i class="fas fa-shopping-cart"></i>
-            <span>Cart</span>
-            <span id="desktop-cart-count">0</span>
+          <div class="action-item" onclick="window.location.href='cart.html'">
+            <i class="fas fa-shopping-cart"></i><span>Cart</span>
+            <span id="desktop-cart-count" class="action-badge">0</span>
           </div>
         </div>
       </div>
     </div>
-    
     <nav class="nav-menu">
       <div class="container">
         <ul>
-          <li><a href="#home" onclick="switchTab('home')" class="active">Home</a></li>
-          <li><a href="#shop" onclick="switchTab('shop')">Shop</a></li>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
           <li><a href="#">Beads</a></li>
           <li><a href="#">Jewelry Making</a></li>
           <li><a href="#">Craft Supplies</a></li>
@@ -1143,399 +307,123 @@
   <!-- Mobile Header -->
   <header class="mobile-header">
     <div class="mobile-header-top">
-      <a href="#home" class="mobile-logo" onclick="switchTab('home')">
-       <span>Brew's</span> Beads & Craft
-      </a>
-      
+      <a href="index.html" class="mobile-logo"><span>Brew's</span> Beads & Craft</a>
       <div class="mobile-header-actions">
-        <button class="mobile-search-btn" onclick="toggleMobileSearch()">
-          <i class="fas fa-search"></i>
-        </button>
-        <button class="mobile-cart-btn" onclick="switchTab('cart')">
-          <i class="fas fa-shopping-cart"></i>
-          <span id="mobile-cart-count">0</span>
+        <button class="mobile-search-btn" onclick="toggleMobileSearch()"><i class="fas fa-search"></i></button>
+        <button class="mobile-cart-btn" onclick="window.location.href='cart.html'">
+          <i class="fas fa-shopping-cart"></i><span id="mobile-cart-count">0</span>
         </button>
       </div>
     </div>
-    
     <div class="mobile-search-container" id="mobile-search-container">
       <input type="text" class="mobile-search-input" id="mobile-search-input" placeholder="Search products..." onkeyup="searchProductsMobile(event)">
     </div>
   </header>
 
-  <!-- Tab Contents -->
-  <!-- Home Tab -->
-  <section id="home-tab" class="tab-content active">
-    <div class="hero-slider" id="hero-slider">
-      <!-- Slides will be populated by JavaScript -->
-    </div>
-    
-    <div class="categories-grid" id="categories-grid">
-      <!-- Categories will be populated by JavaScript -->
-    </div>
-    
-    <div style="padding: 20px 15px;">
-      <h2 style="font-family: 'Montserrat', sans-serif; margin-bottom: 15px; color: var(--dark);">Featured Products</h2>
-      <div class="products-grid" id="featured-products">
-        <!-- Featured products will be populated by JavaScript -->
-      </div>
-    </div>
-  </section>
+  <!-- Home Content -->
+  <div class="hero-slider" id="hero-slider"></div>
+  <div class="categories-grid" id="categories-grid"></div>
+  <div style="padding: 20px 15px;">
+    <h2 style="font-family: 'Montserrat', sans-serif; margin-bottom: 15px; color: var(--dark);">Featured Products</h2>
+    <div class="products-grid" id="featured-products"></div>
+  </div>
 
-  <!-- Shop Tab -->
-  <section id="shop-tab" class="tab-content">
-    <div class="shop-header">
-      <h2>All Products</h2>
-      <div class="filter-tabs" id="filter-tabs">
-        <!-- Filter tabs will be populated by JavaScript -->
-      </div>
-    </div>
-    
-    <div class="products-grid" id="shop-products">
-      <!-- Shop products will be populated by JavaScript -->
-    </div>
-  </section>
-
-  <!-- Cart Tab -->
-  <section id="cart-tab" class="tab-content">
-    <div class="cart-header">
-      <h2>Your Cart</h2>
-    </div>
-    
-    <div class="cart-items" id="cart-items">
-      <!-- Cart items will be populated by JavaScript -->
-    </div>
-    
-    <div class="cart-footer" id="cart-footer">
-      <!-- Cart footer will be populated by JavaScript -->
-    </div>
-  </section>
-
-  <!-- Account Tab -->
-  <section id="account-tab" class="tab-content">
-    <div class="account-header">
-      <h2>My Account</h2>
-    </div>
-    
-    <div id="account-content">
-      <!-- Account content will be populated by JavaScript -->
-    </div>
-  </section>
-
-  <!-- Wishlist Tab -->
-  <section id="wishlist-tab" class="tab-content">
-    <div class="wishlist-header">
-      <h2>My Wishlist</h2>
-    </div>
-    
-    <div class="wishlist-items" id="wishlist-items">
-      <!-- Wishlist items will be populated by JavaScript -->
-    </div>
-  </section>
-
-  <!-- Mobile Tabs Navigation -->
+  <!-- Mobile Tabs -->
   <nav class="mobile-tabs">
-    <div class="mobile-tab active" onclick="switchTab('home')">
-      <i class="fas fa-home"></i>
-      <span>Home</span>
+    <div class="mobile-tab active" onclick="window.location.href='index.html'">
+      <i class="fas fa-home"></i><span>Home</span>
     </div>
-    <div class="mobile-tab" onclick="switchTab('shop')">
-      <i class="fas fa-store"></i>
-      <span>Shop</span>
+    <div class="mobile-tab" onclick="window.location.href='shop.html'">
+      <i class="fas fa-store"></i><span>Shop</span>
     </div>
-    <div class="mobile-tab" onclick="switchTab('cart')">
-      <i class="fas fa-shopping-cart"></i>
-      <span>Cart</span>
+    <div class="mobile-tab" onclick="window.location.href='cart.html'">
+      <i class="fas fa-shopping-cart"></i><span>Cart</span>
       <span class="tab-badge" id="cart-badge">0</span>
     </div>
-    <div class="mobile-tab" onclick="switchTab('wishlist')">
-      <i class="fas fa-heart"></i>
-      <span>Wishlist</span>
+    <div class="mobile-tab" onclick="window.location.href='wishlist.html'">
+      <i class="fas fa-heart"></i><span>Wishlist</span>
       <span class="tab-badge" id="wishlist-badge">0</span>
     </div>
-    <div class="mobile-tab" onclick="switchTab('account')">
-      <i class="fas fa-user"></i>
-      <span>Account</span>
+    <div class="mobile-tab" onclick="window.location.href='account.html'">
+      <i class="fas fa-user"></i><span>Account</span>
     </div>
   </nav>
 
-  <!-- Product Detail Modal -->
-  <div class="modal" id="product-modal">
-    <div class="modal-content">
-      <button class="close-modal" onclick="closeModal('product-modal')">&times;</button>
-      <div class="modal-header">
-        <h3 id="modal-product-title"></h3>
-      </div>
-      <div id="modal-product-content">
-        <!-- Product details will be populated by JavaScript -->
-      </div>
-    </div>
-  </div>
-
-  <!-- Notification -->
   <div class="notification" id="notification">
     <i class="fas fa-check-circle" id="notification-icon"></i>
     <span id="notification-text">Product added to cart!</span>
   </div>
 
   <script>
-    // Application State
+    // Shared data (in production, you'd fetch this from a backend or use localStorage)
     const state = {
-      cart: [],
-      wishlist: [],
-      currentUser: null,
+      cart: JSON.parse(localStorage.getItem('cart') || '[]'),
+      wishlist: JSON.parse(localStorage.getItem('wishlist') || '[]'),
       products: [],
       categories: [],
-      currentFilter: 'all',
       currentSlide: 0
     };
 
-    // Initialize the application
+    function saveState() {
+      localStorage.setItem('cart', JSON.stringify(state.cart));
+      localStorage.setItem('wishlist', JSON.stringify(state.wishlist));
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
       initializeData();
       renderHeroSlider();
       renderCategories();
       renderFeaturedProducts();
-      renderShopProducts();
-      renderFilterTabs();
       updateCartUI();
       updateWishlistUI();
-      renderAccountContent();
-      
-      // Auto-advance slides
       setInterval(nextSlide, 5000);
     });
 
-    // Initialize sample data
     function initializeData() {
-      // Sample categories
       state.categories = [
-        { id: 1, name: 'Glass Beads', image: 'https://files.catbox.moe/7bfiwm.jpg' },
-        { id: 2, name: 'Jewelry Making', image: 'https://files.catbox.moe/2q8x9k.jpg' },
+        { id: 1, name: 'Glass Beads', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80' },
+        { id: 2, name: 'Jewelry Making', image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80' },
         { id: 3, name: 'Craft Tools', image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80' },
         { id: 4, name: 'Beading Kits', image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80' },
         { id: 5, name: 'Strings & Wires', image: 'https://images.unsplash.com/photo-1542332211-6a8b53b69e7c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80' },
         { id: 6, name: 'Findings', image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80' }
       ];
 
-      // Sample products
       state.products = [
-        {
-          id: 1,
-          name: 'Assorted Glass Beads Collection',
-          category: 'Glass Beads',
-          price: 24.99,
-          originalPrice: 34.99,
-          image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
-          rating: 4.5,
-          reviews: 128,
-          badge: 'BESTSELLER',
-          description: 'A beautiful collection of assorted glass beads perfect for jewelry making and crafts.',
-          featured: true
-        },
-        {
-          id: 2,
-          name: 'Premium Jewelry Making Kit',
-          category: 'Jewelry Making',
-          price: 59.99,
-          originalPrice: 79.99,
-          image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
-          rating: 4.8,
-          reviews: 64,
-          badge: 'NEW',
-          description: 'Complete kit with everything you need to start making beautiful jewelry.',
-          featured: true
-        },
-        {
-          id: 3,
-          name: 'Professional Beading Tools Set',
-          category: 'Craft Tools',
-          price: 34.99,
-          originalPrice: 44.99,
-          image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
-          rating: 4.3,
-          reviews: 89,
-          badge: 'SALE',
-          description: 'Professional-grade tools for serious crafters and jewelry makers.',
-          featured: true
-        },
-        {
-          id: 4,
-          name: 'Beginner Beading Starter Kit',
-          category: 'Beading Kits',
-          price: 29.99,
-          image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
-          rating: 4.7,
-          reviews: 156,
-          description: 'Perfect for beginners who want to start their beading journey.',
-          featured: false
-        },
-        {
-          id: 5,
-          name: 'Silk Beading Thread (Various Colors)',
-          category: 'Strings & Wires',
-          price: 12.99,
-          image: 'https://images.unsplash.com/photo-1542332211-6a8b53b69e7c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
-          rating: 4.4,
-          reviews: 72,
-          description: 'High-quality silk thread in various colors for your beading projects.',
-          featured: false
-        },
-        {
-          id: 6,
-          name: 'Gold Plated Jewelry Findings',
-          category: 'Findings',
-          price: 18.99,
-          originalPrice: 24.99,
-          image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
-          rating: 4.6,
-          reviews: 94,
-          badge: 'LIMITED',
-          description: 'Gold plated findings for professional-looking jewelry.',
-          featured: false
-        },
-        {
-          id: 7,
-          name: 'Czech Glass Beads Variety Pack',
-          category: 'Glass Beads',
-          price: 32.99,
-          image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
-          rating: 4.9,
-          reviews: 201,
-          description: 'Premium Czech glass beads in a variety of colors and shapes.',
-          featured: true
-        },
-        {
-          id: 8,
-          name: 'Professional Wire Wrapping Kit',
-          category: 'Craft Tools',
-          price: 45.99,
-          originalPrice: 59.99,
-          image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
-          rating: 4.5,
-          reviews: 56,
-          badge: 'SALE',
-          description: 'Complete wire wrapping kit for creating beautiful wire jewelry.',
-          featured: false
-        },
-        {
-          id: 9,
-          name: 'Crystal Beads Assortment',
-          category: 'Glass Beads',
-          price: 39.99,
-          image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
-          rating: 4.8,
-          reviews: 89,
-          description: 'Sparkling crystal beads for adding brilliance to your creations.',
-          featured: false
-        },
-        {
-          id: 10,
-          name: 'Leather Cord Jewelry Kit',
-          category: 'Jewelry Making',
-          price: 27.99,
-          originalPrice: 34.99,
-          image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
-          rating: 4.6,
-          reviews: 47,
-          badge: 'SALE',
-          description: 'Create beautiful leather cord jewelry with this complete kit.',
-          featured: false
-        }
+        { id: 1, name: 'Assorted Glass Beads Collection', category: 'Glass Beads', price: 24.99, originalPrice: 34.99, image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80', rating: 4.5, reviews: 128, badge: 'BESTSELLER', description: 'A beautiful collection of assorted glass beads perfect for jewelry making and crafts.', featured: true },
+        { id: 2, name: 'Premium Jewelry Making Kit', category: 'Jewelry Making', price: 59.99, originalPrice: 79.99, image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80', rating: 4.8, reviews: 64, badge: 'NEW', description: 'Complete kit with everything you need to start making beautiful jewelry.', featured: true },
+        { id: 3, name: 'Professional Beading Tools Set', category: 'Craft Tools', price: 34.99, originalPrice: 44.99, image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80', rating: 4.3, reviews: 89, badge: 'SALE', description: 'Professional-grade tools for serious crafters and jewelry makers.', featured: true },
+        { id: 7, name: 'Czech Glass Beads Variety Pack', category: 'Glass Beads', price: 32.99, image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80', rating: 4.9, reviews: 201, description: 'Premium Czech glass beads in a variety of colors and shapes.', featured: true }
       ];
 
-      // Sample slides
       state.slides = [
-        {
-          image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80',
-          title: 'Premium Craft Supplies',
-          subtitle: 'Discover our exclusive collection'
-        },
-        {
-          image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80',
-          title: 'New Arrivals',
-          subtitle: 'Fresh products added weekly'
-        },
-        {
-          image: 'https://files.catbox.moe/7bfiwm.jpg',
-          title: 'Summer Sale',
-          subtitle: 'Up to 50% off selected items'
-        }
+        { image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80', title: 'Premium Craft Supplies', subtitle: 'Discover our exclusive collection' },
+        { image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80', title: 'New Arrivals', subtitle: 'Fresh products added weekly' },
+        { image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80', title: 'Summer Sale', subtitle: 'Up to 50% off selected items' }
       ];
     }
 
-    // Switch between tabs
-    function switchTab(tabName) {
-      // Hide all tab contents
-      document.querySelectorAll('.tab-content').forEach(tab => {
-        tab.classList.remove('active');
-      });
-      
-      // Show selected tab content
-      document.getElementById(`${tabName}-tab`).classList.add('active');
-      
-      // Update mobile tabs
-      document.querySelectorAll('.mobile-tab').forEach(tab => {
-        tab.classList.remove('active');
-      });
-      
-      document.querySelector(`.mobile-tab:nth-child(${getTabIndex(tabName)})`).classList.add('active');
-      
-      // Update desktop nav
-      document.querySelectorAll('.nav-menu a').forEach(link => {
-        link.classList.remove('active');
-      });
-      
-      if (tabName === 'home' || tabName === 'shop') {
-        document.querySelector(`.nav-menu a[href="#${tabName}"]`).classList.add('active');
-      }
-      
-      // Scroll to top
-      window.scrollTo(0, 0);
-    }
-
-    function getTabIndex(tabName) {
-      const tabs = ['home', 'shop', 'cart', 'wishlist', 'account'];
-      return tabs.indexOf(tabName) + 1;
-    }
-
-    // Render hero slider
     function renderHeroSlider() {
       const slider = document.getElementById('hero-slider');
       const dotsContainer = document.createElement('div');
       dotsContainer.className = 'slider-dots';
-      
       slider.innerHTML = '';
-      
       state.slides.forEach((slide, index) => {
         const slideEl = document.createElement('div');
         slideEl.className = `hero-slide ${index === 0 ? 'active' : ''}`;
         slideEl.style.backgroundImage = `url('${slide.image}')`;
-        slideEl.innerHTML = `
-          <div class="hero-slide-content">
-            <h2>${slide.title}</h2>
-            <p>${slide.subtitle}</p>
-          </div>
-        `;
+        slideEl.innerHTML = `<div class="hero-slide-content"><h2>${slide.title}</h2><p>${slide.subtitle}</p></div>`;
         slider.appendChild(slideEl);
-        
         const dot = document.createElement('div');
         dot.className = `slider-dot ${index === 0 ? 'active' : ''}`;
         dot.onclick = () => goToSlide(index);
         dotsContainer.appendChild(dot);
       });
-      
       slider.appendChild(dotsContainer);
     }
 
-    // Slider functions
     function nextSlide() {
       state.currentSlide = (state.currentSlide + 1) % state.slides.length;
-      updateSlider();
-    }
-
-    function prevSlide() {
-      state.currentSlide = (state.currentSlide - 1 + state.slides.length) % state.slides.length;
       updateSlider();
     }
 
@@ -1548,30 +436,26 @@
       document.querySelectorAll('.hero-slide').forEach((slide, index) => {
         slide.classList.toggle('active', index === state.currentSlide);
       });
-      
       document.querySelectorAll('.slider-dot').forEach((dot, index) => {
         dot.classList.toggle('active', index === state.currentSlide);
       });
     }
 
-    // Render categories
     function renderCategories() {
       const container = document.getElementById('categories-grid');
       container.innerHTML = state.categories.map(category => `
-        <div class="category-card" onclick="filterByCategory('${category.name}')">
+        <div class="category-card" onclick="window.location.href='shop.html?category=${encodeURIComponent(category.name)}'">
           <img src="${category.image}" alt="${category.name}">
           <h3>${category.name}</h3>
         </div>
       `).join('');
     }
 
-    // Render featured products
     function renderFeaturedProducts() {
       const container = document.getElementById('featured-products');
       const featuredProducts = state.products.filter(p => p.featured);
-      
       container.innerHTML = featuredProducts.map(product => `
-        <div class="product-card" onclick="openProductModal(${product.id})">
+        <div class="product-card" onclick="window.location.href='shop.html?product=${product.id}'">
           <div class="product-image">
             <img src="${product.image}" alt="${product.name}">
             ${product.badge ? `<div class="product-badge">${product.badge}</div>` : ''}
@@ -1584,575 +468,97 @@
               ${product.originalPrice ? `<span class="original-price">$${product.originalPrice.toFixed(2)}</span>` : ''}
             </div>
             <div class="product-rating">
-              <div class="stars">
-                ${getStarRating(product.rating)}
-              </div>
+              <div class="stars">${getStarRating(product.rating)}</div>
               <span class="rating-count">(${product.reviews})</span>
             </div>
-            <button class="btn btn-outline" style="width: 100%;" onclick="event.stopPropagation(); addToCart(${product.id})">
-              Add to Cart
-            </button>
+            <button class="btn btn-outline" style="width: 100%;" onclick="event.stopPropagation(); addToCart(${product.id})">Add to Cart</button>
           </div>
         </div>
       `).join('');
     }
 
-    // Render shop products
-    function renderShopProducts(filter = 'all') {
-      const container = document.getElementById('shop-products');
-      let filteredProducts = state.products;
-      
-      if (filter !== 'all') {
-        filteredProducts = state.products.filter(p => p.category === filter);
-      }
-      
-      container.innerHTML = filteredProducts.map(product => `
-        <div class="product-card" onclick="openProductModal(${product.id})">
-          <div class="product-image">
-            <img src="${product.image}" alt="${product.name}">
-            ${product.badge ? `<div class="product-badge">${product.badge}</div>` : ''}
-          </div>
-          <div class="product-info">
-            <div class="product-category">${product.category}</div>
-            <h3 class="product-title">${product.name}</h3>
-            <div class="product-price">
-              <span class="current-price">$${product.price.toFixed(2)}</span>
-              ${product.originalPrice ? `<span class="original-price">$${product.originalPrice.toFixed(2)}</span>` : ''}
-            </div>
-            <div class="product-rating">
-              <div class="stars">
-                ${getStarRating(product.rating)}
-              </div>
-              <span class="rating-count">(${product.reviews})</span>
-            </div>
-            <button class="btn btn-outline" style="width: 100%;" onclick="event.stopPropagation(); addToCart(${product.id})">
-              Add to Cart
-            </button>
-          </div>
-        </div>
-      `).join('');
-    }
-
-    // Render filter tabs
-    function renderFilterTabs() {
-      const container = document.getElementById('filter-tabs');
-      const categories = ['all', ...new Set(state.products.map(p => p.category))];
-      
-      container.innerHTML = categories.map(category => `
-        <button class="filter-tab ${category === state.currentFilter ? 'active' : ''}" 
-                onclick="setFilter('${category}')">
-          ${category === 'all' ? 'All Products' : category}
-        </button>
-      `).join('');
-    }
-
-    // Set filter
-    function setFilter(filter) {
-      state.currentFilter = filter;
-      renderFilterTabs();
-      renderShopProducts(filter);
-    }
-
-    // Filter by category from home page
-    function filterByCategory(category) {
-      setFilter(category);
-      switchTab('shop');
-    }
-
-    // Get star rating
     function getStarRating(rating) {
       let stars = '';
       const fullStars = Math.floor(rating);
       const hasHalfStar = rating % 1 >= 0.5;
-      
-      for (let i = 0; i < fullStars; i++) {
-        stars += '<i class="fas fa-star"></i>';
-      }
-      
-      if (hasHalfStar) {
-        stars += '<i class="fas fa-star-half-alt"></i>';
-      }
-      
+      for (let i = 0; i < fullStars; i++) stars += '<i class="fas fa-star"></i>';
+      if (hasHalfStar) stars += '<i class="fas fa-star-half-alt"></i>';
       const emptyStars = 5 - Math.ceil(rating);
-      for (let i = 0; i < emptyStars; i++) {
-        stars += '<i class="far fa-star"></i>';
-      }
-      
+      for (let i = 0; i < emptyStars; i++) stars += '<i class="far fa-star"></i>';
       return stars;
     }
 
-    // Add to cart
     function addToCart(productId) {
       const product = state.products.find(p => p.id === productId);
       if (!product) return;
-
       const existingItem = state.cart.find(item => item.id === productId);
-      
       if (existingItem) {
         existingItem.quantity += 1;
       } else {
-        state.cart.push({
-          id: product.id,
-          name: product.name,
-          price: product.price,
-          image: product.image,
-          quantity: 1
-        });
+        state.cart.push({ id: product.id, name: product.name, price: product.price, image: product.image, quantity: 1 });
       }
-      
+      saveState();
       updateCartUI();
       showNotification(`${product.name} added to cart!`);
-      
-      // If on cart tab, refresh cart view
-      if (document.getElementById('cart-tab').classList.contains('active')) {
-        renderCart();
-      }
     }
 
-    // Update cart UI
     function updateCartUI() {
       const totalItems = state.cart.reduce((total, item) => total + item.quantity, 0);
-      
-      // Update mobile
       document.getElementById('mobile-cart-count').textContent = totalItems;
       document.getElementById('cart-badge').textContent = totalItems;
-      
-      // Update desktop
       document.getElementById('desktop-cart-count').textContent = totalItems;
     }
 
-    // Render cart
-    function renderCart() {
-      const container = document.getElementById('cart-items');
-      const footer = document.getElementById('cart-footer');
-      const subtotal = state.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-      
-      if (state.cart.length === 0) {
-        container.innerHTML = `
-          <div class="empty-cart">
-            <i class="fas fa-shopping-cart"></i>
-            <h3>Your cart is empty</h3>
-            <p>Add some products to get started!</p>
-            <button class="btn" style="margin-top: 20px;" onclick="switchTab('shop')">Start Shopping</button>
-          </div>
-        `;
-        footer.innerHTML = '';
-      } else {
-        container.innerHTML = state.cart.map(item => `
-          <div class="cart-item">
-            <div class="cart-item-image">
-              <img src="${item.image}" alt="${item.name}">
-            </div>
-            <div class="cart-item-details">
-              <div class="cart-item-title">${item.name}</div>
-              <div class="cart-item-price">$${item.price.toFixed(2)}</div>
-              <div class="cart-item-actions">
-                <div class="quantity-control">
-                  <button class="quantity-btn" onclick="updateCartQuantity(${item.id}, -1)">-</button>
-                  <span style="font-weight: 600;">${item.quantity}</span>
-                  <button class="quantity-btn" onclick="updateCartQuantity(${item.id}, 1)">+</button>
-                </div>
-                <button class="remove-item" onclick="removeFromCart(${item.id})">
-                  <i class="fas fa-trash"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        `).join('');
-        
-        footer.innerHTML = `
-          <div class="cart-summary">
-            <div class="summary-row">
-              <span>Subtotal:</span>
-              <span>$${subtotal.toFixed(2)}</span>
-            </div>
-            <div class="summary-row">
-              <span>Shipping:</span>
-              <span>Calculated at checkout</span>
-            </div>
-            <div class="summary-row cart-total">
-              <span>Total:</span>
-              <span>$${subtotal.toFixed(2)}</span>
-            </div>
-          </div>
-          <button class="btn btn-accent" style="width: 100%;" onclick="checkout()">Proceed to Checkout</button>
-        `;
-      }
-    }
-
-    // Update cart quantity
-    function updateCartQuantity(productId, change) {
-      const itemIndex = state.cart.findIndex(item => item.id === productId);
-      if (itemIndex === -1) return;
-
-      state.cart[itemIndex].quantity += change;
-      
-      if (state.cart[itemIndex].quantity <= 0) {
-        state.cart.splice(itemIndex, 1);
-      }
-      
-      updateCartUI();
-      renderCart();
-    }
-
-    // Remove from cart
-    function removeFromCart(productId) {
-      const itemIndex = state.cart.findIndex(item => item.id === productId);
-      if (itemIndex !== -1) {
-        state.cart.splice(itemIndex, 1);
-        updateCartUI();
-        renderCart();
-        showNotification('Item removed from cart');
-      }
-    }
-
-    // Update wishlist UI
     function updateWishlistUI() {
       const totalItems = state.wishlist.length;
       document.getElementById('wishlist-badge').textContent = totalItems;
-    }
-
-    // Render account content
-    function renderAccountContent() {
-      const container = document.getElementById('account-content');
-      
-      if (state.currentUser) {
-        container.innerHTML = `
-          <div class="account-info">
-            <h3>My Account</h3>
-            <div class="account-details">
-              <p><i class="fas fa-user"></i> ${state.currentUser}</p>
-              <p><i class="fas fa-envelope"></i> ${state.currentUser}</p>
-              <p><i class="fas fa-phone"></i> (555) 123-4567</p>
-              <p><i class="fas fa-map-marker-alt"></i> 123 Craft Street, Art City</p>
-            </div>
-            <div class="account-actions">
-              <button class="btn btn-outline" onclick="logout()">Logout</button>
-              <button class="btn" onclick="viewOrders()">View Orders</button>
-            </div>
-          </div>
-        `;
+      const desktopWishlistCount = document.getElementById('desktop-wishlist-count');
+      if (totalItems > 0) {
+        desktopWishlistCount.style.display = 'flex';
+        desktopWishlistCount.textContent = totalItems;
       } else {
-        container.innerHTML = `
-          <div class="login-form">
-            <h3>Login to Your Account</h3>
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" placeholder="Enter your email">
-            </div>
-            <div class="form-group">
-              <label for="password">Password</label>
-              <input type="password" id="password" placeholder="Enter your password">
-            </div>
-            <button class="btn" style="width: 100%; margin-bottom: 15px;" onclick="login()">Login</button>
-            <p style="text-align: center; color: var(--gray);">
-              Don't have an account? <a href="#" style="color: var(--primary);" onclick="showRegister()">Sign up</a>
-            </p>
-          </div>
-        `;
+        desktopWishlistCount.style.display = 'none';
       }
     }
 
-    // Login function
-    function login() {
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-      
-      if (!email || !password) {
-        showNotification('Please fill in all fields', 'error');
-        return;
-      }
-      
-      // Simulate API call
-      showNotification('Logging in...', 'info');
-      
-      setTimeout(() => {
-        state.currentUser = email;
-        renderAccountContent();
-        showNotification(`Welcome back!`, 'success');
-      }, 1000);
-    }
-
-    // Logout function
-    function logout() {
-      state.currentUser = null;
-      renderAccountContent();
-      showNotification('Logged out successfully', 'info');
-    }
-
-    // Checkout function
-    function checkout() {
-      if (state.cart.length === 0) {
-        showNotification('Your cart is empty!', 'error');
-        return;
-      }
-      
-      if (!state.currentUser) {
-        showNotification('Please login to checkout', 'info');
-        switchTab('account');
-        return;
-      }
-      
-      const total = state.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-      showNotification(`Order placed! Total: $${total.toFixed(2)}`, 'success');
-      
-      // Clear cart
-      state.cart = [];
-      updateCartUI();
-      renderCart();
-    }
-
-    // Open product modal
-    function openProductModal(productId) {
-      const product = state.products.find(p => p.id === productId);
-      if (!product) return;
-
-      document.getElementById('modal-product-title').textContent = product.name;
-      
-      document.getElementById('modal-product-content').innerHTML = `
-        <div style="margin-bottom: 20px;">
-          <img src="${product.image}" alt="${product.name}" style="width: 100%; border-radius: 12px; margin-bottom: 15px;">
-          <p>${product.description}</p>
-        </div>
-        <div class="product-price" style="margin-bottom: 15px;">
-          <span class="current-price" style="font-size: 24px;">$${product.price.toFixed(2)}</span>
-          ${product.originalPrice ? `<span class="original-price" style="font-size: 18px;">$${product.originalPrice.toFixed(2)}</span>` : ''}
-        </div>
-        <div class="product-rating" style="margin-bottom: 20px;">
-          <div class="stars" style="font-size: 16px;">
-            ${getStarRating(product.rating)}
-          </div>
-          <span class="rating-count">(${product.reviews} reviews)</span>
-        </div>
-        <div style="display: flex; gap: 10px;">
-          <button class="btn" style="flex: 1;" onclick="addToCart(${product.id}); closeModal('product-modal')">
-            Add to Cart
-          </button>
-          <button class="btn btn-outline" style="flex: 1;" onclick="addToWishlist(${product.id})">
-            <i class="far fa-heart"></i>
-          </button>
-        </div>
-      `;
-      
-      document.getElementById('product-modal').classList.add('open');
-    }
-
-    // Close modal
-    function closeModal(modalId) {
-      document.getElementById(modalId).classList.remove('open');
-    }
-
-    // Add to wishlist
-    function addToWishlist(productId) {
-      const product = state.products.find(p => p.id === productId);
-      if (!product) return;
-
-      const existingItem = state.wishlist.find(item => item.id === productId);
-      
-      if (!existingItem) {
-        state.wishlist.push({
-          id: product.id,
-          name: product.name,
-          price: product.price,
-          image: product.image
-        });
-        
-        updateWishlistUI();
-        showNotification(`${product.name} added to wishlist!`);
-        
-        // If on wishlist tab, refresh wishlist view
-        if (document.getElementById('wishlist-tab').classList.contains('active')) {
-          renderWishlist();
-        }
-      } else {
-        showNotification('Already in wishlist', 'info');
-      }
-    }
-
-    // Render wishlist
-    function renderWishlist() {
-      const container = document.getElementById('wishlist-items');
-      
-      if (state.wishlist.length === 0) {
-        container.innerHTML = `
-          <div class="empty-cart">
-            <i class="far fa-heart"></i>
-            <h3>Your wishlist is empty</h3>
-            <p>Add some products to your wishlist!</p>
-            <button class="btn" style="margin-top: 20px;" onclick="switchTab('shop')">Start Shopping</button>
-          </div>
-        `;
-      } else {
-        container.innerHTML = state.wishlist.map(item => `
-          <div class="product-card">
-            <div class="product-image">
-              <img src="${item.image}" alt="${item.name}">
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">${item.name}</h3>
-              <div class="product-price">
-                <span class="current-price">$${item.price.toFixed(2)}</span>
-              </div>
-              <div style="display: flex; gap: 10px; margin-top: 10px;">
-                <button class="btn btn-outline" style="flex: 1;" onclick="addToCart(${item.id})">
-                  Add to Cart
-                </button>
-                <button class="btn" style="width: 50px;" onclick="removeFromWishlist(${item.id})">
-                  <i class="fas fa-trash"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        `).join('');
-      }
-    }
-
-    // Remove from wishlist
-    function removeFromWishlist(productId) {
-      const itemIndex = state.wishlist.findIndex(item => item.id === productId);
-      if (itemIndex !== -1) {
-        state.wishlist.splice(itemIndex, 1);
-        updateWishlistUI();
-        renderWishlist();
-        showNotification('Removed from wishlist');
-      }
-    }
-
-    // Toggle mobile search
     function toggleMobileSearch() {
       const searchContainer = document.getElementById('mobile-search-container');
       searchContainer.classList.toggle('active');
-      
       if (searchContainer.classList.contains('active')) {
         document.getElementById('mobile-search-input').focus();
       }
     }
 
-    // Search products on mobile
     function searchProductsMobile(event) {
       if (event.key === 'Enter') {
-        const query = event.target.value.toLowerCase();
-        searchProducts(query);
+        window.location.href = `shop.html?search=${encodeURIComponent(event.target.value)}`;
       }
     }
 
-    // Search products
-    function searchProducts(query = null) {
-      if (!query) {
-        query = document.getElementById('searchInput')?.value || 
-                document.getElementById('mobile-search-input')?.value || '';
+    function searchProducts() {
+      const query = document.getElementById('searchInput')?.value || '';
+      if (query.trim()) {
+        window.location.href = `shop.html?search=${encodeURIComponent(query)}`;
       }
-      
-      query = query.toLowerCase().trim();
-      
-      if (!query) {
-        renderShopProducts(state.currentFilter);
-        return;
-      }
-      
-      const filteredProducts = state.products.filter(product => 
-        product.name.toLowerCase().includes(query) ||
-        product.category.toLowerCase().includes(query) ||
-        product.description.toLowerCase().includes(query)
-      );
-      
-      const container = document.getElementById('shop-products');
-      if (filteredProducts.length === 0) {
-        container.innerHTML = `
-          <div style="grid-column: 1 / -1; text-align: center; padding: 40px 20px; color: var(--gray);">
-            <i class="fas fa-search" style="font-size: 48px; margin-bottom: 20px;"></i>
-            <h3>No products found</h3>
-            <p>Try adjusting your search terms</p>
-          </div>
-        `;
-      } else {
-        container.innerHTML = filteredProducts.map(product => `
-          <div class="product-card" onclick="openProductModal(${product.id})">
-            <div class="product-image">
-              <img src="${product.image}" alt="${product.name}">
-              ${product.badge ? `<div class="product-badge">${product.badge}</div>` : ''}
-            </div>
-            <div class="product-info">
-              <div class="product-category">${product.category}</div>
-              <h3 class="product-title">${product.name}</h3>
-              <div class="product-price">
-                <span class="current-price">$${product.price.toFixed(2)}</span>
-                ${product.originalPrice ? `<span class="original-price">$${product.originalPrice.toFixed(2)}</span>` : ''}
-              </div>
-              <div class="product-rating">
-                <div class="stars">
-                  ${getStarRating(product.rating)}
-                </div>
-                <span class="rating-count">(${product.reviews})</span>
-              </div>
-              <button class="btn btn-outline" style="width: 100%;" onclick="event.stopPropagation(); addToCart(${product.id})">
-                Add to Cart
-              </button>
-            </div>
-          </div>
-        `).join('');
-      }
-      
-      // Switch to shop tab if not already there
-      if (!document.getElementById('shop-tab').classList.contains('active')) {
-        switchTab('shop');
-      }
-      
-      // Close mobile search if open
-      document.getElementById('mobile-search-container').classList.remove('active');
-      document.getElementById('mobile-search-input').value = '';
     }
 
-    // Show notification
     function showNotification(message, type = 'success') {
       const text = document.getElementById('notification-text');
       const icon = document.getElementById('notification-icon');
-      
+      const notification = document.getElementById('notification');
       text.textContent = message;
-      
-      // Set icon based on type
       if (type === 'error') {
         icon.className = 'fas fa-exclamation-circle';
-        document.getElementById('notification').style.backgroundColor = '#e74c3c';
+        notification.style.backgroundColor = '#e74c3c';
       } else if (type === 'info') {
         icon.className = 'fas fa-info-circle';
-        document.getElementById('notification').style.backgroundColor = '#3498db';
+        notification.style.backgroundColor = '#3498db';
       } else {
         icon.className = 'fas fa-check-circle';
-        document.getElementById('notification').style.backgroundColor = '#2ecc71';
+        notification.style.backgroundColor = '#2ecc71';
       }
-      
-      document.getElementById('notification').classList.add('show');
-      
-      setTimeout(() => {
-        document.getElementById('notification').classList.remove('show');
-      }, 3000);
-    }
-
-    // View orders
-    function viewOrders() {
-      showNotification('Order history feature coming soon!', 'info');
-    }
-
-    // Show register form
-    function showRegister() {
-      showNotification('Registration feature coming soon!', 'info');
-    }
-
-    // Handle tab switching on load based on URL hash
-    window.addEventListener('hashchange', function() {
-      const hash = window.location.hash.substring(1);
-      if (['home', 'shop', 'cart', 'wishlist', 'account'].includes(hash)) {
-        switchTab(hash);
-      }
-    });
-
-    // Initialize tab based on URL hash
-    if (window.location.hash) {
-      const hash = window.location.hash.substring(1);
-      if (['home', 'shop', 'cart', 'wishlist', 'account'].includes(hash)) {
-        switchTab(hash);
-      }
+      notification.classList.add('show');
+      setTimeout(() => notification.classList.remove('show'), 3000);
     }
   </script>
 </body>
